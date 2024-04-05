@@ -2,6 +2,9 @@
 @import "../../node_modules/bootstrap/scss/functions";
 
 // Default Variables
+$dark: #003049;
+$light: #fcfcff;
+
 
 // Required Stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -18,8 +21,25 @@
 @import "../../node_modules/bootstrap/scss/containers";
 @import "../../node_modules/bootstrap/scss/grid";
 @import "../../node_modules/bootstrap/scss/helpers";
+@import "../../node_modules/bootstrap/scss/navbar";
 
 // Utilities API
 @import "../../node_modules/bootstrap/scss/utilities/api";
 
 // Additional Style Declarations
+#header {
+    background-color: $dark;
+    color: $light;
+}
+
+.nav-link {
+    color: $light;
+    font-family: 'Luckiest Guy', sans-serif;
+    font-size: 1.5rem;
+}
+
+body {
+    font-family: McLaren, sans-serif;
+    color: $dark;
+    background-color: $light;
+}
