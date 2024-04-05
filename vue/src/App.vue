@@ -1,6 +1,6 @@
 <template>
   <div id="capstone-app">
-    <header id="header">
+    <header id="header" class="mb-5">
       <nav id="nav" class="navbar justify-content-between">
         <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
         <div class="router-links">
@@ -21,7 +21,6 @@ img {
   width: auto;
   margin-left: 20px;
 }
-
 
 .navbar {
   height: 100%;

@@ -4,6 +4,7 @@
 // Default Variables
 $dark: #003049;
 $light: #fcfcff;
+$yellow: #fcbf49;
 
 
 // Required Stylesheets
@@ -49,4 +50,9 @@ body {
     font-family: McLaren, sans-serif;
     color: $dark;
     background-color: $light;
+}
+
+.testimonial {
+    background-color: $yellow;
+    color: $dark;
 }
