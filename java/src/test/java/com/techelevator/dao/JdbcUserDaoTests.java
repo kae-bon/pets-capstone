@@ -10,6 +10,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class JdbcUserDaoTests extends BaseDaoTests {
@@ -23,6 +25,15 @@ public class JdbcUserDaoTests extends BaseDaoTests {
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         sut = new JdbcUserDao(jdbcTemplate);
+        USER_1.setFirstName("Steve");
+        USER_1.setLastName("Lightning");
+        USER_1.setBirthdate(LocalDate.of(1985, 12, 24));
+        USER_2.setFirstName("Steve");
+        USER_2.setLastName("Rain");
+        USER_2.setBirthdate(LocalDate.of(2000, 05, 04 ));
+        USER_3.setFirstName("Steve");
+        USER_3.setLastName("Thunder");
+        USER_3.setBirthdate(LocalDate.of(1975, 01, 01));
     }
 
     @Test(expected = IllegalArgumentException.class)

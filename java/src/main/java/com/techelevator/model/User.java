@@ -2,7 +2,8 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -11,7 +12,7 @@ public class User {
 
    private String lastName;
    private String firstName;
-   private Date birthdate;
+   private LocalDate birthdate;
    private int id;
    private String username;
    @JsonIgnore
@@ -28,9 +29,6 @@ public class User {
       this.password = password;
       if (authorities != null) this.setAuthorities(authorities);
       this.activated = true;
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.birthdate = birthdate;
    }
 
    public void setLastName(String lastName) {
@@ -41,7 +39,7 @@ public class User {
       this.firstName = firstName;
    }
 
-   public void setBirthdate(Date birthdate) {
+   public void setBirthdate(LocalDate birthdate) {
       this.birthdate = birthdate;
    }
 
@@ -53,7 +51,7 @@ public class User {
       return firstName;
    }
 
-   public Date getBirthdate() {
+   public LocalDate getBirthdate() {
       return birthdate;
    }
 
