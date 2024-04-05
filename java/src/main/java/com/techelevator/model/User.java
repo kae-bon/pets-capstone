@@ -2,12 +2,16 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class User {
 
+   private String lastName;
+   private String firstName;
+   private Date birthdate;
    private int id;
    private String username;
    @JsonIgnore
@@ -18,12 +22,27 @@ public class User {
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities) {
+   public User(int id, String username, String password, String authorities, String firstName, String lastName, Date birthdate) {
       this.id = id;
       this.username = username;
       this.password = password;
       if (authorities != null) this.setAuthorities(authorities);
       this.activated = true;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.birthdate = birthdate;
+   }
+
+   public String getLastName() {
+      return lastName;
+   }
+
+   public String getFirstName() {
+      return firstName;
+   }
+
+   public Date getBirthdate() {
+      return birthdate;
    }
 
    public int getId() {
