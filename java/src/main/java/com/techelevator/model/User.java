@@ -22,7 +22,7 @@ public class User {
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities, String firstName, String lastName, Date birthdate) {
+   public User(int id, String username, String password, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
@@ -30,6 +30,18 @@ public class User {
       this.activated = true;
       this.firstName = firstName;
       this.lastName = lastName;
+      this.birthdate = birthdate;
+   }
+
+   public void setLastName(String lastName) {
+      this.lastName = lastName;
+   }
+
+   public void setFirstName(String firstName) {
+      this.firstName = firstName;
+   }
+
+   public void setBirthdate(Date birthdate) {
       this.birthdate = birthdate;
    }
 
