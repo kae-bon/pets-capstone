@@ -10,12 +10,6 @@
                 community
                 centered around the happiness and well-being of our beloved canine companions.<br>
                 <br>
-                Whether you're a seasoned pet parent or just starting your journey, Woofr offers a seamless registration
-                process
-                that allows you to create profiles for your furry friends, complete with their photos, preferences, and
-                personalities. Joining Woofr opens up a world of possibilities for your dog, from meeting new friends to
-                discovering exciting playdate opportunities in your area.<br>
-                <br>
                 With Woofr, organizing playdates has never been easier. Simply browse through our intuitive platform to find
                 playdate listings created by other members, or create your own and invite fellow pet parents to join.
                 Whether
@@ -41,5 +35,9 @@ export default {
 img {
     height: 100%;
     width: auto;
+}
+
+p {
+    font-size: .9rem;
 }
 </style>

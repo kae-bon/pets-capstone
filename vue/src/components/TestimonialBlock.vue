@@ -1,6 +1,6 @@
 <template>
-    <article class="testimonial d-flex flex-column align-items-center justify-content-between">
-        <img v-bind:src="image" alt="" class="mb-3">
+    <article class="testimonial d-flex flex-column align-items-center justify-content-between mb-2">
+        <img v-bind:src="image" alt="" class="mb-3 flex-shrink-1">
         <p>{{ testimonial.text }}</p>
         <p>{{ testimonial.author }}</p>
     </article>
@@ -23,11 +23,12 @@ article {
     text-align: center;
     border-radius: 10px;
     padding: 1rem;
-    width: 33%;
+    width: 30%;
 }
 
 img {
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 100%;
+    /* max-height: 250px; */
+    border-radius: 10px;
 }
 </style>
