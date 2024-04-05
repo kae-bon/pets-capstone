@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=McLaren&display=swap");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -7377,12 +7378,16 @@ progress {
 #header {
   background-color: #003049;
   color: #fcfcff;
+  height: 10vh;
 }
 
 .nav-link {
   color: #fcfcff;
   font-family: "Luckiest Guy", sans-serif;
   font-size: 1.5rem;
+  display: inline-block;
+  padding: 0px 30px;
+  border-left: #fcfcff 1px solid;
 }
 
 body {

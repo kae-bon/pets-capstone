@@ -26,16 +26,23 @@ $light: #fcfcff;
 // Utilities API
 @import "../../node_modules/bootstrap/scss/utilities/api";
 
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=McLaren&display=swap');
+
 // Additional Style Declarations
 #header {
     background-color: $dark;
     color: $light;
+    height: 10vh;
 }
 
 .nav-link {
     color: $light;
     font-family: 'Luckiest Guy', sans-serif;
     font-size: 1.5rem;
+    display: inline-block;
+    padding: 0px 30px;
+    border-left: $light 1px solid;
 }
 
 body {
