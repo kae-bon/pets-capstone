@@ -10,4 +10,12 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
+CREATE TABLE pets(
+    pet_id SERIAL,
+    name varchar(50) NOT NULL,
+    owner_id int NOT NULL,
+    CONSTRAINT PK_pet PRIMARY KEY (pet_id),
+    CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES users (user_id)
+);
+
 COMMIT TRANSACTION;
