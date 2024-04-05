@@ -1,0 +1,15 @@
+<template>
+    <div class="container d-flex flex-column align-items-center mt-5 justify-content-center">
+        <h2>Ready To Play?</h2>
+        <router-link class="btn btn-primary" :to="{ name: 'register' }" v-if="$store.state.token == ''">Sign Up
+            Now!</router-link>
+    </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style scoped></style>

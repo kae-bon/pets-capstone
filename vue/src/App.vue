@@ -1,5 +1,5 @@
 <template>
-  <div id="capstone-app">
+  <div id="capstone-app" class="d-flex flex-column justify-content-between">
     <header id="header" class="mb-5">
       <nav id="nav" class="navbar justify-content-between">
         <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
@@ -12,6 +12,9 @@
       </nav>
     </header>
     <router-view />
+    <footer class="d-flex align-items-center justify-content-center mt-5 p-2">
+      <p>&copy Luna & Marley Co.</p>
+    </footer>
   </div>
 </template>
 

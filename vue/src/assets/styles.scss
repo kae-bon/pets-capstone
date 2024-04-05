@@ -4,7 +4,8 @@
 // Default Variables
 $dark: #003049;
 $light: #fcfcff;
-$yellow: #fcbf49;
+$primary: #fcbf49;
+$turquoise: #2ab7ca;
 
 
 // Required Stylesheets
@@ -23,6 +24,7 @@ $yellow: #fcbf49;
 @import "../../node_modules/bootstrap/scss/grid";
 @import "../../node_modules/bootstrap/scss/helpers";
 @import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/buttons";
 
 // Utilities API
 @import "../../node_modules/bootstrap/scss/utilities/api";
@@ -53,6 +55,20 @@ body {
 }
 
 .testimonial {
-    background-color: $yellow;
+    background-color: $primary;
     color: $dark;
+
+}
+
+h2 {
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+i {
+    color: $turquoise;
+}
+
+footer {
+    color: $light;
+    background-color: $dark;
 }
