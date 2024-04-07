@@ -1,24 +1,29 @@
 <template>
-  <div id="login">
-    <form v-on:submit.prevent="login">
-      <h1 >Please Sign In</h1>
+  <div id="login" class="d-flex flex-column text-center align-items-center">
+    <form v-on:submit.prevent="login" class="col-4">
+      <h1 class="mb-4">Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+
+      <div class="form-input-group form-floating">
+        <input class="form-control" type="text" id="username" v-model="user.username" placeholder="username" required
+          autofocus />
+        <label class="form-label" for="username">Username</label>
       </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
+      <div class="form-input-group form-floating">
+        <input class="form-control" type="password" id="password" v-model="user.password" placeholder="password"
+          required />
+        <label class="form-label" for="password">Password</label>
       </div>
-      <button type="submit">Sign in</button>
+
+      <button type="submit" class="btn btn-primary mt-2 mb-2">Sign in</button>
       <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+        <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
+      </p>
     </form>
   </div>
 </template>
@@ -64,6 +69,7 @@ export default {
 .form-input-group {
   margin-bottom: 1rem;
 }
+
 label {
   margin-right: 0.5rem;
 }

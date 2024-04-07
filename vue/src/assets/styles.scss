@@ -7,6 +7,20 @@ $light: #fcfcff;
 $primary: #fcbf49;
 $turquoise: #2ab7ca;
 
+$focus-ring-width: .25rem;
+$focus-ring-opacity: .25;
+$focus-ring-color: rgba($turquoise, $focus-ring-opacity);
+$focus-ring-blur: 0;
+$focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color;
+
+$form-check-input-checked-color: $light;
+$form-check-input-checked-bg-color: $primary;
+$form-check-input-focus-border: $primary;
+$form-check-input-focus-box-shadow: $focus-ring-box-shadow;
+
+$input-focus-border-color: $turquoise;
+
+
 
 // Required Stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -25,6 +39,7 @@ $turquoise: #2ab7ca;
 @import "../../node_modules/bootstrap/scss/helpers";
 @import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/forms";
 
 // Utilities API
 @import "../../node_modules/bootstrap/scss/utilities/api";
@@ -37,6 +52,17 @@ $turquoise: #2ab7ca;
     background-color: $dark;
     color: $light;
     height: 10vh;
+}
+
+a {
+    color: $turquoise;
+    transition: color 500ms;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $dark;
+    transition: color 500ms;
 }
 
 .nav-link {
@@ -71,4 +97,8 @@ i {
 footer {
     color: $light;
     background-color: $dark;
+}
+
+label {
+    font-size: .9rem;
 }
