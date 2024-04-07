@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <form v-on:submit.prevent="login">
-      <h1 >Please Sign In</h1>
+      <h1>Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -18,7 +18,8 @@
       </div>
       <button type="submit">Sign in</button>
       <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+        <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
+      </p>
     </form>
   </div>
 </template>
@@ -45,7 +46,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$router.push({ name: 'user-home' });
           }
         })
         .catch(error => {
@@ -64,6 +65,7 @@ export default {
 .form-input-group {
   margin-bottom: 1rem;
 }
+
 label {
   margin-right: 0.5rem;
 }
