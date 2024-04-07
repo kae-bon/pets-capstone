@@ -20,8 +20,6 @@ $form-check-input-focus-box-shadow: $focus-ring-box-shadow;
 
 $input-focus-border-color: $turquoise;
 
-
-
 // Required Stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/variables-dark";
@@ -40,6 +38,7 @@ $input-focus-border-color: $turquoise;
 @import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/buttons";
 @import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/card";
 
 // Utilities API
 @import "../../node_modules/bootstrap/scss/utilities/api";
@@ -72,6 +71,10 @@ a:hover {
     display: inline-block;
     padding: 0px 30px;
     border-left: $light 1px solid;
+}
+
+.testimonial-img {
+    border-bottom: $card-border-width $card-border-color solid;
 }
 
 body {

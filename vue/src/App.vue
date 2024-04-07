@@ -2,7 +2,9 @@
   <div id="capstone-app" class="d-flex flex-column justify-content-between">
     <header id="header" class="mb-3">
       <nav id="nav" class="navbar justify-content-between">
-        <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
+        <router-link class="hero-link" :to="{ name: 'home' }">
+          <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
+        </router-link>
         <div class="router-links">
           <router-link class="nav-link" :to="{ name: 'home' }">Home</router-link>
           <router-link class="nav-link" :to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>
@@ -23,6 +25,11 @@ img {
   height: 100%;
   width: auto;
   margin-left: 20px;
+}
+
+.hero-link {
+  height: 100%;
+  width: auto;
 }
 
 .navbar {
