@@ -1,7 +1,7 @@
 <template>
     <div class="container d-flex flex-column align-items-center mt-5 w-55 justify-content-center">
-        <h2>Features</h2>
-        <ul class="fa-ul d-flex flex-wrap justify-content-between align-items-start w-50">
+        <h2 class="pb-2">Features</h2>
+        <ul class="fa-ul d-flex flex-wrap justify-content-between align-items-start w-50 mb-0">
             <li>
                 <span class="fa-li">
                     <i class="fa-solid fa-bone"></i>

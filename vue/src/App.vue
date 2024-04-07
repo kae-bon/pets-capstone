@@ -1,6 +1,6 @@
 <template>
   <div id="capstone-app" class="d-flex flex-column justify-content-between">
-    <header id="header" class="mb-5">
+    <header id="header" class="mb-3">
       <nav id="nav" class="navbar justify-content-between">
         <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
         <div class="router-links">

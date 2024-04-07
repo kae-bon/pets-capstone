@@ -1,8 +1,8 @@
 <template>
-    <article class="testimonial d-flex flex-column align-items-center justify-content-between mb-2">
-        <img v-bind:src="image" alt="" class="mb-3 flex-shrink-1">
-        <p>{{ testimonial.text }}</p>
-        <p>{{ testimonial.author }}</p>
+    <article class="testimonial card text-center">
+        <img v-bind:src="image" alt="" class="card-img-top">
+        <p class="card-body">{{ testimonial.text }}</p>
+        <p class="testimonial-author">{{ testimonial.author }}</p>
     </article>
 </template>
 
@@ -15,20 +15,24 @@ export default {
         }
     }
 }
+
 </script>
 
 <style scoped>
 article {
-    font-size: .9rem;
-    text-align: center;
-    border-radius: 10px;
-    padding: 1rem;
-    width: 30%;
+    font-size: .8rem;
+    /* border-radius: 10px; */
+    /* padding: 1rem; */
+    max-width: 30%;
 }
 
 img {
     max-width: 100%;
-    /* max-height: 250px; */
-    border-radius: 10px;
+    max-height: 50%;
+    /* border-radius: 10px; */
+}
+
+.testimonial-author {
+    font-style: italic;
 }
 </style>
