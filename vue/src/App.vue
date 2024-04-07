@@ -12,7 +12,7 @@
       </nav>
     </header>
     <router-view />
-    <footer class="d-flex align-items-center justify-content-center mt-5 p-2">
+    <footer class="d-flex align-items-center justify-content-center p-2 mt-5">
       <p>&copy Luna & Marley Co.</p>
     </footer>
   </div>
@@ -27,5 +27,9 @@ img {
 
 .navbar {
   height: 100%;
+}
+
+#capstone-app {
+  height: 100vh;
 }
 </style>
