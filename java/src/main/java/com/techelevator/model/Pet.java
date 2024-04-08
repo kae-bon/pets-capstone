@@ -3,7 +3,7 @@ package com.techelevator.model;
 public class Pet {
     private int id;
     private String name;
-    private int age;
+    private int birthdate;
     private String breed;
     private String size;
     private Boolean isFriendly;
@@ -17,8 +17,8 @@ public class Pet {
         this.name = name;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setBirthdate(int birthdate) {
+        this.birthdate = birthdate;
     }
 
     public void setBreed(String breed) {
@@ -37,10 +37,10 @@ public class Pet {
         this.ownerId = ownerId;
     }
 
-    public Pet(int id, String name, int age, String breed, String size, Boolean isFriendly, int ownerId) {
+    public Pet(int id, String name, int birthdate, String breed, String size, Boolean isFriendly, int ownerId) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.birthdate = birthdate;
         this.breed = breed;
         this.size = size;
         this.isFriendly = isFriendly;
@@ -55,8 +55,8 @@ public class Pet {
         return name;
     }
 
-    public int getAge() {
-        return age;
+    public int getBirthdate() {
+        return birthdate;
     }
 
     public String getBreed() {

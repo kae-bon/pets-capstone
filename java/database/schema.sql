@@ -17,7 +17,7 @@ CREATE TABLE pets(
     pet_id SERIAL,
     name varchar(50) NOT NULL,
     owner_id int NOT NULL,
-    age int NOT NULL,
+    birthdate date NOT NULL,
     breed varchar(25) NOT NULL,
     size varchar(10) NOT NULL,
     isFriendly boolean NOT NULL,
