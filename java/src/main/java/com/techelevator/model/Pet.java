@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Pet {
     private int id;
@@ -20,6 +21,19 @@ public class Pet {
     }
 
     private String profilePicture;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pet pet = (Pet) o;
+        return ownerId == pet.ownerId && Objects.equals(name, pet.name) && Objects.equals(birthdate, pet.birthdate) && Objects.equals(breed, pet.breed);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, birthdate, breed, ownerId);
+    }
 
     public void setId(int id) {
         this.id = id;

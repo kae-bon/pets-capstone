@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 public class PetController {
 
-    private PetDao petDao;
+    private final PetDao petDao;
 
     public PetController(PetDao petDao) {
         this.petDao = petDao;
@@ -27,7 +27,7 @@ public class PetController {
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterPetDto newPet) {
         try {
-            if (petDao.getPetByPetname(newPet.getPetName()) != null) {
+            if (petDao.getPets().contains(newPet)) {
                 //TODO:
                 // 1. Get pets associated with owner
                 // 2. Verify that pet doesn't already exist
