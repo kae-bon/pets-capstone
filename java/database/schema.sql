@@ -1,5 +1,6 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS play_dates, pet_play_dates;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -10,6 +11,17 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
+CREATE TABLE pets(
+    pet_id SERIAL,
+    name varchar(50) NOT NULL,
+    owner_id int NOT NULL,
+    age int NOT NULL,
+    breed varchar(25) NOT NULL,
+    size varchar(10) NOT NULL,
+    isFriendly boolean NOT NULL,
+    CONSTRAINT PK_pet PRIMARY KEY (pet_id),
+    CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES users (user_id)
+);
 
 CREATE TABLE play_dates (
 	play_date_id SERIAL,
