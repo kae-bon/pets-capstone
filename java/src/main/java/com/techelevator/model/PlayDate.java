@@ -12,9 +12,7 @@ public class PlayDate {
     private String location;
     private boolean isPublic;
 
-    public PlayDate() {
-
-    }
+    public PlayDate() {}
 
     public PlayDate(int playDateId, String title, String description, int hostId, LocalDateTime dateTime, String location, boolean isPublic) {
         this.playDateId = playDateId;

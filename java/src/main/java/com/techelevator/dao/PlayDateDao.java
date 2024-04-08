@@ -5,9 +5,21 @@ import com.techelevator.model.PlayDate;
 public interface PlayDateDao {
     /**
      * Method will create a new playdate using data passed in from the user to create a row in the database.
-     * @param newPlayDate
+     * @param newPlayDate newly created play date, without an assigned id, to be sent to database
      * @return A newly created play date
      */
     PlayDate createPlayDate(PlayDate newPlayDate);
+    /**
+     * Method will return the associated play date by the provided play date id
+     * @param playDateId play date id of play date to retrieve
+     * @return the retrieved play date
+     */
     PlayDate getPlayDateById(int playDateId);
+    /**
+     * Method will insert a row into the Pet Play Date table, containing the pet ID and the play date ID, to
+     * link the pet and the play date
+     * @param petId id of pet registering for play date
+     * @param playDateId id of play date
+     */
+    void insertPetPlayDate(int petId, int playDateId);
 }

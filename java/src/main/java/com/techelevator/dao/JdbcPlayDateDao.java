@@ -16,6 +16,24 @@ public class JdbcPlayDateDao implements PlayDateDao{
     public JdbcPlayDateDao(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
+
+    @Override
+    public PlayDate getPlayDateById(int playDateId) {
+        PlayDate playDate = null;
+        String sql = "SELECT play_date_id, title, description, host_id, date_time, location_setting, ispublic\n" +
+                "\tFROM play_dates\n" +
+                "\tWHERE play_date_id = ?;";
+        try {
+            SqlRowSet results = jdbc.queryForRowSet(sql, playDateId);
+            if (results.next()) {
+                playDate = mapRowToPlayDate(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server.", e);
+        }
+        return playDate;
+    }
+
     @Override
     public PlayDate createPlayDate(PlayDate newPlayDate) {
         PlayDate playDate = null;
@@ -39,21 +57,18 @@ public class JdbcPlayDateDao implements PlayDateDao{
         return playDate;
     }
 
+    // write tests for this once we have the pet model information - COME BACK TO THIS!!!!!!!!!
     @Override
-    public PlayDate getPlayDateById(int playDateId) {
-        PlayDate playDate = null;
-        String sql = "SELECT play_date_id, title, description, host_id, date_time, location_setting, ispublic\n" +
-                "\tFROM play_dates\n" +
-                "\tWHERE play_date_id = ?;";
+    public void insertPetPlayDate(int petId, int playDateId) {
+        String sql = "INSERT INTO pet_play_dates(play_date_id, pet_id)\n" +
+                "VALUES (?, ?);";
         try {
-            SqlRowSet results = jdbc.queryForRowSet(sql, playDateId);
-            if (results.next()) {
-                playDate = mapRowToPlayDate(results);
-            }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server.", e);
+            jdbc.update(sql, playDateId, petId);
+        } catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e){
+            throw new DaoException("Data integrity violation", e);
         }
-        return playDate;
     }
 
     private PlayDate mapRowToPlayDate(SqlRowSet results) {
