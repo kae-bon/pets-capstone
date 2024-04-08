@@ -1,7 +1,6 @@
 package com.techelevator.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Pet {
     private int id;
@@ -11,6 +10,16 @@ public class Pet {
     private String size;
     private Boolean isFriendly;
     private int ownerId;
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    private String profilePicture;
 
     public void setId(int id) {
         this.id = id;
