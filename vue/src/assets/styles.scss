@@ -6,6 +6,7 @@ $dark: #003049;
 $light: #fcfcff;
 $primary: #fcbf49;
 $turquoise: #2ab7ca;
+$orange: #f77f00;
 
 
 // Required Stylesheets
@@ -71,4 +72,8 @@ i {
 footer {
     color: $light;
     background-color: $dark;
+}
+
+.router-link-exact-active {
+    color: $orange !important;
 }
