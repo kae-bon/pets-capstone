@@ -4,13 +4,17 @@ import com.techelevator.dao.PetDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.RegisterPetDto;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+
 
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping(path = "/pet")
+@PreAuthorize("isAuthenticated()")
 
 public class PetController {
 
