@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -8,6 +10,7 @@ public class PlayDate {
     private String title;
     private String description;
     private int hostId;
+//    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
     private LocalDateTime dateTime;
     private String location;
     private boolean isPublic;
