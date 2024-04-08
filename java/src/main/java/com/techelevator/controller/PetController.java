@@ -2,21 +2,25 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.PetDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.RegisterPetDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
+@RestController
+@RequestMapping(path = "/pet")
+
 public class PetController {
 
     private PetDao petDao;
 
-    @RequestMapping(path = "/pet/register", method = RequestMethod.POST)
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterPetDto newPet) {
         try {
-            if (petDao.getPetByPetname(newPet.getPetname()) != null) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Petname already exists.");
+            if (petDao.getPetByPetname(newPet.getPetName()) != null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PetName already exists.");
             } else {
                 petDao.createPet(newPet);
             }

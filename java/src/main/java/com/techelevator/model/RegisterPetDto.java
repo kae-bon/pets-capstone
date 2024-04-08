@@ -17,7 +17,7 @@ public class RegisterPetDto {
     @NotEmpty
     private int ownerId;
 
-    @NotEmpty 
+    @NotEmpty
     private String profilePicture;
 
     @NotEmpty
@@ -32,5 +32,59 @@ public class RegisterPetDto {
     @NotEmpty
     private Boolean isFriendly;
 
+    public String getPetName() {
+        return petName;
+    }
 
+    public void setPetName(String petName) {
+        this.petName = petName;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Boolean getFriendly() {
+        return isFriendly;
+    }
+
+    public void setFriendly(Boolean friendly) {
+        isFriendly = friendly;
+    }
 }
