@@ -6,6 +6,7 @@ $dark: #003049;
 $light: #fcfcff;
 $primary: #fcbf49;
 $turquoise: #2ab7ca;
+$orange: #f77f00;
 
 $focus-ring-width: .25rem;
 $focus-ring-opacity: .25;
@@ -104,4 +105,8 @@ footer {
 
 label {
     font-size: .9rem;
+}
+
+.router-link-exact-active {
+    color: $orange !important;
 }

@@ -2,14 +2,18 @@
   <div id="capstone-app" class="d-flex flex-column justify-content-between">
     <header id="header" class="mb-3">
       <nav id="nav" class="navbar justify-content-between">
-        <router-link class="hero-link" :to="{ name: 'home' }">
+        <router-link class="hero-link" :to="{ name: 'woofr' }" v-if="$store.state.token == ''">
+          <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
+        </router-link>
+        <router-link class="hero-link" :to="{ name: 'user-home' }" v-else>
           <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
         </router-link>
         <div class="router-links">
-          <router-link class="nav-link" :to="{ name: 'home' }">Home</router-link>
+          <router-link class="nav-link" :to="{ name: 'woofr' }" v-if="$store.state.token == ''">Home</router-link>
+          <router-link class="nav-link" :to="{ name: 'user-home' }" v-else>Home</router-link>
           <router-link class="nav-link" :to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>
           <router-link class="nav-link" :to="{ name: 'login' }" v-if="$store.state.token == ''">Sign In</router-link>
-          <router-link class="nav-link" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+          <router-link class="nav-link" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Sign out</router-link>
         </div>
       </nav>
     </header>
