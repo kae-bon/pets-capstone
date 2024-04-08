@@ -6,9 +6,11 @@ import com.techelevator.model.RegisterPetDto;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
-
+@Component
 public class JdbcPetDao implements PetDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -16,6 +18,9 @@ public class JdbcPetDao implements PetDao {
     public JdbcPetDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+    private final String SELECT_SQL = "SELECT pet_id, name, owner_id, birthdate, breed, size, isFriendly FROM pets ";
+
 
 
     @Override
@@ -25,14 +30,24 @@ public class JdbcPetDao implements PetDao {
 
     @Override
     public Pet getPetById(int id) {
-        return null;
+        Pet pet = null;
+        String sql = SELECT_SQL + "WHERE pet_id = ?;";
+        try {
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, id);
+            while (rowSet.next()) {
+                pet = mapRowToPet(rowSet);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to the database", e);
+        }
+        return pet;
+
     }
 
     @Override
     public Pet getPetByPetname(String petName) {
         Pet pet = null;
-        String sql = "SELECT name, owner_id, birthdate, breed, size, isFriendly " +
-                "WHERE name = ?;";
+        String sql = SELECT_SQL + "WHERE name = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, petName);
             while (results.next()) {
@@ -49,7 +64,7 @@ public class JdbcPetDao implements PetDao {
     @Override
     public Pet createPet(RegisterPetDto pet) {
         Pet newPet = null;
-        String sql = "INSERT INTO pets(name, owner_id, birthdate, breed, size, isFriendly)";
+        String sql = "INSERT INTO pets(name, owner_id, birthdate, breed, size, isFriendly) values(?, ?, ?, ?, ?, ?) RETURNING pet_id;";
         try {
             int newPetId = jdbcTemplate.queryForObject(sql, int.class, pet.getPetName(), pet.getOwnerId(), pet.getBirthdate(), pet.getBreed(), pet.getSize(), pet.getFriendly());
             newPet = getPetById(newPetId);
@@ -64,7 +79,7 @@ public class JdbcPetDao implements PetDao {
         pet.setId(results.getInt("pet_id"));
         pet.setName(results.getString("name"));
         pet.setOwnerId(results.getInt("owner_id"));
-        pet.setBirthdate(results.getInt("birthdate"));
+        pet.setBirthdate(results.getDate("birthdate").toLocalDate());
         pet.setBreed(results.getString("breed"));
         pet.setSize(results.getString("size"));
         pet.setFriendly(results.getBoolean("isFriendly"));

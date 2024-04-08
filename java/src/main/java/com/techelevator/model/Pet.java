@@ -1,9 +1,12 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Pet {
     private int id;
     private String name;
-    private int birthdate;
+    private LocalDate birthdate;
     private String breed;
     private String size;
     private Boolean isFriendly;
@@ -17,7 +20,7 @@ public class Pet {
         this.name = name;
     }
 
-    public void setBirthdate(int birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -37,7 +40,7 @@ public class Pet {
         this.ownerId = ownerId;
     }
 
-    public Pet(int id, String name, int birthdate, String breed, String size, Boolean isFriendly, int ownerId) {
+    public Pet(int id, String name, LocalDate birthdate, String breed, String size, Boolean isFriendly, int ownerId) {
         this.id = id;
         this.name = name;
         this.birthdate = birthdate;
@@ -55,7 +58,7 @@ public class Pet {
         return name;
     }
 
-    public int getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
