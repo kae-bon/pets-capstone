@@ -8,6 +8,18 @@ $primary: #fcbf49;
 $turquoise: #2ab7ca;
 $orange: #f77f00;
 
+$focus-ring-width: .25rem;
+$focus-ring-opacity: .25;
+$focus-ring-color: rgba($turquoise, $focus-ring-opacity);
+$focus-ring-blur: 0;
+$focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color;
+
+$form-check-input-checked-color: $light;
+$form-check-input-checked-bg-color: $primary;
+$form-check-input-focus-border: $primary;
+$form-check-input-focus-box-shadow: $focus-ring-box-shadow;
+
+$input-focus-border-color: $turquoise;
 
 // Required Stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -26,6 +38,8 @@ $orange: #f77f00;
 @import "../../node_modules/bootstrap/scss/helpers";
 @import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/card";
 
 // Utilities API
 @import "../../node_modules/bootstrap/scss/utilities/api";
@@ -40,6 +54,17 @@ $orange: #f77f00;
     height: 10vh;
 }
 
+a {
+    color: $turquoise;
+    transition: color 500ms;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $dark;
+    transition: color 500ms;
+}
+
 .nav-link {
     color: $light;
     font-family: 'Luckiest Guy', sans-serif;
@@ -47,6 +72,10 @@ $orange: #f77f00;
     display: inline-block;
     padding: 0px 30px;
     border-left: $light 1px solid;
+}
+
+.testimonial-img {
+    border-bottom: $card-border-width $card-border-color solid;
 }
 
 body {
@@ -72,6 +101,10 @@ i {
 footer {
     color: $light;
     background-color: $dark;
+}
+
+label {
+    font-size: .9rem;
 }
 
 .router-link-exact-active {
