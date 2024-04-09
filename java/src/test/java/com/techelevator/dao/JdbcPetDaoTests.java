@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.exception.DuplicatePetException;
 import com.techelevator.model.RegisterPetDto;
 import com.techelevator.model.Pet;
 import org.junit.Assert;
@@ -55,7 +56,7 @@ public class JdbcPetDaoTests extends BaseDaoTests {
         assertPetsMatch(retreivedPet, steve);
     }
 
-    @Test (expected = DaoException.class)
+    @Test (expected = DuplicatePetException.class)
     public void createPet_fails_when_pet_exists() {
         RegisterPetDto registerPetDto = new RegisterPetDto();
         registerPetDto.setPetName("Bean");
