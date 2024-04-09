@@ -10,9 +10,6 @@ import java.util.Set;
 
 public class User {
 
-   private String lastName;
-   private String firstName;
-   private LocalDate birthdate;
    private int id;
    private String username;
    @JsonIgnore
@@ -31,29 +28,7 @@ public class User {
       this.activated = true;
    }
 
-   public void setLastName(String lastName) {
-      this.lastName = lastName;
-   }
 
-   public void setFirstName(String firstName) {
-      this.firstName = firstName;
-   }
-
-   public void setBirthdate(LocalDate birthdate) {
-      this.birthdate = birthdate;
-   }
-
-   public String getLastName() {
-      return lastName;
-   }
-
-   public String getFirstName() {
-      return firstName;
-   }
-
-   public LocalDate getBirthdate() {
-      return birthdate;
-   }
 
    public int getId() {
       return id;
