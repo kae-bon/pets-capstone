@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <input type="datetime-local" class="form-control" id="date" placeholder="date"
-                                v-model="newPlayDate.dateTime" required>
+                                v-model="newPlayDate.dateTime" required :min="minimumDate">
                             <label for="date">Date & Time</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -73,6 +73,15 @@ export default {
                 location: "",
                 isPublic: true
             }
+        }
+    },
+    computed: {
+        minimumDate() {
+            let today = new Date();
+            today.setDate(today.getDate() + 1);
+            console.log(today.toString() + "T08:00");
+            today = today.toISOString().substring(0, 16);
+            return today;
         }
     },
     methods: {

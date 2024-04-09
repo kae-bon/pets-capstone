@@ -13,7 +13,7 @@ public class PlayDate {
     @NotNull
     private int hostId;
 //    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
-@NotNull
+    @NotNull
     private LocalDateTime dateTime;
     @NotNull
     private String location;
