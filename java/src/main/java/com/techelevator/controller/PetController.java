@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.PetDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.exception.DuplicatePetException;
 import com.techelevator.model.RegisterPetDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,19 +24,13 @@ public class PetController {
     public PetController(PetDao petDao) {
         this.petDao = petDao;
     }
-
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterPetDto newPet) {
         try {
-//            if (petDao.getPets().contains(newPet)) {
-                //TODO:
-                // 1. Get pets associated with owner
-                // 2. Verify that pet doesn't already exist
-                // 3. Uniqueness is defined by pet.name + pet.birthdate + pet.breed + pet.ownerId
-//                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PetName already exists.");
-//            } else {
-                petDao.createPet(newPet);
-//            }
+            petDao.createPet(newPet);
+        } catch (DuplicatePetException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Pet already exists");
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pet registration failed.");
         }

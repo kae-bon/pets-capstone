@@ -1,15 +1,18 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.exception.DuplicatePetException;
 import com.techelevator.model.Pet;
 import com.techelevator.model.RegisterPetDto;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 @Component
 public class JdbcPetDao implements PetDao {
@@ -26,7 +29,18 @@ public class JdbcPetDao implements PetDao {
 
     @Override
     public List<Pet> getPets() {
-        return null;
+        List<Pet> pets = new ArrayList<>();
+        try {
+
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(SELECT_SQL);
+            while (rowSet.next()) {
+                Pet pet = mapRowToPet(rowSet);
+                pets.add(pet);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to the database", e);
+        }
+        return pets;
     }
 
     @Override
@@ -78,6 +92,8 @@ public class JdbcPetDao implements PetDao {
             newPet = getPetById(newPetId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DuplicatePetException("Pet already exists in database", e);
         } catch (DataAccessException e) {
             throw new DaoException("Data integrity violation", e);
         }
