@@ -67,7 +67,14 @@ public class JdbcPetDao implements PetDao {
         Pet newPet = null;
         String sql = "INSERT INTO pets(name, owner_id, birthdate, breed, size, isFriendly) values(?, ?, ?, ?, ?, ?) RETURNING pet_id;";
         try {
-            int newPetId = jdbcTemplate.queryForObject(sql, int.class, pet.getPetName(), pet.getOwnerId(), pet.getBirthdate(), pet.getBreed(), pet.getSize(), pet.getFriendly());
+            int newPetId = jdbcTemplate.queryForObject(
+                    sql,
+                    int.class, pet.getPetName(),
+                    pet.getOwnerId(),
+                    pet.getBirthdate(),
+                    pet.getBreed(),
+                    pet.getSize(),
+                    pet.getFriendly());
             newPet = getPetById(newPetId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);

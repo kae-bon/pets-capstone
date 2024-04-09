@@ -22,7 +22,8 @@ CREATE TABLE pets(
     size varchar(10) NOT NULL,
     isFriendly boolean NOT NULL,
     CONSTRAINT PK_pet PRIMARY KEY (pet_id),
-    CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES users (user_id)
+    CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES users (user_id),
+    CONSTRAINT unique_pet_details UNIQUE (owner_id, name, breed, birthdate)
 );
 
 COMMIT TRANSACTION;
