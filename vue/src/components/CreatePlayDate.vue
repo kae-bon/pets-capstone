@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered flex-column">
+            <div class="alert alert-danger" role="alert" v-if="submitFailed">
+                There was an error processing your Play Date request, please try again later!
+            </div>
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="playDateModal">Create Play Date</h1>
@@ -49,8 +52,8 @@
                             </label>
                         </div>
                         <div class="modal-footer pt-3">
-                            <button id="closeModal" type="button" class="btn btn-danger"
-                                data-bs-dismiss="modal">Close</button>
+                            <button id="closeModal" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                @click="submitFailed = false">Close</button>
                             <button type="submit" class="btn btn-primary">Create Play Date</button>
                         </div>
                     </form>
@@ -72,14 +75,14 @@ export default {
                 dateTime: "",
                 location: "",
                 isPublic: true
-            }
+            },
+            submitFailed: false,
         }
     },
     computed: {
         minimumDate() {
             let today = new Date();
             today.setDate(today.getDate() + 1);
-            console.log(today.toString() + "T08:00");
             today = today.toISOString().substring(0, 16);
             return today;
         }
@@ -92,10 +95,12 @@ export default {
                         this.closeModal();
                         this.$store.commit('SET_NOTIFICATION', 'Play Date created successfully!');
                         this.$router.push({ name: 'user-home' });
+                        this.newPlayDate = {};
                     }
                 })
                 .catch(error => {
-                    this.handleErrorResponse(error, 'creating');
+                    // this.handleErrorResponse(error, 'creating');
+                    this.submitFailed = true;
                 })
         },
         closeModal() {

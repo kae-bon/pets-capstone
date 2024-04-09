@@ -39,6 +39,6 @@ i {
 }
 
 .createPlayDate {
-    height: 100%;
+    height: 80%;
 }
 </style>
