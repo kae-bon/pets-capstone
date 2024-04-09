@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS play_dates, pet_play_dates;
+DROP TABLE IF EXISTS play_dates, pet_play_dates, pets;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -33,7 +33,8 @@ CREATE TABLE play_dates (
 	isPublic BOOLEAN NOT NULL DEFAULT TRUE,
 	
 	CONSTRAINT PK_play_date_id PRIMARY KEY (play_date_id),
-	CONSTRAINT FK_host_id FOREIGN KEY (host_id) REFERENCES users (user_id)
+	CONSTRAINT FK_host_id FOREIGN KEY (host_id) REFERENCES users (user_id),
+	CONSTRAINT CK_date_time CHECK (date_time > CURRENT_TIMESTAMP)
 );
 
 CREATE TABLE pet_play_dates (
