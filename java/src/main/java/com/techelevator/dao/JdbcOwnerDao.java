@@ -1,11 +1,9 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.exception.DuplicatePetException;
 import com.techelevator.model.Owner;
 import com.techelevator.model.RegisterOwnerDto;
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -55,13 +53,17 @@ public class JdbcOwnerDao implements OwnerDao {
             throw new DaoException("Unable to connect to the database", e);
         }
         return owner;
-        }
-
     }
 
+private Owner mapRowToOwner(SqlRowSet rowSet) {
+    Owner owner = new Owner();
+    owner.setId(rowSet.getInt("owner_id"));
+    owner.setFirstName(rowSet.getString("first_name"));
+    owner.setLastName(rowSet.getString("last_name"));
+    owner.setBirthdate(rowSet.getDate("birthdate").toLocalDate());
+    owner.setEmail(rowSet.getString("email"));
 
+    return owner;
 }
-
-    private Owner mapRowToOwner(SqlRowSet rowSet) {
-    }
+}
 
