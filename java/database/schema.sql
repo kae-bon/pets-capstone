@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS play_dates, pet_play_dates, pets;
+DROP TABLE IF EXISTS locations, play_dates, pet_play_dates, pets;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -23,13 +23,23 @@ CREATE TABLE pets(
     CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES users (user_id)
 );
 
+CREATE TABLE locations (
+	location_id SERIAL,
+	location_name VARCHAR(100) NOT NULL,
+	street_address VARCHAR(200) NOT NULL,
+	city VARCHAR(100) NOT NULL,
+	state_abbr VARCHAR(50) NOT NULL,
+	
+	CONSTRAINT PK_location PRIMARY KEY (location_id)
+);
+
 CREATE TABLE play_dates (
 	play_date_id SERIAL,
 	title VARCHAR(100) NOT NULL,
 	description VARCHAR(300) NOT NULL,
 	host_id INTEGER NOT NULL,
 	date_time TIMESTAMP NOT NULL, 
-	location_setting VARCHAR(150) NOT NULL,
+	location VARCHAR(100) NOT NULL,
 	isPublic BOOLEAN NOT NULL DEFAULT TRUE,
 	
 	CONSTRAINT PK_play_date_id PRIMARY KEY (play_date_id),
