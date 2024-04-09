@@ -1,5 +1,4 @@
 package com.techelevator.model;
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 /*
@@ -11,26 +10,26 @@ import java.time.LocalDate;
 
 public class RegisterPetDto {
 
-    @NotEmpty
+//    @NotEmpty
     private String petName;
 
-    @NotEmpty
+//    @NotEmpty
     private int ownerId;
 
-    @NotEmpty
+//    @NotEmpty
     private String profilePicture;
 
-    @NotEmpty
+//    @NotEmpty
     private LocalDate birthdate;
 
-    @NotEmpty
+//    @NotEmpty
     private String breed;
 
-    @NotEmpty
+//    @NotEmpty
     private String size;
 
-    @NotEmpty
-    private Boolean isFriendly;
+//    @NotEmpty
+    private Boolean friendly;
 
     public String getPetName() {
         return petName;
@@ -81,10 +80,10 @@ public class RegisterPetDto {
     }
 
     public Boolean getFriendly() {
-        return isFriendly;
+        return friendly;
     }
 
     public void setFriendly(Boolean friendly) {
-        isFriendly = friendly;
+        this.friendly = friendly;
     }
 }

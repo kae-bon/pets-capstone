@@ -27,15 +27,15 @@ public class PetController {
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterPetDto newPet) {
         try {
-            if (petDao.getPets().contains(newPet)) {
+//            if (petDao.getPets().contains(newPet)) {
                 //TODO:
                 // 1. Get pets associated with owner
                 // 2. Verify that pet doesn't already exist
                 // 3. Uniqueness is defined by pet.name + pet.birthdate + pet.breed + pet.ownerId
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PetName already exists.");
-            } else {
+//                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PetName already exists.");
+//            } else {
                 petDao.createPet(newPet);
-            }
+//            }
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pet registration failed.");
         }
