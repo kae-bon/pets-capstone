@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.RegisterPetDto;
 import com.techelevator.model.Pet;
 import com.techelevator.model.User;
@@ -14,7 +15,14 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JdbcPetDaoTests extends BaseDaoTests {
-    protected static final Pet PET_1 = new Pet(1, "Bean", LocalDate.of(1996, 05, 02) ,"pug", "small", true, 1 );
+    protected static final Pet PET_1 = new Pet(
+            1,
+            "Bean",
+            LocalDate.of(1996, 05, 02),
+            "pug",
+            "S",
+            true,
+            1 );
     private JdbcPetDao sut;
 
     @Before
@@ -49,6 +57,26 @@ public class JdbcPetDaoTests extends BaseDaoTests {
 
         Pet retreivedPet = sut.getPetById(steve.getId());
         assertPetsMatch(retreivedPet, steve);
+    }
+
+    @Test (expected = DaoException.class)
+    public void createPet_fails_when_pet_exists() {
+        RegisterPetDto registerPetDto = new RegisterPetDto();
+        registerPetDto.setPetName("Bean");
+        registerPetDto.setOwnerId(1);
+        registerPetDto.setBirthdate(LocalDate.of(1996, 05, 02));
+        registerPetDto.setBreed("pug");
+        registerPetDto.setSize("S");
+        registerPetDto.setFriendly(true);
+        Pet bean = sut.createPet(registerPetDto);
+
+//        Assert.assertNotNull(bean);
+//        Pet retreivedPet = sut.getPetById(bean.getId());
+//        assertPetsMatch(retreivedPet, bean);
+
+
+
+
 
     }
     private void assertPetsMatch (Pet expectedPet, Pet actualPet) {
