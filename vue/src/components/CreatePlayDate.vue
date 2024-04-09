@@ -31,9 +31,10 @@
                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
                                 v-model="newPlayDate.location" required>
                                 <option selected>---</option>
-                                <option value="1">placeholder</option>
-                                <option value="2">placeholder2</option>
-                                <option value="3">placeholder3</option>
+                                <option v-for="location in locations" v-bind:key="location.id" :value="location.name">
+                                    {{ location.name + ", " + location.city + ", " +
+                                        location.stateAbbreviation }}
+                                </option>
                             </select>
                             <label for="floatingSelect">Select a Location</label>
                         </div>
@@ -66,6 +67,8 @@
 
 <script>
 import playDateService from "../services/PlayDateService";
+import locationService from "../services/LocationService";
+
 export default {
     data() {
         return {
@@ -76,6 +79,7 @@ export default {
                 location: "",
                 publicDate: true
             },
+            locations: [],
             submitFailed: false,
         }
     },
@@ -85,7 +89,9 @@ export default {
             today.setDate(today.getDate() + 1);
             today = today.toISOString().substring(0, 16);
             return today;
-        }
+        },
+
+
     },
     methods: {
         submitForm() {
@@ -110,8 +116,15 @@ export default {
         confirmSuccess() {
             this.$emit('registration', 'success');
 
-        }
+        },
 
+    },
+    created() {
+        locationService.getLocations().then(response => {
+            this.locations = response.data;
+        }).catch(error => {
+            this.submitFailed = true;
+        })
     }
 }
 </script>
