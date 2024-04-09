@@ -7,26 +7,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form v-on:submit.prevent="submitForm">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="title" placeholder="title" maxlength="100"
-                                v-model="newPlayDate.title">
+                                v-model="newPlayDate.title" required>
                             <label for="title">Title</label>
                         </div>
                         <div class="form-floating mb-3">
                             <textarea class="form-control" id="description" placeholder="description" maxlength="300"
-                                v-model="newPlayDate.description">
+                                v-model="newPlayDate.description" required>
                                 </textarea>
                             <label for="description">Description</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="datetime-local" class="form-control" id="date" placeholder="date"
-                                v-model="newPlayDate.dateTime">
+                                v-model="newPlayDate.dateTime" required>
                             <label for="date">Date & Time</label>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                                v-model="newPlayDate.location">
+                                v-model="newPlayDate.location" required>
                                 <option selected>---</option>
                                 <option value="1">placeholder</option>
                                 <option value="2">placeholder2</option>
@@ -36,30 +36,33 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" value="true" name="flexRadioDefault"
-                                id="radiopublic" v-model="newPlayDate.isPublic" checked>
+                                id="radiopublic" v-model="newPlayDate.isPublic" checked required>
                             <label class="form-check-label" for="radiopublic">
                                 Public - anyone can join!
                             </label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check mb-3">
                             <input class="form-check-input" type="radio" value="false" name="flexRadioDefault"
                                 id="radioprivate" v-model="newPlayDate.isPublic">
                             <label class="form-check-label" for="radioprivate">
                                 Private - you approve who comes!
                             </label>
                         </div>
+                        <div class="modal-footer pt-3">
+                            <button id="closeModal" type="button" class="btn btn-danger"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Create Play Date</button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Create Play Date</button>
-                </div>
+
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import playDateService from "../services/PlayDateService";
 export default {
     data() {
         return {
@@ -71,6 +74,40 @@ export default {
                 isPublic: true
             }
         }
+    },
+    methods: {
+        submitForm() {
+            playDateService.createPlayDate(this.newPlayDate)
+                .then(response => {
+                    if (response.status == 201) {
+                        this.closeModal();
+                        this.$store.commit('SET_NOTIFICATION', 'Play Date created successfully!');
+                        this.$router.push({ name: 'user-home' });
+                    }
+                })
+                .catch(error => {
+                    this.handleErrorResponse(error, 'creating');
+                })
+        },
+        closeModal() {
+            const modal = document.getElementById('closeModal');
+            modal.click();
+        },
+        handleErrorResponse(error, verb) {
+            if (error.response) {
+                if (error.response.status == 404) {
+                    this.$router.push({ name: 'woofr' });
+                } else {
+                    this.$store.commit('SET_NOTIFICATION',
+                        `Error ${verb} topic. Response received was "${error.response.statusText}".`);
+                }
+            } else if (error.request) {
+                this.$store.commit('SET_NOTIFICATION', `Error ${verb} Pet Play Date. Server could not be reached.`);
+            } else {
+                this.$store.commit('SET_NOTIFICATION', `Error ${verb} Pet Play Date. Request could not be created.`);
+            }
+        }
+
     }
 }
 </script>

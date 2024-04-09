@@ -18,8 +18,16 @@
 import CreatePlayDate from "../components/CreatePlayDate.vue";
 
 export default {
+    data() {
+        return {
+            showModal: false
+        }
+    },
     components: {
         CreatePlayDate
+    },
+    methods: {
+
     }
 
 }
