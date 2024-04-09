@@ -2,7 +2,7 @@ package com.techelevator.model;
 
 import java.time.LocalDate;
 
-public class OwnerDto {
+public class RegisterOwnerDto {
 
     private int id;
     private String email;
@@ -38,6 +38,6 @@ public class OwnerDto {
         return birthdate;
     }
 
-    public OwnerDto() {
+    public RegisterOwnerDto() {
     }
 }

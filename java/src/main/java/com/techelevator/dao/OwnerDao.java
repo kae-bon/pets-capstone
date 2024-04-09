@@ -2,11 +2,11 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.Owner;
-import com.techelevator.model.OwnerDto;
+import com.techelevator.model.RegisterOwnerDto;
 
 public interface OwnerDao {
 
-    Owner createOwner(OwnerDto owner);
+    Owner createOwner(RegisterOwnerDto owner);
 
 
 }
