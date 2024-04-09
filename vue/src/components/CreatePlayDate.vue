@@ -38,14 +38,14 @@
                             <label for="floatingSelect">Select a Location</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" value="true" name="flexRadioDefault"
+                            <input class="form-check-input" type="radio" :value="true" name="flexRadioDefault"
                                 id="radiopublic" v-model="newPlayDate.isPublic" checked required>
                             <label class="form-check-label" for="radiopublic">
                                 Public - anyone can join!
                             </label>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" value="false" name="flexRadioDefault"
+                            <input class="form-check-input" type="radio" :value="false" name="flexRadioDefault"
                                 id="radioprivate" v-model="newPlayDate.isPublic">
                             <label class="form-check-label" for="radioprivate">
                                 Private - you approve who comes!
@@ -74,7 +74,7 @@ export default {
                 description: "",
                 dateTime: "",
                 location: "",
-                isPublic: true
+                publicDate: true
             },
             submitFailed: false,
         }
@@ -89,12 +89,12 @@ export default {
     },
     methods: {
         submitForm() {
+
             playDateService.createPlayDate(this.newPlayDate)
                 .then(response => {
                     if (response.status == 201) {
+                        this.confirmSuccess();
                         this.closeModal();
-                        this.$store.commit('SET_NOTIFICATION', 'Play Date created successfully!');
-                        this.$router.push({ name: 'user-home' });
                         this.newPlayDate = {};
                     }
                 })
@@ -107,19 +107,9 @@ export default {
             const modal = document.getElementById('closeModal');
             modal.click();
         },
-        handleErrorResponse(error, verb) {
-            if (error.response) {
-                if (error.response.status == 404) {
-                    this.$router.push({ name: 'woofr' });
-                } else {
-                    this.$store.commit('SET_NOTIFICATION',
-                        `Error ${verb} topic. Response received was "${error.response.statusText}".`);
-                }
-            } else if (error.request) {
-                this.$store.commit('SET_NOTIFICATION', `Error ${verb} Pet Play Date. Server could not be reached.`);
-            } else {
-                this.$store.commit('SET_NOTIFICATION', `Error ${verb} Pet Play Date. Request could not be created.`);
-            }
+        confirmSuccess() {
+            this.$emit('registration', 'success');
+
         }
 
     }

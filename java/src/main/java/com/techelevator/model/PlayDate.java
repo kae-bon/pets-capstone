@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ public class PlayDate {
     private int hostId;
 //    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
     @NotNull
+    @Future
     private LocalDateTime dateTime;
     @NotNull
     private String location;
