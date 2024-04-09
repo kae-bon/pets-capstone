@@ -51,6 +51,14 @@ public class Owner {
         return birthdate;
     }
 
+    public Owner(int id, String email, String lastName, String firstName, LocalDate birthdate) {
+        this.id = id;
+        this.email = email;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.birthdate = birthdate;
+    }
+
     public Owner() {
     }
 }

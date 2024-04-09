@@ -32,7 +32,7 @@ public class JdbcOwnerDao implements OwnerDao {
                     owner.getLastName(),
                     owner.getBirthdate(),
                     owner.getEmail());
-            newOwner = getNewOwnerById(newOwnerId);
+            newOwner = getOwnerById(newOwnerId);
         }  catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataAccessException e) {
@@ -41,11 +41,11 @@ public class JdbcOwnerDao implements OwnerDao {
         return newOwner;
     }
 
-    private Owner getNewOwnerById(int newOwnerId) {
+    public Owner getOwnerById(int ownerId) {
         Owner owner = null;
         String sql = SELECT_SQL + "WHERE owner_id = ?;";
         try {
-            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, id);
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, ownerId);
             while (rowSet.next()) {
                 owner = mapRowToOwner(rowSet);
             }
