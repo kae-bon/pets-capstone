@@ -8,4 +8,8 @@ INSERT INTO play_dates(title, description, host_id, date_time, location_setting,
 VALUES ('Test', 'Testy Tests', 1, '2024-05-02 14:30:00', 'Grant Park', true),
 ('Luna', 'With Luna', 1, '2024-04-15 12:00:00', 'Washington Park', false);
 
+INSERT INTO locations(location_name, street_address, city, state_abbr)
+VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
+('Fido Field', '630 Eggleston Ave', 'Cincinnati', 'OH');
+
 COMMIT TRANSACTION;
