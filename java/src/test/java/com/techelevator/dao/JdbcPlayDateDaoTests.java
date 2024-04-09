@@ -51,6 +51,6 @@ public class JdbcPlayDateDaoTests extends BaseDaoTests {
         Assert.assertEquals(expected.getHostId(), actual.getHostId());
         Assert.assertEquals(expected.getDateTime(), actual.getDateTime());
         Assert.assertEquals(expected.getLocation(), actual.getLocation());
-        Assert.assertEquals(expected.isPublic(), actual.isPublic());
+        Assert.assertEquals(expected.isPublicDate(), actual.isPublicDate());
     }
 }

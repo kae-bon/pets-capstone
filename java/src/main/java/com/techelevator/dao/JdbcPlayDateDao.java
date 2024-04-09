@@ -8,8 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-
 @Component
 public class JdbcPlayDateDao implements PlayDateDao{
     private final JdbcTemplate jdbc;
@@ -47,7 +45,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
                     newPlayDate.getHostId(),
                     newPlayDate.getDateTime(),
                     newPlayDate.getLocation(),
-                    newPlayDate.isPublic());
+                    newPlayDate.isPublicDate());
             playDate = getPlayDateById(playDateId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server.", e);
@@ -78,7 +76,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
         playDate.setHostId(results.getInt("host_id"));
         playDate.setLocation(results.getString("location_setting"));
         playDate.setTitle(results.getString("title"));
-        playDate.setPublic(results.getBoolean("ispublic"));
+        playDate.setPublicDate(results.getBoolean("ispublic"));
         playDate.setDateTime(results.getTimestamp("date_time").toLocalDateTime());
 
         return playDate;
