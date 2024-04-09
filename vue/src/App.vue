@@ -18,7 +18,8 @@
       </nav>
     </header>
 
-    <div v-bind:class="notificationClass" v-show="notification" v-on:click="clearNotification">
+    <div class="alert alert-success" role="alert" v-bind:class="notificationClass" v-show="notification"
+      v-on:click="clearNotification">
       {{ notification?.message }}
     </div>
 
