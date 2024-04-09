@@ -3,16 +3,12 @@ package com.techelevator.dao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.RegisterPetDto;
 import com.techelevator.model.Pet;
-import com.techelevator.model.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.sql.Date;
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class JdbcPetDaoTests extends BaseDaoTests {
     protected static final Pet PET_1 = new Pet(

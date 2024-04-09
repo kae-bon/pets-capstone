@@ -1,5 +1,12 @@
 package com.techelevator.model;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.time.LocalDate;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /*
     The acronym DTO is being used for "data transfer object". It means that this type of class is specifically
@@ -10,25 +17,26 @@ import java.time.LocalDate;
 
 public class RegisterPetDto {
 
-//    @NotEmpty
+    @NotEmpty
     private String petName;
+    @NotNull
+    private Integer ownerId;
 
-//    @NotEmpty
-    private int ownerId;
-
-//    @NotEmpty
+    @NotEmpty
     private String profilePicture;
 
-//    @NotEmpty
+    @NotNull
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate birthdate;
 
-//    @NotEmpty
+    @NotEmpty
     private String breed;
 
-//    @NotEmpty
+    @NotEmpty
     private String size;
 
-//    @NotEmpty
+    @NotNull
     private Boolean friendly;
 
     public String getPetName() {
@@ -39,11 +47,11 @@ public class RegisterPetDto {
         this.petName = petName;
     }
 
-    public int getOwnerId() {
+    public Integer getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(int ownerId) {
+    public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
     }
 
