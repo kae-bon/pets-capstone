@@ -40,4 +40,8 @@ public class RegisterOwnerDto {
 
     public RegisterOwnerDto() {
     }
+
+    public String getEmail() {
+    }
 }
+
