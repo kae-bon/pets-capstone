@@ -1,30 +1,35 @@
 package com.techelevator.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class PlayDate {
+    @NotNull
     private int playDateId;
+    @NotNull
     private String title;
+    @NotNull
     private String description;
+    @NotNull
     private int hostId;
 //    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
+@NotNull
     private LocalDateTime dateTime;
+    @NotNull
     private String location;
-    private boolean isPublic;
+    @NotNull
+    private boolean publicDate;
 
     public PlayDate() {}
 
-    public PlayDate(int playDateId, String title, String description, int hostId, LocalDateTime dateTime, String location, boolean isPublic) {
+    public PlayDate(int playDateId, String title, String description, int hostId, LocalDateTime dateTime, String location, boolean publicDate) {
         this.playDateId = playDateId;
         this.title = title;
         this.description = description;
         this.hostId = hostId;
         this.dateTime = dateTime;
         this.location = location;
-        this.isPublic = isPublic;
+        this.publicDate = publicDate;
     }
 
     public int getPlayDateId() {
@@ -71,12 +76,12 @@ public class PlayDate {
         this.location = location;
     }
 
-    public boolean isPublic() {
-        return isPublic;
+    public boolean isPublicDate() {
+        return publicDate;
     }
 
-    public void setPublic(boolean isPublic) {
-        this.isPublic = isPublic;
+    public void setPublicDate(boolean isPublic) {
+        this.publicDate = isPublic;
     }
 
     public void setPlayDateId(int playDateId) {
