@@ -18,7 +18,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     @Override
     public PlayDate getPlayDateById(int playDateId) {
         PlayDate playDate = null;
-        String sql = "SELECT play_date_id, title, description, host_id, date_time, location_setting, ispublic\n" +
+        String sql = "SELECT play_date_id, title, description, host_id, date_time, location, ispublic\n" +
                 "\tFROM play_dates\n" +
                 "\tWHERE play_date_id = ?;";
         try {
@@ -36,7 +36,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     public PlayDate createPlayDate(PlayDate newPlayDate) {
         PlayDate playDate = null;
         String sql = "INSERT INTO play_dates(\n" +
-                "\ttitle, description, host_id, date_time, location_setting, ispublic)\n" +
+                "\ttitle, description, host_id, date_time, location, ispublic)\n" +
                 "\tVALUES (?, ?, ?, ?, ?, ?) RETURNING play_date_id;";
         try {
             int playDateId = jdbc.queryForObject(sql, int.class,
@@ -74,7 +74,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
         playDate.setPlayDateId(results.getInt("play_date_id"));
         playDate.setDescription(results.getString("description"));
         playDate.setHostId(results.getInt("host_id"));
-        playDate.setLocation(results.getString("location_setting"));
+        playDate.setLocation(results.getString("location"));
         playDate.setTitle(results.getString("title"));
         playDate.setPublicDate(results.getBoolean("ispublic"));
         playDate.setDateTime(results.getTimestamp("date_time").toLocalDateTime());
