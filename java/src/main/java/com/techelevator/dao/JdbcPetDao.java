@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Pet;
 import com.techelevator.model.RegisterPetDto;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -70,7 +71,10 @@ public class JdbcPetDao implements PetDao {
             newPet = getPetById(newPetId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataAccessException e) {
+            throw new DaoException("Data integrity violation", e);
         }
+
         return newPet;
     }
 
