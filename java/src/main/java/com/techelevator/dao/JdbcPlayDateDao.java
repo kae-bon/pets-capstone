@@ -18,7 +18,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     @Override
     public PlayDate getPlayDateById(int playDateId) {
         PlayDate playDate = null;
-        String sql = "SELECT play_date_id, title, description, host_id, date_time, location, ispublic\n" +
+        String sql = "SELECT play_date_id, title, description, host_id, date_time, location_id, ispublic\n" +
                 "\tFROM play_dates\n" +
                 "\tWHERE play_date_id = ?;";
         try {

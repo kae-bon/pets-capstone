@@ -29,9 +29,9 @@
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                                v-model="newPlayDate.location" required>
+                                v-model="newPlayDate.locationId" required>
                                 <option selected>---</option>
-                                <option v-for="location in locations" v-bind:key="location.id" :value="location.name">
+                                <option v-for="location in locations" v-bind:key="location.id" :value="location.id">
                                     {{ location.name + ", " + location.city + ", " +
                                         location.stateAbbreviation }}
                                 </option>
@@ -76,7 +76,7 @@ export default {
                 title: "",
                 description: "",
                 dateTime: "",
-                location: "",
+                locationId: 0,
                 publicDate: true
             },
             locations: [],
@@ -90,7 +90,6 @@ export default {
             today = today.toISOString().substring(0, 16);
             return today;
         },
-
 
     },
     methods: {
@@ -115,7 +114,6 @@ export default {
         },
         confirmSuccess() {
             this.$emit('registration', 'success');
-
         },
 
     },
