@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.OwnerDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Owner;
 import com.techelevator.model.RegisterOwnerDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -31,7 +32,15 @@ public class OwnerController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Owner registration failed.");
         }
     }
-
+    @GetMapping
+    public Owner getByEmail(@RequestParam String email) {
+        if (email == null || email.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email is required.");
+        }
+        else {
+            return ownerDao.getOwnerByEmail(email);
+        }
+    }
 
 
 
