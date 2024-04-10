@@ -5,7 +5,7 @@
             <p>{{ playdate.title }}</p>
             <p>{{ playdate.description }}</p>
             <p>{{ playdate.date_time }}</p>
-            <p>{{ this.$store.state.locations[playdate.locationId].name }}</p>
+            <p>{{ playDateLocation }}</p>
         </article>
     </div>
 </template>
@@ -13,7 +13,14 @@
 
 <script>
 export default {
-    props: ['playdate']
+    props: ['playdate'],
+    computed: {
+        playDateLocation() {
+            const location = this.$store.state.locations
+                .find(location => location.id === this.playdate.locationId)
+            return location.name
+        }
+    }
 }
 </script>
 
