@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.exception.UnderEighteenException;
 import com.techelevator.model.Owner;
 import com.techelevator.model.RegisterOwnerDto;
 import org.springframework.dao.DataAccessException;
@@ -36,7 +37,11 @@ public class JdbcOwnerDao implements OwnerDao {
             newOwner = getOwnerById(newOwnerId);
         }  catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataAccessException e) {
+
+        } catch (DataIntegrityViolationException e) {
+            throw new UnderEighteenException("Must be eighteen or older", e);
+        }
+        catch (DataAccessException e) {
             throw new DaoException("Data integrity violation", e);
         }
         return newOwner;

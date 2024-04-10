@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.OwnerDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.exception.UnderEighteenException;
 import com.techelevator.model.Owner;
 import com.techelevator.model.RegisterOwnerDto;
 import org.springframework.http.HttpStatus;
@@ -28,12 +29,14 @@ public class OwnerController {
     public void register(@Valid @RequestBody RegisterOwnerDto newOwner) {
         try {
             ownerDao.createOwner(newOwner);
+        } catch (UnderEighteenException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unable to create new owner.");
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Owner registration failed.");
         }
     }
-    @GetMapping
-    public Owner getByEmail(@RequestParam String email) {
+    @PostMapping
+    public Owner getByEmail(@RequestBody String email) {
         if (email == null || email.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email is required.");
         }
