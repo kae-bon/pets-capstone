@@ -50,11 +50,12 @@ CREATE TABLE play_dates (
 	description VARCHAR(300) NOT NULL,
 	host_id INTEGER NOT NULL,
 	date_time TIMESTAMP NOT NULL, 
-	location VARCHAR(100) NOT NULL,
+	location_id INTEGER NOT NULL,
 	isPublic BOOLEAN NOT NULL DEFAULT TRUE,
 	
 	CONSTRAINT PK_play_date_id PRIMARY KEY (play_date_id),
-	CONSTRAINT FK_host_id FOREIGN KEY (host_id) REFERENCES users (user_id),
+	CONSTRAINT FK_host_id FOREIGN KEY (host_id) REFERENCES owners (owner_id),
+	CONSTRAINT FK_location_id FOREIGN KEY (location_id) REFERENCES locations (location_id),
 	CONSTRAINT CK_date_time CHECK (date_time > CURRENT_TIMESTAMP)
 );
 

@@ -36,7 +36,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     public PlayDate createPlayDate(PlayDate newPlayDate) {
         PlayDate playDate = null;
         String sql = "INSERT INTO play_dates(\n" +
-                "\ttitle, description, host_id, date_time, location, ispublic)\n" +
+                "\ttitle, description, host_id, date_time, location_id, ispublic)\n" +
                 "\tVALUES (?, ?, ?, ?, ?, ?) RETURNING play_date_id;";
         try {
             int playDateId = jdbc.queryForObject(sql, int.class,

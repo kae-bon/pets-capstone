@@ -5,8 +5,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('KaeisCooler@gmail.com',
 INSERT INTO users (username,password_hash,role) VALUES ('nickisold@aol.com','user3','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('carlyiscool@gmail.com', 'user4', 'ROLE_USER');
 
-<<<<<<< HEAD
-INSERT INTO play_dates(title, description, host_id, date_time, location_setting, ispublic)
+INSERT INTO play_dates(title, description, host_id, date_time, location_id, ispublic)
 VALUES ('Test', 'Testy Tests', 1, '2024-05-02 14:30:00', 1, true),
 ('Luna', 'With Luna', 1, '2024-04-15 12:00:00', 1, false);
 
@@ -14,8 +13,6 @@ INSERT INTO locations(location_name, street_address, city, state_abbr)
 VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
 ('Fido Field', '630 Eggleston Ave', 'Cincinnati', 'OH');
 
-COMMIT TRANSACTION;
-=======
 INSERT INTO owners (first_name, last_name, birthdate, email)
 VALUES ('Steve', 'McQueen', '1930-03-24', 'stevemcqueeniscool@yahoo.com');
 
@@ -31,11 +28,5 @@ VALUES ('Bean', '1','1996-05-02','pug', 'S', 'true');
 INSERT INTO pets (name, owner_id, birthdate, breed, size, isFriendly)
 VALUES ('Steve', '2', '2008-03-05', 'labrador', 'XL', 'true');
 
+COMMIT TRANSACTION;
 
-
-
-
-
-
- COMMIT TRANSACTION;
->>>>>>> a66af609ef050ab0b0f5de373759fbc5c76dbc1b
