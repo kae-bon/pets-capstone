@@ -26,11 +26,13 @@ public class JdbcOwnerDao implements OwnerDao {
     @Override
     public Owner createOwner(RegisterOwnerDto owner) {
         Owner newOwner = null;
-        String sql = "INSERT INTO owners(first_name, last_name, birthdate) values(?, ?, ?) RETURNING user_id;";
+        String sql = "INSERT INTO owners(user_id, first_name, last_name, birthdate) values(?,?, ?, ?) RETURNING user_id;";
         try {
             int newOwnerId = jdbcTemplate.queryForObject(
                     sql,
-                    int.class, owner.getFirstName(),
+                    int.class,
+                    owner.getId(),
+                    owner.getFirstName(),
                     owner.getLastName(),
                     owner.getBirthdate()
             );
