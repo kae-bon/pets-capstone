@@ -38,14 +38,14 @@ export default {
         CreatePlayDate, PlayDateCards
     },
     created() {
-        PlayDateService.getUpcomingPlayDates()
+        LocationService.getLocations()
             .then(response => {
-                this.playDates = response.data;
-            }),
-            LocationService.getLocations()
-                .then(response => {
-                    this.$store.state.locations = response.data;
-                })
+                this.$store.state.locations = response.data;
+                PlayDateService.getUpcomingPlayDates()
+                    .then(response => {
+                        this.playDates = response.data;
+                    })
+            })
     }
 
 }
