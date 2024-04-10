@@ -11,7 +11,7 @@ CREATE TABLE users (
 );
 
  CREATE TABLE owners(
- 	user_id SERIAL,
+ 	user_id int,
 	first_name varchar(50) NOT NULL,
     last_name varchar(50) NOT NULL,
     birthdate date NOT NULL,
