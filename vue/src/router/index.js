@@ -67,7 +67,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
 
-  // Get the Vuex store
+  // Get the Vue store
   const store = useStore();
 
   // Determine if the route requires Authentication

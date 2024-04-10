@@ -1,6 +1,6 @@
 <template>
     <div class="container d-flex justify-content-center column-gap-3 align-items-center">
-        <img src="../assets/logo.png" alt="two dogs playing with woofr title above" />
+        <img src="../assets/woofr-logo-v1.png" alt="two dogs playing with woofr title above" />
         <div>
             <h1>Welcome to Woofr!</h1>
             <p>The ultimate destination for pet parents and their furry companions!<br>
