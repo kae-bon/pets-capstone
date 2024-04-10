@@ -48,6 +48,12 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
         Owner retrievedOwner = sut.getOwnerById(carly.getId());
         assertOwnersMatch(retrievedOwner, carly);
     }
+    @Test
+    public void getOwnerByEmail_give_valid_email_returns_owner() {
+        Owner actualOwner = sut.getOwnerByEmail(OWNER_1.getEmail());
+        Assert.assertEquals(OWNER_1.getId(), actualOwner.getId());
+    }
+
 
     private void assertOwnersMatch (Owner expectedOwner, Owner actualOwner) {
         Assert.assertEquals(expectedOwner.getId(), actualOwner.getId());
