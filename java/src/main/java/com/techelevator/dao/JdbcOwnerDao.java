@@ -20,13 +20,13 @@ public class JdbcOwnerDao implements OwnerDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private final String SELECT_SQL = "SELECT owner_id, first_name, last_name, birthdate, email FROM owners ";
+    private final String SELECT_SQL = "SELECT user_id, first_name, last_name, birthdate, email FROM owners ";
 
 
     @Override
     public Owner createOwner(RegisterOwnerDto owner) {
         Owner newOwner = null;
-        String sql = "INSERT INTO owners(first_name, last_name, birthdate, email) values(?, ?, ?, ?) RETURNING owner_id;";
+        String sql = "INSERT INTO owners(first_name, last_name, birthdate, email) values(?, ?, ?, ?) RETURNING user_id;";
         try {
             int newOwnerId = jdbcTemplate.queryForObject(
                     sql,
@@ -66,7 +66,7 @@ public class JdbcOwnerDao implements OwnerDao {
     @Override
     public Owner getOwnerById(int ownerId) {
         Owner owner = null;
-        String sql = SELECT_SQL + "WHERE owner_id = ?;";
+        String sql = SELECT_SQL + "WHERE user_id = ?;";
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, ownerId);
             while (rowSet.next()) {
@@ -82,7 +82,7 @@ public class JdbcOwnerDao implements OwnerDao {
 
 private Owner mapRowToOwner(SqlRowSet rowSet) {
     Owner owner = new Owner();
-    owner.setId(rowSet.getInt("owner_id"));
+    owner.setId(rowSet.getInt("user_id"));
     owner.setFirstName(rowSet.getString("first_name"));
     owner.setLastName(rowSet.getString("last_name"));
     owner.setBirthdate(rowSet.getDate("birthdate").toLocalDate());
