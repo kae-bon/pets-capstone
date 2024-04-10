@@ -4,6 +4,10 @@ export default {
 
     createPlayDate(playDate) {
         return axios.post('/playdates', playDate);
+    },
+
+    getUpcomingPlayDates() {
+        return axios.get('/playdates');
     }
 
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
@@ -35,5 +36,10 @@ public class PlayDateController {
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Playdate registration failed.");
         }
+    }
+
+    @GetMapping("/playdates")
+    public List<PlayDate> getUpcomingPlayDates() {
+        return this.playDateDao.getUpcomingPlayDates();
     }
 }

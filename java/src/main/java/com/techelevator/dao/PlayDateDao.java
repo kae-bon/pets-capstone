@@ -2,6 +2,8 @@ package com.techelevator.dao;
 
 import com.techelevator.model.PlayDate;
 
+import java.util.List;
+
 public interface PlayDateDao {
     /**
      * Method will create a new playdate using data passed in from the user to create a row in the database.
@@ -22,4 +24,11 @@ public interface PlayDateDao {
      * @param playDateId id of play date
      */
     void insertPetPlayDate(int petId, int playDateId);
+
+    /**
+     * Method will return all upcoming play dates
+     * will need to be updated to return play dates specific to a petId once that is implemented
+     * @return
+     */
+    List<PlayDate> getUpcomingPlayDates();
 }
