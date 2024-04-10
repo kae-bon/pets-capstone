@@ -25,15 +25,6 @@ public class JdbcUserDaoTests extends BaseDaoTests {
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         sut = new JdbcUserDao(jdbcTemplate);
-//        USER_1.setFirstName("Steve");
-//        USER_1.setLastName("Lightning");
-//        USER_1.setBirthdate(LocalDate.of(1985, 12, 24));
-//        USER_2.setFirstName("Steve");
-//        USER_2.setLastName("Rain");
-//        USER_2.setBirthdate(LocalDate.of(2000, 05, 04 ));
-//        USER_3.setFirstName("Steve");
-//        USER_3.setLastName("Thunder");
-//        USER_3.setBirthdate(LocalDate.of(1975, 01, 01));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -101,6 +92,16 @@ public class JdbcUserDaoTests extends BaseDaoTests {
         RegisterUserDto registerUserDto = new RegisterUserDto();
         registerUserDto.setUsername(USER_3.getUsername());
         registerUserDto.setPassword(null);
+        registerUserDto.setRole("ROLE_USER");
+        sut.createUser(registerUserDto);
+    }
+    //TODO: Add validation to ensure only emails are accepted as username
+    @Test(expected = DaoException.class)
+    public void createUser_with_non_email_username_fails() {
+        RegisterUserDto registerUserDto = new RegisterUserDto();
+        USER_3.setUsername("nickisawesome");
+        registerUserDto.setUsername(USER_3.getUsername());
+        registerUserDto.setPassword(USER_3.getPassword());
         registerUserDto.setRole("ROLE_USER");
         sut.createUser(registerUserDto);
     }
