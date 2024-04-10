@@ -5,18 +5,9 @@ import java.time.LocalDate;
 public class Owner {
 
     private int id;
-    private String email;
 
     public int getId() {
         return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     private String lastName;
@@ -51,9 +42,8 @@ public class Owner {
         return birthdate;
     }
 
-    public Owner(int id, String email, String lastName, String firstName, LocalDate birthdate) {
+    public Owner(int id, String lastName, String firstName, LocalDate birthdate) {
         this.id = id;
-        this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
         this.birthdate = birthdate;

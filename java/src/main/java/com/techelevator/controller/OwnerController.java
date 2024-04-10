@@ -14,7 +14,8 @@ import javax.validation.Valid;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
-@RequestMapping(path = "/owner")
+@RequestMapping(path = "/owners")
+@CrossOrigin
 
 public class OwnerController {
 
@@ -35,16 +36,14 @@ public class OwnerController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Owner registration failed.");
         }
     }
-    @PostMapping
-    public Owner getByEmail(@RequestBody String email) {
-        if (email == null || email.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email is required.");
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(path = "/{id}")
+    public Owner getOwnerById(@PathVariable int id) {
+        Owner owner = ownerDao.getOwnerById(id);
+        if (owner == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Owner not found.");
         }
-        else {
-            return ownerDao.getOwnerByEmail(email);
-        }
+        return owner;
     }
-
-
 
 }

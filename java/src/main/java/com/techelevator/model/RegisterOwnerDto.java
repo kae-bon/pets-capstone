@@ -5,7 +5,6 @@ import java.time.LocalDate;
 public class RegisterOwnerDto {
 
     private int id;
-    private String email;
     private String lastName;
     private String firstName;
     private LocalDate birthdate;
@@ -41,12 +40,5 @@ public class RegisterOwnerDto {
     public RegisterOwnerDto() {
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
 

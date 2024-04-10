@@ -5,14 +5,14 @@ INSERT INTO users (username,password_hash,role) VALUES ('KaeisCooler@gmail.com',
 INSERT INTO users (username,password_hash,role) VALUES ('nickisold@aol.com','user3','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('carlyiscool@gmail.com', 'user4', 'ROLE_USER');
 
-INSERT INTO owners (first_name, last_name, birthdate, email)
-VALUES ('Steve', 'McQueen', '1930-03-24', 'stevemcqueeniscool@yahoo.com');
+INSERT INTO owners (first_name, last_name, birthdate)
+VALUES ('Steve', 'McQueen', '1930-03-24');
 
-INSERT INTO owners (first_name, last_name, birthdate, email)
-VALUES ('Kae', 'Bonaguro', '1996-05-02', 'KaeisCooler@gmail.com');
+INSERT INTO owners (first_name, last_name, birthdate)
+VALUES ('Kae', 'Bonaguro', '1996-05-02');
 
-INSERT INTO owners (first_name, last_name, birthdate, email)
-VALUES ('Nick', 'Hamm', '1981-09-18', 'nickisold@aol.com');
+INSERT INTO owners (first_name, last_name, birthdate)
+VALUES ('Nick', 'Hamm', '1981-09-18');
 
 INSERT INTO pets (name, owner_id, birthdate, breed, size, isFriendly)
 VALUES ('Bean', '1','1996-05-02','pug', 'S', 'true');

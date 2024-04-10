@@ -26,14 +26,14 @@ public class JdbcOwnerDao implements OwnerDao {
     @Override
     public Owner createOwner(RegisterOwnerDto owner) {
         Owner newOwner = null;
-        String sql = "INSERT INTO owners(first_name, last_name, birthdate, email) values(?, ?, ?, ?) RETURNING user_id;";
+        String sql = "INSERT INTO owners(first_name, last_name, birthdate) values(?, ?, ?) RETURNING user_id;";
         try {
             int newOwnerId = jdbcTemplate.queryForObject(
                     sql,
                     int.class, owner.getFirstName(),
                     owner.getLastName(),
-                    owner.getBirthdate(),
-                    owner.getEmail());
+                    owner.getBirthdate()
+            );
             newOwner = getOwnerById(newOwnerId);
         }  catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -86,7 +86,6 @@ private Owner mapRowToOwner(SqlRowSet rowSet) {
     owner.setFirstName(rowSet.getString("first_name"));
     owner.setLastName(rowSet.getString("last_name"));
     owner.setBirthdate(rowSet.getDate("birthdate").toLocalDate());
-    owner.setEmail(rowSet.getString("email"));
 
     return owner;
 }
