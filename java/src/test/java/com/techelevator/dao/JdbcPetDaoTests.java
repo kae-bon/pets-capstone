@@ -67,14 +67,6 @@ public class JdbcPetDaoTests extends BaseDaoTests {
         registerPetDto.setFriendly(true);
         Pet bean = sut.createPet(registerPetDto);
 
-//        Assert.assertNotNull(bean);
-//        Pet retreivedPet = sut.getPetById(bean.getId());
-//        assertPetsMatch(retreivedPet, bean);
-
-
-
-
-
     }
     private void assertPetsMatch (Pet expectedPet, Pet actualPet) {
         Assert.assertEquals(expectedPet.getId(), actualPet.getId());
