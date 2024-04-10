@@ -15,38 +15,37 @@
                 <CreatePlayDate class="createPlayDate" @registration="registrationSuccessful = true" />
             </div>
         </div>
+        <div>
+            <PlayDateCards v-for="playdate in playDates" :key="playdate.id" :playdate="playdate" />
+        </div>
     </div>
 </template>
 
 <script>
 import CreatePlayDate from "../components/CreatePlayDate.vue";
-
+import PlayDateService from "../services/PlayDateService";
+import PlayDateCards from "../components/PlayDateCards.vue";
+import LocationService from "../services/LocationService";
 export default {
     data() {
         return {
             showModal: false,
-            registrationSuccessful: false
+            registrationSuccessful: false,
+            playDates: []
         }
     },
     components: {
-        CreatePlayDate
+        CreatePlayDate, PlayDateCards
     },
-    methods: {
-        // clearNotification() {
-        //     this.$store.commit('CLEAR_NOTIFICATION');
-        // }
-    },
-    computed: {
-        // notification() {
-        //     return this.$store.state.notification;
-        // },
-        // notificationClass() {
-        //     return {
-        //         'status-message': true,
-        //         error: this.notification?.type?.toLowerCase() === 'error',
-        //         success: this.notification?.type?.toLowerCase() === 'success'
-        //     };
-        // }
+    created() {
+        PlayDateService.getUpcomingPlayDates()
+            .then(response => {
+                this.playDates = response.data;
+            }),
+            LocationService.getLocations()
+                .then(response => {
+                    this.$store.state.locations = response.data;
+                })
     }
 
 }
