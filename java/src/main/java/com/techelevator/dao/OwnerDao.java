@@ -8,5 +8,7 @@ public interface OwnerDao {
 
     Owner createOwner(RegisterOwnerDto owner);
 
+    Owner getOwnerByEmail(String email);
 
+    Owner getOwnerById(int id);
 }

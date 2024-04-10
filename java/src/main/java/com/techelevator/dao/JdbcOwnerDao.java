@@ -4,6 +4,7 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.model.Owner;
 import com.techelevator.model.RegisterOwnerDto;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -41,6 +42,23 @@ public class JdbcOwnerDao implements OwnerDao {
         return newOwner;
     }
 
+    @Override
+    public Owner getOwnerByEmail(String email) {
+        Owner owner = null;
+        String sql = SELECT_SQL + " WHERE email = ?";
+        try {
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, email);
+            while (rowSet.next()) {
+                owner = mapRowToOwner(rowSet);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return owner;
+    }
+    @Override
     public Owner getOwnerById(int ownerId) {
         Owner owner = null;
         String sql = SELECT_SQL + "WHERE owner_id = ?;";
@@ -51,6 +69,8 @@ public class JdbcOwnerDao implements OwnerDao {
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to the database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
         }
         return owner;
     }
