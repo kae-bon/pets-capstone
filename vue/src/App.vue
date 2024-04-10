@@ -11,6 +11,7 @@
         <div class="router-links">
           <router-link class="nav-link" :to="{ name: 'woofr' }" v-if="$store.state.token == ''">Home</router-link>
           <router-link class="nav-link" :to="{ name: 'user-home' }" v-else>Home</router-link>
+          <router-link class="nav-link" :to="{ name: 'upcoming' }" v-if="!$store.state.token == ''">Upcoming</router-link>
           <router-link class="nav-link" :to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>
           <router-link class="nav-link" :to="{ name: 'login' }" v-if="$store.state.token == ''">Sign In</router-link>
           <router-link class="nav-link" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Sign out</router-link>
