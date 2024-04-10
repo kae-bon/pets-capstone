@@ -12,8 +12,8 @@ import javax.validation.Valid;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
-@RequestMapping(path = "/owner")
-
+@RequestMapping(path = "/owners")
+@CrossOrigin
 public class OwnerController {
 
     private final OwnerDao ownerDao;

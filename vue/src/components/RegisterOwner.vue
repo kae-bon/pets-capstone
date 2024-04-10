@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-column text-center align-items-center">
 
-        <form v-on:submit.prevent="register" class="col-4">
+        <form v-on:submit.prevent="registerOwner" class="col-4">
             <h1>Create your Owner Account</h1>
 
             <div class="form-input-group form-floating">
@@ -22,18 +22,19 @@
                 <label class="form-label" for="start">Birthdate</label>
             </div>
             <p>note: you must be over 18 to register!</p>
-            <button type="submit" class="btn btn-primary mt-2 mb-2">Create Account</button>
+            <button type="submit" class="btn btn-primary mt-2 mb-2">Register Owner</button>
         </form>
     </div>
 </template>
 
 <script>
-export default {
+import OwnerService from '../services/OwnerService';
 
+export default {
     data() {
         return {
             newOwner: {
-                firstName: "", lastName: "", birthdate: "",
+                firstName: "", lastName: "", birthdate: "", id: 0
             }
         }
     },
@@ -54,7 +55,20 @@ export default {
             } else return currentYear + "-" + currentMonth + "-" + currentDay;
         }
     },
+
     methods: {
+        registerOwner() {
+            this.ownerRegistered();
+            // this.newOwner.id = this.$store.state.user.id;
+            // OwnerService.register(this.newOwner).then(response => {
+            //     if (response.status == 201) {
+            //         this.ownerRegistered();
+            //     }
+            // })
+        },
+        ownerRegistered() {
+            this.$emit('ownerRegistered');
+        }
 
     }
 
