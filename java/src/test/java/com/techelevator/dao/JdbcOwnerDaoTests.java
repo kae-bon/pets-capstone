@@ -1,11 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.exception.UnderEighteenException;
 import com.techelevator.model.Owner;
 import com.techelevator.model.RegisterOwnerDto;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.time.LocalDate;
 
@@ -14,7 +16,6 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
 
     protected static final Owner OWNER_1 = new Owner
             (1,
-                    "stevemcqueeniscool@yahoo.com",
                     "McQueen",
                     "Steve",
                     LocalDate.of(1930, 03, 24)
@@ -40,7 +41,6 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
         owner.setFirstName("Carly");
         owner.setLastName("Trimboli");
         owner.setBirthdate(LocalDate.of(1985, 04, 20));
-        owner.setEmail("carlyiscool@gmail.com");
         Owner carly = sut.createOwner(owner);
 
         Assert.assertNotNull(carly);
@@ -48,10 +48,25 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
         Owner retrievedOwner = sut.getOwnerById(carly.getId());
         assertOwnersMatch(retrievedOwner, carly);
     }
+
+    @Test(expected = UnderEighteenException.class)
+    public void createNewOwner_fails_to_create_a_newOwner_when_under_18() {
+        RegisterOwnerDto owner = new RegisterOwnerDto();
+        owner.setFirstName("Carly");
+        owner.setLastName("Trimboli");
+        owner.setBirthdate(LocalDate.of(2005, 04, 20));
+        Owner carly = sut.createOwner(owner);
+
+    }
     @Test
     public void getOwnerByEmail_give_valid_email_returns_owner() {
-        Owner actualOwner = sut.getOwnerByEmail(OWNER_1.getEmail());
-        Assert.assertEquals(OWNER_1.getId(), actualOwner.getId());
+       Assert.assertNotNull(null);
+    }
+
+    @Test(expected = HttpClientErrorException.NotFound.class)
+    public void getOwnerById_returns_404_when_id_not_found() {
+        int id = 100;
+        Owner owner = sut.getOwnerById(id);
     }
 
 
@@ -60,7 +75,6 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
         Assert.assertEquals(expectedOwner.getFirstName(), actualOwner.getFirstName());
         Assert.assertEquals(expectedOwner.getLastName(), actualOwner.getLastName());
         Assert.assertEquals(expectedOwner.getBirthdate(), actualOwner.getBirthdate());
-        Assert.assertEquals(expectedOwner.getEmail(), actualOwner.getEmail());
     }
 
 }

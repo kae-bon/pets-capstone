@@ -20,7 +20,7 @@ public class JdbcOwnerDao implements OwnerDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private final String SELECT_SQL = "SELECT user_id, first_name, last_name, birthdate, email FROM owners ";
+    private final String SELECT_SQL = "SELECT user_id, first_name, last_name, birthdate FROM owners ";
 
 
     @Override
@@ -50,17 +50,6 @@ public class JdbcOwnerDao implements OwnerDao {
     @Override
     public Owner getOwnerByEmail(String email) {
         Owner owner = null;
-        String sql = SELECT_SQL + " WHERE email = ?";
-        try {
-            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, email);
-            while (rowSet.next()) {
-                owner = mapRowToOwner(rowSet);
-            }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
-        }
         return owner;
     }
     @Override
