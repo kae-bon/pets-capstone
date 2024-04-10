@@ -11,14 +11,14 @@ CREATE TABLE users (
 );
 
  CREATE TABLE owners(
- 	owner_id SERIAL, 
+ 	user_id SERIAL,
 	first_name varchar(50) NOT NULL,
     last_name varchar(50) NOT NULL,
     birthdate date NOT NULL,
 	email varchar(50) NOT NULL UNIQUE, 
-	CONSTRAINT PK_owner PRIMARY KEY (owner_id),
-	CONSTRAINT FK_user_owner FOREIGN KEY (email) REFERENCES users (username)
-	 	 
+	CONSTRAINT PK_owner PRIMARY KEY (user_id),
+	CONSTRAINT FK_user_owner FOREIGN KEY (user_id) REFERENCES users (user_id),
+    CONSTRAINT eighteen_or_older CHECK (CURRENT_DATE - birthdate >= 18 )
  );
 
 CREATE TABLE pets(
@@ -30,7 +30,7 @@ CREATE TABLE pets(
     size varchar(10) NOT NULL,
     isFriendly boolean NOT NULL,
     CONSTRAINT PK_pet PRIMARY KEY (pet_id),
-    CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES owners (owner_id),
+    CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES owners (user_id),
     CONSTRAINT unique_pet_details UNIQUE (owner_id, name, breed, birthdate)
 );
 
