@@ -22,6 +22,28 @@ export function createStore(currentToken, currentUser) {
           author: "Emily & Baxter",
           image: "https://images.pexels.com/photos/1586948/pexels-photo-1586948.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
+      ],
+      breedSizes: [
+        {
+          size: "small",
+          minWeight: 2,
+          maxWeight: 22
+        },
+        {
+          size: "medium",
+          minWeight: 23,
+          maxWeight: 57
+        },
+        {
+          size: "large",
+          minWeight: 58,
+          maxWeight: 99
+        },
+        {
+          size: "x-large",
+          minWeight: 100,
+          maxWeight: 250
+        }
       ]
     },
     mutations: {

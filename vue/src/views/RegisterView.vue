@@ -1,23 +1,31 @@
 <template>
-  <div id="register" class="text-center">
-    <form v-on:submit.prevent="register">
+  <div id="register" class="d-flex flex-column text-center align-items-center">
+    <form v-on:submit.prevent="register" class="col-4">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+
+      <div class="form-input-group form-floating">
+        <input class="form-control" type="email" id="username" v-model="user.username" placeholder="username" required
+          autofocus />
+        <label class="form-label" for="username">Username</label>
       </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
+
+
+      <div class="form-input-group form-floating">
+        <input class="form-control" type="password" id="password" v-model="user.password" placeholder="password"
+          required />
+        <label class="form-label" for="password">Password</label>
       </div>
-      <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+
+      <div class="form-input-group form-floating">
+        <input class="form-control" type="password" id="confirmPassword" v-model="user.confirmPassword"
+          placeholder="password" required />
+        <label class="form-label" for="confirmPassword">Confirm Password</label>
       </div>
-      <button type="submit">Create Account</button>
+
+      <button type="submit" class="btn btn-primary mt-2 mb-2">Create Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
@@ -76,6 +84,7 @@ export default {
 .form-input-group {
   margin-bottom: 1rem;
 }
+
 label {
   margin-right: 0.5rem;
 }

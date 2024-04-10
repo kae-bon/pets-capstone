@@ -7,6 +7,7 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import UserHomeView from '../views/UserHomeView.vue';
+import EditInfoView from '../views/EditInfoView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -56,6 +57,14 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: "/accountinfo",
+    name: "accountinfo",
+    component: EditInfoView,
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
 
@@ -67,7 +76,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
 
-  // Get the Vuex store
+  // Get the Vue store
   const store = useStore();
 
   // Determine if the route requires Authentication
