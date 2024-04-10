@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-column text-center align-items-center">
 
-        <form v-on:submit.prevent="register" class="col-4">
+        <form v-on:submit.prevent="registerPet" class="col-4">
             <h1>Register your Pet</h1>
 
             <div class="form-input-group form-floating">
@@ -25,7 +25,7 @@
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
                     v-model="newPet.size" required>
                     <option selected>---</option>
-                    <option v-for="size in dogSizes" v-bind:key="size" :value="size">
+                    <option v-for="size in dogSizes" v-bind:key="size" :value="size.size">
                         {{ size.size + " (" + size.minWeight + "lbs - " + size.maxWeight + "lbs)" }}
                     </option>
                 </select>
@@ -34,16 +34,16 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" v-model="newPet.isFriendly" required id="flexCheckChecked">
                 <label class="form-check-label" for="flexCheckChecked">
-                    Is {{ newPet.name }} friendly with other dogs? They must be in order to register.
+                    Confirm that {{ newPet.name }} is friendly with other dogs - they must be in order to register!
                 </label>
             </div>
-
             <button type="submit" class="btn btn-primary mt-2 mb-2">Confirm Pet</button>
         </form>
     </div>
 </template>
 
 <script>
+import PetService from '../services/PetService';
 export default {
     data() {
         return {
@@ -77,6 +77,16 @@ export default {
     },
     created() {
         this.dogSizes = this.$store.state.breedSizes;
+    },
+    methods: {
+        registerPet() {
+            this.newPet.ownerId = this.$store.state.user.id;
+            PetService.registerPet(this.newPet).then(response => {
+                if (response.status === 201) {
+                    this.$router.push({ name: 'user-home' });
+                }
+            })
+        }
     }
 }
 </script>

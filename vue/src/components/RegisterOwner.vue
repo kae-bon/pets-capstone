@@ -58,13 +58,12 @@ export default {
 
     methods: {
         registerOwner() {
-            this.ownerRegistered();
-            // this.newOwner.id = this.$store.state.user.id;
-            // OwnerService.register(this.newOwner).then(response => {
-            //     if (response.status == 201) {
-            //         this.ownerRegistered();
-            //     }
-            // })
+            this.newOwner.id = this.$store.state.user.id;
+            OwnerService.register(this.newOwner).then(response => {
+                if (response.status == 201) {
+                    this.ownerRegistered();
+                }
+            })
         },
         ownerRegistered() {
             this.$emit('ownerRegistered');
