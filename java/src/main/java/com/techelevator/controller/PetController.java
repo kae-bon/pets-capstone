@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(path = "/pet")
 @PreAuthorize("isAuthenticated()")
-
+@CrossOrigin
 public class PetController {
 
     private final PetDao petDao;

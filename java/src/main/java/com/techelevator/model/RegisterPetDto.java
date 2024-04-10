@@ -22,7 +22,7 @@ public class RegisterPetDto {
     @NotNull
     private Integer ownerId;
 
-    @NotEmpty
+
     private String profilePicture;
 
     @NotNull

@@ -25,7 +25,7 @@
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
                     v-model="newPet.size" required>
                     <option selected>---</option>
-                    <option v-for="size in dogSizes" v-bind:key="size" :value="size">
+                    <option v-for="size in dogSizes" v-bind:key="size" :value="size.size">
                         {{ size.size + " (" + size.minWeight + "lbs - " + size.maxWeight + "lbs)" }}
                     </option>
                 </select>
@@ -83,7 +83,7 @@ export default {
             this.newPet.ownerId = this.$store.state.user.id;
             PetService.registerPet(this.newPet).then(response => {
                 if (response.status === 201) {
-                    this.$router.push({ name: 'home' });
+                    this.$router.push({ name: 'user-home' });
                 }
             })
         }
