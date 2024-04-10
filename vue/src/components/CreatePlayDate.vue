@@ -87,6 +87,7 @@ export default {
         minimumDate() {
             let today = new Date();
             today.setDate(today.getDate() + 1);
+            today.setHours(today.getHours() - today.getTimezoneOffset() / 60);
             today = today.toISOString().substring(0, 16);
             return today;
         },
