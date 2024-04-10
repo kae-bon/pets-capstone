@@ -18,7 +18,7 @@ CREATE TABLE users (
 	email varchar(50) NOT NULL UNIQUE, 
 	CONSTRAINT PK_owner PRIMARY KEY (user_id),
 	CONSTRAINT FK_user_owner FOREIGN KEY (user_id) REFERENCES users (user_id),
-    CONSTRAINT eighteen_or_older CHECK (CURRENT_DATE - birthdate >= 18 )
+    CONSTRAINT eighteen_or_older CHECK (CURRENT_DATE - birthdate >= (18 * 365) )
  );
 
 CREATE TABLE pets(
