@@ -1,17 +1,30 @@
 <template>
     <article class="card text-center  col-sm-3 m-3">
         <p>{{ playdate.host_id }}</p>
-        <p>{{ playdate.title }}</p>
-        <p>{{ playdate.description }}</p>
-        <p>{{ playDateTime }}</p>
-        <p>{{ playDateLocation }}</p>
+        <div class="card-body d-flex flex-column justify-content-between">
+            <h2 class="card-title">{{ playdate.title }}</h2>
+            <p class="card-subtitle mb-3">{{ playDateLocation }}</p>
+            <p class="card-text">{{ playdate.description }}</p>
+            <p class="time">{{ playDateTime }}</p>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sign-up-play-date">
+                register
+            </button>
+        </div>
+        <div class="modal fade" id="sign-up-play-date" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <SignUpForPlayDate />
+        </div>
     </article>
 </template>
 
-
 <script>
+import SignUpForPlayDate from './SignUpForPlayDate.vue';
+
 export default {
     props: ['playdate'],
+    components: { SignUpForPlayDate },
     computed: {
         playDateLocation() {
             const location = this.$store.state.locations
@@ -36,4 +49,18 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.card-title {
+    font-size: 1.5rem;
+    color: #003049;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.time {
+    font-weight: bold;
+}
+</style>

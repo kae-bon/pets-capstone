@@ -31,13 +31,12 @@ export default {
 </script>
 
 <style scoped>
-.btn {
-    height: 125px;
-    width: 200px;
-}
+/* .btn {
+    font-size: 1rem;
+} */
 
 i {
-    font-size: 100px;
+    font-size: 3rem;
 }
 
 .createPlayDate {
