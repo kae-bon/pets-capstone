@@ -44,7 +44,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
                     newPlayDate.getDescription(),
                     newPlayDate.getHostId(),
                     newPlayDate.getDateTime(),
-                    newPlayDate.getLocation(),
+                    newPlayDate.getLocationId(),
                     newPlayDate.isPublicDate());
             playDate = getPlayDateById(playDateId);
         } catch (CannotGetJdbcConnectionException e) {
@@ -74,7 +74,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
         playDate.setPlayDateId(results.getInt("play_date_id"));
         playDate.setDescription(results.getString("description"));
         playDate.setHostId(results.getInt("host_id"));
-        playDate.setLocation(results.getString("location"));
+        playDate.setLocationId(results.getInt("location_id"));
         playDate.setTitle(results.getString("title"));
         playDate.setPublicDate(results.getBoolean("ispublic"));
         playDate.setDateTime(results.getTimestamp("date_time").toLocalDateTime());

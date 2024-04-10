@@ -18,19 +18,19 @@ public class PlayDate {
     @Future
     private LocalDateTime dateTime;
     @NotNull
-    private String location;
+    private int locationId;
     @NotNull
     private boolean publicDate;
 
     public PlayDate() {}
 
-    public PlayDate(int playDateId, String title, String description, int hostId, LocalDateTime dateTime, String location, boolean publicDate) {
+    public PlayDate(int playDateId, String title, String description, int hostId, LocalDateTime dateTime, int locationId, boolean publicDate) {
         this.playDateId = playDateId;
         this.title = title;
         this.description = description;
         this.hostId = hostId;
         this.dateTime = dateTime;
-        this.location = location;
+        this.locationId = locationId;
         this.publicDate = publicDate;
     }
 
@@ -70,12 +70,12 @@ public class PlayDate {
         this.dateTime = dateTime;
     }
 
-    public String getLocation() {
-        return location;
+    public int getLocationId() {
+        return locationId;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 
     public boolean isPublicDate() {
