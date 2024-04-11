@@ -15,6 +15,12 @@ import ReadyToPlay from '../components/ReadyToPlay.vue'
 export default {
   components: {
     HomeAbout, CustomerTestimonials, FeatureList, ReadyToPlay
+  },
+  created() {
+    if (this.$store.state.token.length > 0) {
+      this.$router.push({ name: `user-home` });
+
+    }
   }
 };
 </script>
