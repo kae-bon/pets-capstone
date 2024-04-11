@@ -8,6 +8,7 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: currentUser || {},
+      pets: [],
       testimonials: [
         {
           text: "Woofr revolutionized how I socialize my pup! We've met amazing furry friends and their humans, making every playdate an adventure. Thanks to Woofr, our dog's tail is always wagging!",

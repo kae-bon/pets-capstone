@@ -16,6 +16,7 @@ import PlayDateService from "../services/PlayDateService";
 import PlayDateCards from "../components/PlayDateCards.vue";
 import LocationService from "../services/LocationService";
 import CreatePlayDateButton from "../components/CreatePlayDateButton.vue";
+import PetService from "../services/PetService";
 
 export default {
     data() {
@@ -32,6 +33,10 @@ export default {
         LocationService.getLocations()
             .then(response => {
                 this.$store.state.locations = response.data;
+                PetService.getUserPets(this.$store.state.user.id)
+                    .then(response => {
+                        this.$store.state.pets = response.data
+                    });
                 PlayDateService.getUserPlayDates(this.$store.state.user.id)
                     .then(response => {
                         this.playDates = response.data;

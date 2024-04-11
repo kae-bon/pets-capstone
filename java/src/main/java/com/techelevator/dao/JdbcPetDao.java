@@ -28,11 +28,13 @@ public class JdbcPetDao implements PetDao {
 
 
     @Override
-    public List<Pet> getPets() {
+    public List<Pet> getPets( int userId) {
         List<Pet> pets = new ArrayList<>();
+        String sql = SELECT_SQL + "WHERE owner_id = ?;";
+
         try {
 
-            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(SELECT_SQL);
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
             while (rowSet.next()) {
                 Pet pet = mapRowToPet(rowSet);
                 pets.add(pet);
