@@ -8,6 +8,10 @@ export default {
 
     getUpcomingPlayDates() {
         return axios.get('/playdates');
+    },
+
+    getUserPlayDates(userId) {
+        return axios.get(`/playdates?host_id=${userId}`);
     }
 
 

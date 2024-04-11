@@ -31,4 +31,6 @@ public interface PlayDateDao {
      * @return
      */
     List<PlayDate> getUpcomingPlayDates();
+
+    List<PlayDate> getUserPlayDates(int userId);
 }

@@ -39,7 +39,12 @@ public class PlayDateController {
     }
 
     @GetMapping("/playdates")
-    public List<PlayDate> getUpcomingPlayDates() {
+    public List<PlayDate> getUpcomingPlayDates(@RequestParam(value = "host_id", required = false) Integer userId, Principal user) {
+        if (userId != null) {
+            User host = userDao.getUserByUsername(user.getName());
+            int host_id = host.getId();
+            return playDateDao.getUserPlayDates(host_id);
+        }
         return this.playDateDao.getUpcomingPlayDates();
     }
 }

@@ -4,8 +4,9 @@
             <strong>Get Ready to Play!</strong> Your play date has been registered!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <div>
-            <CreatePlayDateButton />
+        <CreatePlayDateButton />
+        <div class="d-flex flex-wrap flex-row justify-content-center ">
+            <PlayDateCards v-for="playdate in playDates" :key="playdate.id" :playdate="playdate" />
         </div>
     </div>
 </template>
@@ -25,13 +26,13 @@ export default {
         }
     },
     components: {
-        CreatePlayDateButton
+        CreatePlayDateButton, PlayDateCards
     },
     created() {
         LocationService.getLocations()
             .then(response => {
                 this.$store.state.locations = response.data;
-                PlayDateService.getUpcomingPlayDates()
+                PlayDateService.getUserPlayDates(this.$store.state.user.id)
                     .then(response => {
                         this.playDates = response.data;
                     })

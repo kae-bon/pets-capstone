@@ -73,7 +73,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     }
 
     @Override
-    public List<PlayDate> getUpcomingPlayDates(){
+    public List<PlayDate> getUpcomingPlayDates() {
         List<PlayDate> publicPlayDates = new ArrayList<>();
         String sql = "SELECT play_date_id, title, description, host_id, date_time, location_id, ispublic\n" +
                 "FROM play_dates\n" +
@@ -91,6 +91,28 @@ public class JdbcPlayDateDao implements PlayDateDao{
         }
 
         return publicPlayDates;
+    }
+
+    @Override
+    public List<PlayDate> getUserPlayDates(int userId) {
+        List<PlayDate> userPlayDates = new ArrayList<>();
+        String sql = "SELECT play_date_id, title, description, host_id, date_time, location_id, ispublic\n" +
+                "FROM play_dates\n" +
+                "WHERE host_id = ? AND date_time > CURRENT_TIMESTAMP;";
+
+        try {
+            SqlRowSet results = this.jdbc.queryForRowSet(sql, userId);
+            while (results.next()) {
+                PlayDate playDate = mapRowToPlayDate(results);
+                userPlayDates.add(playDate);
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e){
+            throw new DaoException("Data integrity violation", e);
+        }
+
+        return userPlayDates;
     }
 
     private PlayDate mapRowToPlayDate(SqlRowSet results) {
