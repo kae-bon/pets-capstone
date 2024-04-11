@@ -38,6 +38,7 @@ public class PlayDateController {
         }
     }
 
+
     @GetMapping("/playdates")
     public List<PlayDate> getUpcomingPlayDates(@RequestParam(value = "host_id", required = false) Integer userId, Principal user) {
         if (userId != null) {
