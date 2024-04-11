@@ -1,5 +1,6 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
+import LocationService from '../services/LocationService';
 const NOTIFICATION_TIMEOUT = 3000;
 
 export function createStore(currentToken, currentUser) {
@@ -24,6 +25,7 @@ export function createStore(currentToken, currentUser) {
           image: "https://images.pexels.com/photos/1586948/pexels-photo-1586948.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
       ],
+      locations: [],
       notification: null,
     },
     mutations: {

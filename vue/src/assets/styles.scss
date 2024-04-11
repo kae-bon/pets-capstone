@@ -61,6 +61,7 @@ a {
     text-decoration: none;
 }
 
+
 a:hover {
     color: $dark;
     transition: color 500ms;
@@ -110,4 +111,8 @@ label {
 
 .router-link-exact-active {
     color: $orange !important;
+}
+
+.card-body p {
+    color: $dark;
 }
