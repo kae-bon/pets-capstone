@@ -12,6 +12,10 @@ export default {
 
     getUserPlayDates(userId) {
         return axios.get(`/playdates?host_id=${userId}`);
+    },
+
+    addPetsToPlayDate(petPlayDateArray) {
+        return axios.post('/playdates/pets', petPlayDateArray);
     }
 
 

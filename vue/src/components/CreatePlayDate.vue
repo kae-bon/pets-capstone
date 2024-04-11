@@ -52,8 +52,12 @@
                                 Private - you approve who comes!
                             </label>
                         </div> -->
-                        <div v-for="pet in userPets" :key="pet.id">
-                            {{ pet.name }}
+                        <div class="form-check mb-3" v-for="pet in userPets" :key="pet.id">
+                            <input class="form-check-input" type="checkbox" :value="{ 'petId': pet.id, 'playDateId': 1 }"
+                                name="flexCheckDefault" :id="pet.id" v-model="dogArray">
+                            <label class="form-check-label" :for="pet.id">
+                                {{ pet.name }}
+                            </label>
                         </div>
                         <div class="modal-footer pt-3">
                             <button id="closeModal" type="button" class="btn btn-danger" data-bs-dismiss="modal"
@@ -84,6 +88,7 @@ export default {
             },
             locations: [],
             submitFailed: false,
+            dogArray: []
         }
     },
     computed: {
