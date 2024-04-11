@@ -27,6 +27,28 @@ export function createStore(currentToken, currentUser) {
       ],
       locations: [],
       notification: null,
+      breedSizes: [
+        {
+          size: "small",
+          minWeight: 2,
+          maxWeight: 22
+        },
+        {
+          size: "medium",
+          minWeight: 23,
+          maxWeight: 57
+        },
+        {
+          size: "large",
+          minWeight: 58,
+          maxWeight: 99
+        },
+        {
+          size: "x-large",
+          minWeight: 100,
+          maxWeight: 250
+        }
+      ]
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {

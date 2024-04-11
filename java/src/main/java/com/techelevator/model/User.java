@@ -2,6 +2,8 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -25,6 +27,8 @@ public class User {
       if (authorities != null) this.setAuthorities(authorities);
       this.activated = true;
    }
+
+
 
    public int getId() {
       return id;
