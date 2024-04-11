@@ -29,7 +29,7 @@ CREATE TABLE pets(
     size varchar(10) NOT NULL,
     isFriendly boolean NOT NULL,
     CONSTRAINT PK_pet PRIMARY KEY (pet_id),
-	CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES owners (owner_id),
+	CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES owners (user_id),
     CONSTRAINT unique_pet_details UNIQUE (owner_id, name, breed, birthdate)
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE play_dates (
 	isPublic BOOLEAN NOT NULL DEFAULT TRUE,
 	
 	CONSTRAINT PK_play_date_id PRIMARY KEY (play_date_id),
-	CONSTRAINT FK_host_id FOREIGN KEY (host_id) REFERENCES owners (owner_id),
+	CONSTRAINT FK_host_id FOREIGN KEY (host_id) REFERENCES owners (user_id),
 	CONSTRAINT FK_location_id FOREIGN KEY (location_id) REFERENCES locations (location_id),
 	CONSTRAINT CK_date_time CHECK (date_time > CURRENT_TIMESTAMP)
 );
