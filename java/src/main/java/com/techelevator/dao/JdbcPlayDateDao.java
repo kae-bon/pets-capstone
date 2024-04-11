@@ -77,7 +77,8 @@ public class JdbcPlayDateDao implements PlayDateDao{
         List<PlayDate> publicPlayDates = new ArrayList<>();
         String sql = "SELECT play_date_id, title, description, host_id, date_time, location_id, ispublic\n" +
                 "FROM play_dates\n" +
-                "WHERE ispublic AND date_time > CURRENT_TIMESTAMP;";
+                "WHERE ispublic AND date_time > CURRENT_TIMESTAMP\n" +
+                "ORDER BY date_time ASC;";
         try {
             SqlRowSet results = this.jdbc.queryForRowSet(sql);
             while (results.next()) {
@@ -98,7 +99,8 @@ public class JdbcPlayDateDao implements PlayDateDao{
         List<PlayDate> userPlayDates = new ArrayList<>();
         String sql = "SELECT play_date_id, title, description, host_id, date_time, location_id, ispublic\n" +
                 "FROM play_dates\n" +
-                "WHERE host_id = ? AND date_time > CURRENT_TIMESTAMP;";
+                "WHERE host_id = ? AND date_time > CURRENT_TIMESTAMP\n" +
+                "ORDER BY date_time ASC;";
 
         try {
             SqlRowSet results = this.jdbc.queryForRowSet(sql, userId);
