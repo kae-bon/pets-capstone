@@ -22,6 +22,12 @@
                 <label class="form-label" for="start">Birthdate</label>
             </div>
             <p>note: you must be over 18 to register!</p>
+
+            <div class="d-flex justify-content-between align-items-center mb-5 upload-img">
+                <img :src="imgToDisplay" class="circle" />
+                <PicUploaderButton />
+            </div>
+
             <button type="submit" class="btn btn-primary mt-2 mb-2">Register Owner</button>
         </form>
     </div>
@@ -29,16 +35,27 @@
 
 <script>
 import OwnerService from '../services/OwnerService';
+import PicUploaderButton from './PicUploaderButton.vue';
+
 
 export default {
     data() {
         return {
             newOwner: {
                 firstName: "", lastName: "", birthdate: "", id: 0
-            }
+            },
+            // imgToDisplay: null
         }
     },
+    components: {
+        PicUploaderButton
+    },
     computed: {
+        imgToDisplay() {
+            // let defaultImg = '../assets/default-profile-pic.svg.png';
+            let defaultImg = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png';
+            return defaultImg;
+        },
         minBirthday() {
             const currentYear = new Date().getFullYear() - 18;
             const currentMonth = new Date().getMonth() + 1;
@@ -55,7 +72,6 @@ export default {
             } else return currentYear + "-" + currentMonth + "-" + currentDay;
         }
     },
-
     methods: {
         registerOwner() {
             this.newOwner.id = this.$store.state.user.id;
@@ -69,7 +85,7 @@ export default {
             this.$emit('ownerRegistered');
         }
 
-    }
+    },
 
 }
 </script>
@@ -77,5 +93,12 @@ export default {
 <style scoped>
 .form-input-group {
     margin-bottom: 1rem;
+}
+
+.circle {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-color: grey;
 }
 </style>

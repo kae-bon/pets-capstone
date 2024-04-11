@@ -14,9 +14,8 @@ export default {
 
     }
   },
-  name: 'PicUploaderComponent',
   methods: {
-    upload(){
+    upload() {
       // This is the upload widget through Cloudinary; this demo uses an unsigned version for simplicity
       // This means anyone with some technical knowhow can look up our cloud name and upload to our demo site
       // Obviously not good from a security perspective!
@@ -64,6 +63,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
