@@ -9,7 +9,7 @@
       <div class="form-input-group form-floating">
         <input class="form-control" type="email" id="username" v-model="user.username" placeholder="username" required
           autofocus />
-        <label class="form-label" for="username">Username</label>
+        <label class="form-label" for="username">Email</label>
       </div>
 
 

@@ -37,7 +37,7 @@
                     Confirm that {{ newPet.petName }} is friendly with other dogs - they must be in order to register!
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary mt-2 mb-2">Confirm Pet</button>
+            <button type="submit" class="btn btn-primary mt-2 mb-2">Register Pet</button>
         </form>
     </div>
 </template>

@@ -21,7 +21,8 @@ public class JdbcLocationDao implements LocationDao {
     public List<Location> getAllLocations() {
         List<Location> locations = new ArrayList<>();
         String sql = "SELECT location_id, location_name, street_address, city, state_abbr\n" +
-                "FROM locations;";
+                "FROM locations\n" +
+                "ORDER BY location_name;";
 
         try {
             SqlRowSet results = jdbc.queryForRowSet(sql);
