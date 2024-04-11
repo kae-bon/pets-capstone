@@ -8,6 +8,17 @@
                 </div>
                 <div class="modal-body">
 
+                    <div class="form-check mb-3" v-for="pet in userPets" :key="pet.id">
+                        <input class="form-check-input" type="checkbox"
+                            :value="{ 'petId': pet.id, 'playDateId': playDateId }" name="flexCheckDefault" :id="pet.id"
+                            v-model="dogArray">
+                        <label class="form-check-label" :for="pet.id">
+                            {{ pet.name }}
+                        </label>
+                    </div>
+
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -20,6 +31,17 @@
 
 <script>
 export default {
+    props: ['playDateId'],
+    data() {
+        return {
+            dogArray: [],
+        }
+    },
+    computed: {
+        userPets() {
+            return this.$store.state.pets;
+        }
+    }
 
 }
 </script>
