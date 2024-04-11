@@ -20,12 +20,12 @@
                 <input class="form-control" type="date" id="start" v-model="newOwner.birthdate" placeholder="birthdate"
                     required autofocus :max="minBirthday" />
                 <label class="form-label" for="start">Birthdate</label>
+                <p class="note">note: you must be over 18 to register!</p>
             </div>
-            <p>note: you must be over 18 to register!</p>
 
-            <div class="d-flex justify-content-between align-items-center mb-5 upload-img">
-                <img :src="imgToDisplay" class="circle" />
-                <PicUploaderButton />
+            <div class="d-flex justify-content-center column-gap-5 align-items-center mb-5 upload-img">
+                <img :src="profileImg" class="circle" />
+                <PicUploaderButton @imageUploaded="setImgToDisplay" />
             </div>
 
             <button type="submit" class="btn btn-primary mt-2 mb-2">Register Owner</button>
@@ -44,18 +44,14 @@ export default {
             newOwner: {
                 firstName: "", lastName: "", birthdate: "", id: 0
             },
-            // imgToDisplay: null
+            profileImg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png'
+
         }
     },
     components: {
         PicUploaderButton
     },
     computed: {
-        imgToDisplay() {
-            // let defaultImg = '../assets/default-profile-pic.svg.png';
-            let defaultImg = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png';
-            return defaultImg;
-        },
         minBirthday() {
             const currentYear = new Date().getFullYear() - 18;
             const currentMonth = new Date().getMonth() + 1;
@@ -83,10 +79,12 @@ export default {
         },
         ownerRegistered() {
             this.$emit('ownerRegistered');
-        }
+        },
+        setImgToDisplay(img) {
+            this.profileImg = img;
+        },
 
-    },
-
+    }
 }
 </script>
 
@@ -100,5 +98,14 @@ export default {
     height: 150px;
     width: 150px;
     background-color: grey;
+    object-fit: contain;
+}
+
+.upload-img {
+    height: 175px;
+}
+
+.note {
+    font-style: italic;
 }
 </style>
