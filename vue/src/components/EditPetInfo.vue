@@ -5,7 +5,7 @@
             <h1>Register your Pet</h1>
 
             <div class="form-input-group form-floating">
-                <input class="form-control" type="text" id="name" v-model="newPet.name" placeholder="name" required
+                <input class="form-control" type="text" id="name" v-model="newPet.petName" placeholder="name" required
                     autofocus />
                 <label class="form-label" for="name">Pet Name</label>
             </div>
@@ -32,12 +32,12 @@
                 <label for="floatingSelect">Pet Size</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="newPet.isFriendly" required id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" v-model="newPet.friendly" required id="flexCheckChecked">
                 <label class="form-check-label" for="flexCheckChecked">
-                    Confirm that {{ newPet.name }} is friendly with other dogs - they must be in order to register!
+                    Confirm that {{ newPet.petName }} is friendly with other dogs - they must be in order to register!
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary mt-2 mb-2">Confirm Pet</button>
+            <button type="submit" class="btn btn-primary mt-2 mb-2">Register Pet</button>
         </form>
     </div>
 </template>
@@ -48,12 +48,12 @@ export default {
     data() {
         return {
             newPet: {
-                name: "",
+                petName: "",
                 ownerId: 0,
                 birthdate: "",
                 breed: "",
                 size: "",
-                isFriendly: ""
+                friendly: ""
             },
             dogSizes: []
         }

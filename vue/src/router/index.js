@@ -7,6 +7,7 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import UserHomeView from '../views/UserHomeView.vue';
+import UpcomingPlayDatesView from '../views/UpcomingPlayDatesView.vue';
 import EditInfoView from '../views/EditInfoView.vue';
 
 /**
@@ -54,6 +55,14 @@ const routes = [
     path: "/home",
     name: "user-home",
     component: UserHomeView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/upcoming",
+    name: "upcoming",
+    component: UpcomingPlayDatesView,
     meta: {
       requiresAuth: true
     }

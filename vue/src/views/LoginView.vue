@@ -3,7 +3,7 @@
     <form v-on:submit.prevent="login" class="col-4">
       <h1 class="mb-4">Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
+        Invalid email and password!
       </div>
       <div role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
@@ -12,7 +12,7 @@
       <div class="form-input-group form-floating">
         <input class="form-control" type="email" id="username" v-model="user.username" placeholder="username" required
           autofocus />
-        <label class="form-label" for="username">Username</label>
+        <label class="form-label" for="username">Email</label>
       </div>
       <div class="form-input-group form-floating">
         <input class="form-control" type="password" id="password" v-model="user.password" placeholder="password"
