@@ -11,4 +11,6 @@ public interface OwnerDao {
     Owner getOwnerByEmail(String email);
 
     Owner getOwnerById(int id);
+
+    Owner updateOwner(Owner updatedOwner);
 }

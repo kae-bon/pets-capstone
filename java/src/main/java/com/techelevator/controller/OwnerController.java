@@ -46,4 +46,18 @@ public class OwnerController {
         return owner;
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(path = "/{id}")
+    public Owner updateOwner(@RequestBody @Valid Owner updatedOwner, @PathVariable int id) {
+        try {
+            updatedOwner.setId(id);
+            updatedOwner = ownerDao.updateOwner(updatedOwner);
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Owner not found.");
+        }
+        return updatedOwner;
+
+        }
+
+
 }

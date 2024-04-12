@@ -82,4 +82,17 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
         Assert.assertEquals(expectedOwner.getProfilePic(), actualOwner.getProfilePic());
     }
 
+    @Test
+    public void updateOwner_updates_owner() {
+        Owner ownerToUpdate = sut.getOwnerById(OWNER_1.getId());
+        ownerToUpdate.setFirstName("Lightning");
+        ownerToUpdate.setProfilePic("https://upload.wikimedia.org/wikipedia/en/8/82/Lightning_McQueen.png");
+        Owner updatedOwner = sut.updateOwner(ownerToUpdate);
+
+        Owner retrievedOwner = sut.getOwnerById(updatedOwner.getId());
+
+        assertOwnersMatch(updatedOwner, retrievedOwner);
+        assertOwnersMatch(updatedOwner, ownerToUpdate);
+
+    }
 }

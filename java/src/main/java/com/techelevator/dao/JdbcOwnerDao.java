@@ -51,7 +51,28 @@ public class JdbcOwnerDao implements OwnerDao {
     }
 
     @Override
-    public Owner getOwnerByEmail(String email) {
+    public Owner updateOwner(Owner owner) {
+        Owner updatedOwner = null;
+
+        String sql = "UPDATE owners SET first_name = ?, last_name = ?, birthdate = ?, profile_pic = ? WHERE user_id = ?;";
+
+        try {
+            int numberOfRows = jdbcTemplate.update(sql, owner.getFirstName(), owner.getLastName(), owner.getBirthdate(), owner.getProfilePic(), owner.getId());
+            if (numberOfRows == 0) {
+                throw new DaoException("No rows updated");
+            } else {
+                updatedOwner = getOwnerById(owner.getId());
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return updatedOwner;
+    }
+
+    @Override
+    public Owner getOwnerByEmail(String email) { //TODO:
         Owner owner = null;
         return owner;
     }
