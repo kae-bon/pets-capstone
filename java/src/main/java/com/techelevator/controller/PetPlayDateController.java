@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.PetPlayDateDao;
 import com.techelevator.dao.PlayDateDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Pet;
@@ -16,10 +17,10 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 @CrossOrigin
 public class PetPlayDateController {
-    private PlayDateDao playDateDao;
+    private PetPlayDateDao petPlayDateDao;
 
-    public PetPlayDateController(PlayDateDao playDateDao) {
-        this.playDateDao = playDateDao;
+    public PetPlayDateController(PetPlayDateDao petPlayDateDao) {
+        this.petPlayDateDao = petPlayDateDao;
     }
 
     @PostMapping("/playdates/pets")
@@ -27,7 +28,7 @@ public class PetPlayDateController {
     public void addPetsToPlayDate(@RequestBody List<PetPlayDate> petPlayDates) {
         try {
             for (PetPlayDate petPlayDate : petPlayDates) {
-                playDateDao.insertPetPlayDate(petPlayDate.getPetId(), petPlayDate.getPlayDateId());
+                petPlayDateDao.insertPetPlayDate(petPlayDate.getPetId(), petPlayDate.getPlayDateId());
             }
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Couldn't add pet to play date.");
