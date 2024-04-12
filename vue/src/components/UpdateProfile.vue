@@ -5,7 +5,7 @@
 
 <script>
 export default {
-  name: "ProfileView.vue"
+  name: "UpdateProfile.vue"
 }
 </script>
 
