@@ -40,6 +40,7 @@ export default {
     data() {
         return {
             dogArray: [],
+            userPetIds: [],
             addPetFailed: false,
         }
     },
@@ -73,6 +74,18 @@ export default {
         confirmSuccess() {
             this.$emit('registration', 'success');
         },
+        filterPetPlayDates() {
+            this.dogArray = this.$store.state.petPlayDates.filter((petPlayDate) => {
+                this.userPetIds.includes(petPlayDate.petId) && this.playDateId === petPlayDate.playDateId
+            })
+
+        }
+    },
+    created() {
+        this.userPets().forEach(pet => {
+            this.userPetIds.add(pet.id)
+        });
+        this.filterPetPlayDates()
     }
 
 }

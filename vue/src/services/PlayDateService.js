@@ -16,6 +16,10 @@ export default {
 
     addPetsToPlayDate(petPlayDateArray) {
         return axios.post('/playdates/pets', petPlayDateArray);
+    },
+
+    getPetPlayDates() {
+        return axios.get('/petplaydates');
     }
 
 

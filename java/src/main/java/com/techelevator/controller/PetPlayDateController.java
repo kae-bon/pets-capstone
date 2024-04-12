@@ -36,7 +36,7 @@ public class PetPlayDateController {
         }
     }
 
-    @GetMapping("/playdates")
+    @GetMapping("/petplaydates")
     public List<PetPlayDate> getAllPetPlayDates() {
         try {
             return this.petPlayDateDao.getPetPlayDates();

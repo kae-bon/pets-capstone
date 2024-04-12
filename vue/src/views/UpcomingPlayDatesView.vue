@@ -49,9 +49,15 @@ export default {
                 PlayDateService.getUpcomingPlayDates()
                     .then(response => {
                         this.playDates = response.data;
+                        PlayDateService.getPetPlayDates()
+                            .then(response => {
+                                this.$store.state.petPlayDates = response.data
+                            });
                     });
             })
     }
+
+
 
 }
 </script>

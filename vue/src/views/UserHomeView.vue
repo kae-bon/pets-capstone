@@ -41,6 +41,10 @@ export default {
                 PlayDateService.getUserPlayDates(this.$store.state.user.id)
                     .then(response => {
                         this.playDates = response.data;
+                        PlayDateService.getPetPlayDates()
+                            .then(response => {
+                                this.$store.state.petPlayDates = response.data
+                            });
                     })
             })
     }
