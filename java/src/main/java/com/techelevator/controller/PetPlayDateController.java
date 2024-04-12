@@ -7,10 +7,7 @@ import com.techelevator.model.PetPlayDate;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -26,6 +23,7 @@ public class PetPlayDateController {
     }
 
     @PostMapping("/playdates/pets")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void addPetsToPlayDate(@RequestBody List<PetPlayDate> petPlayDates) {
         try {
             for (PetPlayDate petPlayDate : petPlayDates) {
