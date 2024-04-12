@@ -1,6 +1,6 @@
 <template>
   <div class="cloud upload">
-    <button class="btn btn-primary" v-on:click="upload">Upload Image</button>
+    <button class="btn btn-primary" v-on:click.prevent="upload">Upload Image</button>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
         // These values can be obtained through the Cloudinary site
         cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
         uploadPreset: import.meta.env.VITE_CLOUDINARY_CLOUD_UPLOAD,
-        publicId: "owner_id" + this.$store.state.user.id,
+        // publicId: "owner_id" + this.$store.state.user.id,
         // sources allows us to choose where the Cloudinary app gets files from
         // in this case, going to only allow file upload, URL, or camera image
         // Full list can be found on the Cloudinary documentation site linked above

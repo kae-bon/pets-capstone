@@ -42,7 +42,7 @@ export default {
     data() {
         return {
             newOwner: {
-                firstName: "", lastName: "", birthdate: "", id: 0
+                firstName: "", lastName: "", birthdate: "", id: 0, profilePic: ""
             },
             profileImg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png'
 
@@ -82,6 +82,7 @@ export default {
         },
         setImgToDisplay(img) {
             this.profileImg = img;
+            this.newOwner.profilePic = img;
         },
 
     }

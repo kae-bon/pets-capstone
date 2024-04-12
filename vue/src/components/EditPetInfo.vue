@@ -63,7 +63,8 @@ export default {
                 birthdate: "",
                 breed: "",
                 size: "",
-                friendly: ""
+                friendly: "",
+                profilePic: ""
             },
             dogSizes: [],
             profileImg: 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712928065/rnqxaeqmxt0cneix8egk.png'
