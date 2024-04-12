@@ -2,19 +2,21 @@
   <div id="capstone-app" class="d-flex flex-column justify-content-between">
     <header id="header" class="mb-3">
       <nav id="nav" class="navbar justify-content-between">
-        <router-link class="hero-link" :to="{ name: 'woofr' }" v-if="$store.state.token == ''">
           <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
-        </router-link>
-        <router-link class="hero-link" :to="{ name: 'user-home' }" v-else>
-          <img class="navbar-brand" src="@/assets/nav-logo.png" alt="woofr">
-        </router-link>
         <div class="router-links">
-          <router-link class="nav-link" :to="{ name: 'woofr' }" v-if="$store.state.token == ''">Home</router-link>
-          <router-link class="nav-link" :to="{ name: 'user-home' }" v-else>Home</router-link>
-          <router-link class="nav-link" :to="{ name: 'upcoming' }" v-if="!$store.state.token == ''">Upcoming</router-link>
-          <router-link class="nav-link" :to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>
-          <router-link class="nav-link" :to="{ name: 'login' }" v-if="$store.state.token == ''">Sign In</router-link>
-          <router-link class="nav-link" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Sign out</router-link>
+
+          <router-link class="nav-link border-start border-light" :to="{ name: 'woofr' }" v-if="$store.state.token == ''">Home</router-link>
+          <router-link class="nav-link border-start border-light" :to="{ name: 'user-home' }" v-else>Home</router-link>
+
+          <router-link class="nav-link border-start border-light" :to="{ name: 'upcoming' }" v-if="!$store.state.token == ''">Upcoming</router-link>
+          <router-link class="nav-link border-start border-light" :to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>
+
+
+          <router-link class="nav-link border border-top-0 border-bottom-0 border-light" :to="{ name: 'login' }" v-if="$store.state.token == ''">Sign In</router-link>
+          <router-link class="nav-link border border-top-0 border-bottom-0 border-light" :to="{ name: 'logout' }" v-if="$store.state.token != ''">Sign out</router-link>
+          <router-link class="nav-link pl-0" :to="{ name: 'profile' }" v-if="$store.state.token == ''"><img class="img-thumbnail pic rounded-circle" :src="$store.state.defaultPetPic"></router-link>
+                    <router-link class="nav-link" :to="{ name: 'profile' }" v-else><img class="img-thumbnail pic rounded-circle" :src="profilePic"></router-link>
+
         </div>
       </nav>
     </header>
@@ -34,23 +36,15 @@
 <script>
 export default {
   computed: {
-    // notification() {
-    //   return this.$store.state.notification;
-    // },
-    // notificationClass() {
-    //   return {
-    //     'status-message': true,
-    //     error: this.notification?.type?.toLowerCase() === 'error',
-    //     success: this.notification?.type?.toLowerCase() === 'success'
-    //   };
-    // }
+    profilePic() {
+      return this.$store.state.owner.profilePic;
+    }
+
   },
   methods: {
-    //   clearNotification() {
-    //     this.$store.commit('CLEAR_NOTIFICATION');
-    //   }
-    // }
-  }
+  },
+  created() {
+  },
 }
 </script>
 
@@ -72,5 +66,10 @@ img {
 
 #capstone-app {
   height: 100vh;
+}
+.pic {
+ height: 50px;
+  width: auto;
+  margin: 0;
 }
 </style>

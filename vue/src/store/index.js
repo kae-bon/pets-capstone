@@ -8,6 +8,9 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: currentUser || {},
+      owner: {},
+      defaultOwnerPic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png',
+      defaultPetPic: 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712928065/rnqxaeqmxt0cneix8egk.png',
       testimonials: [
         {
           text: "Woofr revolutionized how I socialize my pup! We've met amazing furry friends and their humans, making every playdate an adventure. Thanks to Woofr, our dog's tail is always wagging!",
@@ -100,6 +103,9 @@ export function createStore(currentToken, currentUser) {
         }
         state.notification = null;
       },
+      SET_OWNER(state, owner) {
+        state.owner = owner;
+      }
     },
   });
   return store;

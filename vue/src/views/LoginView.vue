@@ -53,6 +53,7 @@ export default {
                 this.$store.commit("SET_AUTH_TOKEN", response.data.token);
                 this.$store.commit("SET_USER", response.data.user);
                 ownerService.getOwner(response.data.user.id).then(owner => {
+                  this.$store.commit("SET_OWNER", owner.data);
                   this.$router.push({name: 'user-home'});
                 })
                     .catch(error => {
