@@ -31,6 +31,12 @@
                 </select>
                 <label for="floatingSelect">Pet Size</label>
             </div>
+
+            <div class="d-flex justify-content-center column-gap-5 align-items-center mb-5 upload-img">
+                <img :src="profileImg" class="circle" />
+                <PicUploaderButton @imageUploaded="setImgToDisplay" />
+            </div>
+
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" v-model="newPet.friendly" required id="flexCheckChecked">
                 <label class="form-check-label" for="flexCheckChecked">
@@ -44,7 +50,11 @@
 
 <script>
 import PetService from '../services/PetService';
+import PicUploaderButton from './PicUploaderButton.vue';
+
+
 export default {
+    components: { PicUploaderButton },
     data() {
         return {
             newPet: {
@@ -55,7 +65,8 @@ export default {
                 size: "",
                 friendly: ""
             },
-            dogSizes: []
+            dogSizes: [],
+            profileImg: 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712928065/rnqxaeqmxt0cneix8egk.png'
         }
     },
     computed: {
@@ -86,7 +97,10 @@ export default {
                     this.$router.push({ name: 'user-home' });
                 }
             })
-        }
+        },
+        setImgToDisplay(img) {
+            this.profileImg = img;
+        },
     }
 }
 </script>
@@ -94,5 +108,13 @@ export default {
 <style scoped>
 .form-input-group {
     margin-bottom: 1rem;
+}
+
+.circle {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-color: grey;
+    object-fit: contain;
 }
 </style>

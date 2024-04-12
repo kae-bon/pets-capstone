@@ -22,8 +22,7 @@ public class RegisterPetDto {
     @NotNull
     private Integer ownerId;
 
-
-    private String profilePicture;
+    private String profilePic;
 
     @NotNull
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -55,12 +54,12 @@ public class RegisterPetDto {
         this.ownerId = ownerId;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getProfilePic() {
+        return profilePic;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     public LocalDate getBirthdate() {

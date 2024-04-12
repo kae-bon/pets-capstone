@@ -64,7 +64,6 @@ export default {
       }
     },
     uploadImage() {
-      console.log(this.imgUrl);
       this.$emit('imageUploaded', this.imgUrl);
     }
   }

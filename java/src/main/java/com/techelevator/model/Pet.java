@@ -11,16 +11,15 @@ public class Pet {
     private String size;
     private Boolean isFriendly;
     private int ownerId;
+    private String profilePic;
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getProfilePic() {
+        return profilePic;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
-
-    private String profilePicture;
 
     @Override
     public boolean equals(Object o) {
@@ -63,7 +62,7 @@ public class Pet {
         this.ownerId = ownerId;
     }
 
-    public Pet(int id, String name, LocalDate birthdate, String breed, String size, Boolean isFriendly, int ownerId) {
+    public Pet(int id, String name, LocalDate birthdate, String breed, String size, Boolean isFriendly, int ownerId, String profilePic) {
         this.id = id;
         this.name = name;
         this.birthdate = birthdate;
@@ -71,6 +70,7 @@ public class Pet {
         this.size = size;
         this.isFriendly = isFriendly;
         this.ownerId = ownerId;
+        this.profilePic = profilePic;
     }
 
     public int getId() {

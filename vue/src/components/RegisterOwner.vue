@@ -101,10 +101,6 @@ export default {
     object-fit: contain;
 }
 
-.upload-img {
-    height: 175px;
-}
-
 .note {
     font-style: italic;
 }

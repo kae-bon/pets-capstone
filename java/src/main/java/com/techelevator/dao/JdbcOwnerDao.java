@@ -20,13 +20,13 @@ public class JdbcOwnerDao implements OwnerDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private final String SELECT_SQL = "SELECT user_id, first_name, last_name, birthdate FROM owners ";
+    private final String SELECT_SQL = "SELECT user_id, first_name, last_name, birthdate, profile_pic FROM owners ";
 
 
     @Override
     public Owner createOwner(RegisterOwnerDto owner) {
         Owner newOwner = null;
-        String sql = "INSERT INTO owners(user_id, first_name, last_name, birthdate) values(?,?, ?, ?) RETURNING user_id;";
+        String sql = "INSERT INTO owners(user_id, first_name, last_name, birthdate, profile_pic) values(?,?, ?, ?, ?) RETURNING user_id;";
         try {
             int newOwnerId = jdbcTemplate.queryForObject(
                     sql,
@@ -34,7 +34,8 @@ public class JdbcOwnerDao implements OwnerDao {
                     owner.getId(),
                     owner.getFirstName(),
                     owner.getLastName(),
-                    owner.getBirthdate()
+                    owner.getBirthdate(),
+                    owner.getProfilePic()
             );
             newOwner = getOwnerById(newOwnerId);
         }  catch (CannotGetJdbcConnectionException e) {
@@ -77,6 +78,7 @@ private Owner mapRowToOwner(SqlRowSet rowSet) {
     owner.setFirstName(rowSet.getString("first_name"));
     owner.setLastName(rowSet.getString("last_name"));
     owner.setBirthdate(rowSet.getDate("birthdate").toLocalDate());
+    owner.setProfilePic(rowSet.getString("profile_pic"));
 
     return owner;
 }

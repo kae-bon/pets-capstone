@@ -13,7 +13,7 @@ import EditPetInfo from '../components/EditPetInfo.vue';
 export default {
     data() {
         return {
-            showRegisterPet: false,
+            showRegisterPet: true,
             showRegisterOwner: true,
         }
     },

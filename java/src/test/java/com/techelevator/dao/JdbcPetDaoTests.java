@@ -19,7 +19,8 @@ public class JdbcPetDaoTests extends BaseDaoTests {
             "pug",
             "S",
             true,
-            1 );
+            1 ,
+            "https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg");
     private JdbcPetDao sut;
 
     @Before
@@ -46,6 +47,7 @@ public class JdbcPetDaoTests extends BaseDaoTests {
         pet.setBreed("Labrador");
         pet.setSize("XL");
         pet.setFriendly(true);
+        pet.setProfilePic("https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg");
 
 
         Pet steve = sut.createPet(pet);
@@ -65,6 +67,7 @@ public class JdbcPetDaoTests extends BaseDaoTests {
         registerPetDto.setBreed("pug");
         registerPetDto.setSize("S");
         registerPetDto.setFriendly(true);
+        registerPetDto.setProfilePic("https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg");
         Pet bean = sut.createPet(registerPetDto);
 
     }
@@ -76,6 +79,7 @@ public class JdbcPetDaoTests extends BaseDaoTests {
         Assert.assertEquals(expectedPet.getBreed(), actualPet.getBreed());
         Assert.assertEquals(expectedPet.getSize(), actualPet.getSize());
         Assert.assertEquals(expectedPet.getFriendly(), actualPet.getFriendly());
+        Assert.assertEquals(expectedPet.getProfilePic(), actualPet.getProfilePic());
 
     }
 }

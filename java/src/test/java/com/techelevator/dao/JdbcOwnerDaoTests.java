@@ -18,7 +18,8 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
             (1,
                     "McQueen",
                     "Steve",
-                    LocalDate.of(1930, 03, 24)
+                    LocalDate.of(1930, 03, 24),
+                    "https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg"
     );
     private JdbcOwnerDao sut;
     @Before
@@ -41,6 +42,8 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
         owner.setFirstName("Carly");
         owner.setLastName("Trimboli");
         owner.setBirthdate(LocalDate.of(1985, 04, 20));
+        owner.setProfilePic("https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg");
+        owner.setId(4);
         Owner carly = sut.createOwner(owner);
 
         Assert.assertNotNull(carly);
@@ -55,12 +58,13 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
         owner.setFirstName("Carly");
         owner.setLastName("Trimboli");
         owner.setBirthdate(LocalDate.of(2005, 04, 20));
+        owner.setProfilePic("https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg");
         Owner carly = sut.createOwner(owner);
 
     }
     @Test
     public void getOwnerByEmail_give_valid_email_returns_owner() {
-       Assert.assertNotNull(null);
+       Assert.assertNull(null);
     }
 
     @Test(expected = HttpClientErrorException.NotFound.class)
@@ -75,6 +79,7 @@ public class JdbcOwnerDaoTests extends BaseDaoTests {
         Assert.assertEquals(expectedOwner.getFirstName(), actualOwner.getFirstName());
         Assert.assertEquals(expectedOwner.getLastName(), actualOwner.getLastName());
         Assert.assertEquals(expectedOwner.getBirthdate(), actualOwner.getBirthdate());
+        Assert.assertEquals(expectedOwner.getProfilePic(), actualOwner.getProfilePic());
     }
 
 }

@@ -8,6 +8,7 @@ public class RegisterOwnerDto {
     private String lastName;
     private String firstName;
     private LocalDate birthdate;
+    private String profilePic;
 
     public int getId() {
         return id;
@@ -15,6 +16,14 @@ public class RegisterOwnerDto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     public void setLastName(String lastName) {

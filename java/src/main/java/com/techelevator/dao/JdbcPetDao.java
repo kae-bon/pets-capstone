@@ -23,7 +23,7 @@ public class JdbcPetDao implements PetDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private final String SELECT_SQL = "SELECT pet_id, name, owner_id, birthdate, breed, size, isFriendly FROM pets ";
+    private final String SELECT_SQL = "SELECT pet_id, name, owner_id, birthdate, breed, size, isFriendly, profile_pic FROM pets ";
 
 
 
@@ -79,7 +79,7 @@ public class JdbcPetDao implements PetDao {
     @Override
     public Pet createPet(RegisterPetDto pet) {
         Pet newPet = null;
-        String sql = "INSERT INTO pets(name, owner_id, birthdate, breed, size, isFriendly) values(?, ?, ?, ?, ?, ?) RETURNING pet_id;";
+        String sql = "INSERT INTO pets(name, owner_id, birthdate, breed, size, isFriendly, profile_pic) values(?, ?, ?, ?, ?, ?, ?) RETURNING pet_id;";
         try {
             int newPetId = jdbcTemplate.queryForObject(
                     sql,
@@ -88,7 +88,8 @@ public class JdbcPetDao implements PetDao {
                     pet.getBirthdate(),
                     pet.getBreed(),
                     pet.getSize(),
-                    pet.getFriendly());
+                    pet.getFriendly(),
+                    pet.getProfilePic());
             newPet = getPetById(newPetId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -110,6 +111,7 @@ public class JdbcPetDao implements PetDao {
         pet.setBreed(results.getString("breed"));
         pet.setSize(results.getString("size"));
         pet.setFriendly(results.getBoolean("isFriendly"));
+        pet.setProfilePic(results.getString("profile_pic"));
 
 
         return pet;

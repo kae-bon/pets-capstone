@@ -9,26 +9,19 @@ INSERT INTO locations(location_name, street_address, city, state_abbr)
 VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
 ('Fido Field', '630 Eggleston Ave', 'Cincinnati', 'OH');
 
-
-INSERT INTO owners (user_id, first_name, last_name, birthdate)
+INSERT INTO owners (user_id, first_name, last_name, birthdate, profile_pic)
 VALUES
-    (1,'Steve', 'McQueen', '1930-03-24'),
-    (2,'Kae', 'Bonaguro', '1996-05-02'),
-    (3,'Nick', 'Hamm', '1981-09-18');
+    (1,'Steve', 'McQueen', '1930-03-24', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg'),
+    (2,'Kae', 'Bonaguro', '1996-05-02', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg'),
+    (3,'Nick', 'Hamm', '1981-09-18', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg');
 
 INSERT INTO play_dates(title, description, host_id, date_time, location_id, ispublic)
 VALUES ('Test', 'Testy Tests', 1, '2024-05-02 14:30:00', 1, true),
 ('Luna', 'With Luna', 1, '2024-04-15 12:00:00', 1, false);
 
-INSERT INTO pets (name, owner_id, birthdate, breed, size, isFriendly)
+INSERT INTO pets (name, owner_id, birthdate, breed, size, isFriendly, profile_pic)
 VALUES
-    ('Bean', '1','1996-05-02','pug', 'S', 'true'),
-    ('Steve', '2', '2008-03-05', 'labrador', 'XL', 'true');
-
-
-
-
-
-
+    ('Bean', '1','1996-05-02','pug', 'S', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg'),
+    ('Steve', '2', '2008-03-05', 'labrador', 'XL', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg');
 
  COMMIT TRANSACTION;
