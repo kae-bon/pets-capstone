@@ -100,6 +100,7 @@ export default {
             })
         },
         setImgToDisplay(img) {
+            this.newPet.profilePic = img;
             this.profileImg = img;
         },
     }
