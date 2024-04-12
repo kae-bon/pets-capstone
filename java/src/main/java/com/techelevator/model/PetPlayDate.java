@@ -17,4 +17,15 @@ public class PetPlayDate {
         this.petId = petId;
     }
 
+    public PetPlayDate() {
+
+    }
+
+    public void setPlayDateId(int playDateId) {
+        this.playDateId = playDateId;
+    }
+
+    public void setPetId(int petId) {
+        this.petId = petId;
+    }
 }

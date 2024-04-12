@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -35,6 +36,12 @@ public class PetPlayDateController {
         }
     }
 
-
-
+    @GetMapping("/playdates")
+    public List<PetPlayDate> getAllPetPlayDates() {
+        try {
+            return this.petPlayDateDao.getPetPlayDates();
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Couldn't retrieve playdates.");
+        }
+    }
 }
