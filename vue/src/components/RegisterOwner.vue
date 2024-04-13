@@ -73,6 +73,7 @@ export default {
             this.newOwner.id = this.$store.state.user.id;
             OwnerService.register(this.newOwner).then(response => {
                 if (response.status == 201) {
+                    this.$store.commit("SET_OWNER", this.newOwner);
                     this.ownerRegistered();
                 }
             })

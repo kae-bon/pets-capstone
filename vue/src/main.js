@@ -19,6 +19,7 @@ axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
 let currentToken = localStorage.getItem('token');
 let currentUser = JSON.parse(localStorage.getItem('user'));
 
+
 if (currentToken) {
   // Set token axios requests
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;

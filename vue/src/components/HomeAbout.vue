@@ -33,8 +33,8 @@ export default {
 
 <style scoped>
 img {
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 50%;
 }
 
 p {

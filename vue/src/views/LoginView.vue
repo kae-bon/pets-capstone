@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       user: {
-       // id: "",
+        // id: "",
         username: "",
         password: ""
       },
@@ -49,30 +49,30 @@ export default {
       authService
         .login(this.user)
         .then(response => {
-              if (response.status == 200) {
-                this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-                this.$store.commit("SET_USER", response.data.user);
-                ownerService.getOwner(response.data.user.id).then(owner => {
-                  this.$store.commit("SET_OWNER", owner.data);
-                  this.$router.push({name: 'user-home'});
-                })
-                    .catch(error => {
-                      const response = error.response;
-                      if (response.status == 404) {
-                        this.$router.push({name: 'accountinfo'})
-                      }
-                    })
-              }
-            }
-        ).catch(error => {
-        const response = error.response;
-        if (response.status === 401) {
-          this.invalidCredentials = true;
+          if (response.status == 200) {
+            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+            this.$store.commit("SET_USER", response.data.user);
+            ownerService.getOwner(response.data.user.id).then(owner => {
+              this.$store.commit("SET_OWNER", owner.data);
+              this.$router.push({ name: 'user-home' });
+            })
+              .catch(error => {
+                const response = error.response;
+                if (response.status == 404) {
+                  this.$router.push({ name: 'accountinfo' })
+                }
+              })
+          }
         }
-    })
+        ).catch(error => {
+          const response = error.response;
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        })
     }
   }
-  }
+}
 </script>
 
 <style scoped>

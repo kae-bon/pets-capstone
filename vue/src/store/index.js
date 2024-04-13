@@ -66,8 +66,10 @@ export function createStore(currentToken, currentUser) {
       LOGOUT(state) {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+
         state.token = '';
         state.user = {};
+
         axios.defaults.headers.common = {};
       },
       SET_NOTIFICATION(state, notification) {
@@ -105,6 +107,7 @@ export function createStore(currentToken, currentUser) {
       },
       SET_OWNER(state, owner) {
         state.owner = owner;
+
       }
     },
   });

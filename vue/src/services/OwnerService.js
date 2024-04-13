@@ -8,7 +8,11 @@ export default {
 
     getOwner(id) {
         return axios.get(`/owners/${id}`);
-    }
+    },
 
+    updateOwner(id, owner) {
+        console.log("hello")
+        return axios.put(`/owners/${id}`, owner);
+    }
 
 }
