@@ -19,9 +19,6 @@
                             {{ pet.name }}
                         </label>
                     </div>
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button :id="closeModalId" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
@@ -36,17 +33,29 @@
 <script>
 import PlayDateService from '../services/PlayDateService';
 export default {
-    props: ['playDateId'],
+    props: ['playDateId', 'filteredPetPlayDates'],
     data() {
         return {
             dogArray: [],
-            userPetIds: [],
             addPetFailed: false,
         }
     },
+    watch: {
+        // it looks like the prop is being updated after the component is created
+        filteredPetPlayDates: {
+            immediate: true,
+            handler(n, o) {
+                this.dogArray = [...this.filteredPetPlayDates];
+            }
+        }
+    },
     computed: {
+
         userPets() {
             return this.$store.state.pets;
+        },
+        userPetIds() {
+            return this.userPets.map(pet => pet.id)
         },
         closeModalId() {
             return "closePetsModal" + this.playDateId
@@ -67,26 +76,13 @@ export default {
         },
         closeModal() {
             this.addPetFailed = false;
-            this.dogArray = [];
             const modal = document.getElementById((this.closeModalId));
             modal.click();
         },
         confirmSuccess() {
             this.$emit('registration', 'success');
         },
-        filterPetPlayDates() {
-            this.dogArray = this.$store.state.petPlayDates.filter((petPlayDate) => {
-                this.userPetIds.includes(petPlayDate.petId) && this.playDateId === petPlayDate.playDateId
-            })
-
-        }
     },
-    created() {
-        this.userPets().forEach(pet => {
-            this.userPetIds.add(pet.id)
-        });
-        this.filterPetPlayDates()
-    }
 
 }
 </script>

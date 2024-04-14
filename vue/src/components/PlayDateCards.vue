@@ -14,7 +14,7 @@
         </div>
         <div class="modal fade" :id="modalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <SignUpForPlayDate :playDateId="this.playdate.playDateId" />
+            <SignUpForPlayDate :playDateId="playdate.playDateId" :filteredPetPlayDates="filteredPetPlayDates" />
         </div>
     </article>
 </template>
@@ -47,9 +47,16 @@ export default {
         },
         modalId() {
             return "sign-up-play-date-" + this.playdate.playDateId;
-        }, modalTarget() {
+        },
+        modalTarget() {
             return "#sign-up-play-date-" + this.playdate.playDateId;
-        }
+        },
+        filteredPetPlayDates() {
+            // return [{ petId: 1, playDateId: 1 }]
+            return this.$store.state.petPlayDates.filter((petPlayDate) => {
+                return this.playdate.playDateId === petPlayDate.playDateId
+            })
+        },
     },
 }
 </script>
