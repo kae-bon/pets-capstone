@@ -11,10 +11,6 @@
         <div class="d-flex flex-wrap flex-row justify-content-center ">
             <PlayDateCards v-for="playdate in playDates" :key="playdate.id" :playdate="playdate" />
         </div>
-        <div class="modalPlay fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <SignUpForPlayDate />
-        </div>
 
     </div>
 </template>
@@ -24,7 +20,6 @@ import PlayDateService from "../services/PlayDateService";
 import PlayDateCards from "../components/PlayDateCards.vue";
 import LocationService from "../services/LocationService";
 import CreatePlayDateButton from "../components/CreatePlayDateButton.vue";
-import SignUpForPlayDate from "../components/SignUpForPlayDate.vue";
 import PetService from "../services/PetService";
 
 export default {
@@ -36,7 +31,7 @@ export default {
         }
     },
     components: {
-        PlayDateCards, CreatePlayDateButton, SignUpForPlayDate
+        PlayDateCards, CreatePlayDateButton
     },
     created() {
         LocationService.getLocations()
@@ -49,10 +44,6 @@ export default {
                 PlayDateService.getUpcomingPlayDates()
                     .then(response => {
                         this.playDates = response.data;
-                        PlayDateService.getPetPlayDates()
-                            .then(response => {
-                                this.$store.state.petPlayDates = response.data
-                            });
                     });
             })
     }

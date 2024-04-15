@@ -103,6 +103,27 @@ public class JdbcPetDao implements PetDao {
         return newPet;
     }
 
+    @Override
+    public List<Pet> getPlayDatePets(int playDateId) {
+        List<Pet> playDatePetList = new ArrayList<>();
+        String sql ="SELECT pets.pet_id, name, owner_id, birthdate, breed, size, isfriendly\n" +
+                "FROM pets\n" +
+                "JOIN pet_play_dates ON pets.pet_id = pet_play_dates.pet_id\n" +
+                "WHERE play_date_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, playDateId);
+            while (results.next()) {
+                Pet pet  = mapRowToPet(results);
+                playDatePetList.add(pet);
+            }
+        }catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataAccessException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return playDatePetList;
+    }
+
     private Pet mapRowToPet(SqlRowSet results) {
         Pet pet = new Pet();
         pet.setId(results.getInt("pet_id"));

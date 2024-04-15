@@ -12,8 +12,7 @@
                 <div class="modal-body">
 
                     <div class="form-check mb-3" v-for="pet in userPets" :key="pet.id">
-                        <input class="form-check-input" type="checkbox"
-                            :value="{ 'petId': pet.id, 'playDateId': playDateId }" name="flexCheckDefault" :id="pet.id"
+                        <input class="form-check-input" type="checkbox" :value="pet.id" name="flexCheckDefault" :id="pet.id"
                             v-model="dogArray">
                         <label class="form-check-label" :for="pet.id">
                             {{ pet.name }}
@@ -33,7 +32,17 @@
 <script>
 import PlayDateService from '../services/PlayDateService';
 export default {
-    props: ['playDateId', 'filteredPetPlayDates'],
+    props: {
+        playDateId: {
+            type: Number,
+            required: true
+        },
+        filteredPetIds: {
+            type: Array,
+            required: true,
+            // default: () => []
+        }
+    },
     data() {
         return {
             dogArray: [],
@@ -42,10 +51,10 @@ export default {
     },
     watch: {
         // it looks like the prop is being updated after the component is created
-        filteredPetPlayDates: {
+        filteredPetIds: {
             immediate: true,
             handler(n, o) {
-                this.dogArray = [...this.filteredPetPlayDates];
+                this.dogArray = this.filteredPetIds == null ? [] : [...this.filteredPetIds];
             }
         }
     },
@@ -63,7 +72,12 @@ export default {
     },
     methods: {
         submitPets() {
-            PlayDateService.addPetsToPlayDate(this.dogArray)
+            let petMap = [];
+            this.dogArray.forEach((petId) => {
+                petMap.push({ petId: petId, playDateId: this.playDateId })
+            })
+
+            PlayDateService.addPetsToPlayDate(petMap)
                 .then(response => {
                     if (response.status == 202) {
                         this.confirmSuccess();

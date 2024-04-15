@@ -14,7 +14,7 @@
         </div>
         <div class="modal fade" :id="modalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <SignUpForPlayDate :playDateId="playdate.playDateId" :filteredPetPlayDates="filteredPetPlayDates" />
+            <SignUpForPlayDate :playDateId="playdate.playDateId" :filteredPetIds="filteredPetIds" />
         </div>
     </article>
 </template>
@@ -51,12 +51,17 @@ export default {
         modalTarget() {
             return "#sign-up-play-date-" + this.playdate.playDateId;
         },
-        filteredPetPlayDates() {
-            // return [{ petId: 1, playDateId: 1 }]
-            return this.$store.state.petPlayDates.filter((petPlayDate) => {
-                return this.playdate.playDateId === petPlayDate.playDateId
+        filteredPetIds() {
+            let petIds = [];
+            let attendingPetIds = this.playdate.attendingPets.map(pet => pet.id);
+
+            this.$store.state.pets.forEach((pet) => {
+                if (attendingPetIds.includes(pet.id)) {
+                    petIds.push(pet.id)
+                }
             })
-        },
+            return petIds
+        }
     },
 }
 </script>

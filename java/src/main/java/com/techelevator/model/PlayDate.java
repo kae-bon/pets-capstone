@@ -3,6 +3,8 @@ package com.techelevator.model;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayDate {
     @NotNull
@@ -22,6 +24,8 @@ public class PlayDate {
     @NotNull
     private boolean publicDate;
 
+    private List<Pet> attendingPets;
+
     public PlayDate() {}
 
     public PlayDate(int playDateId, String title, String description, int hostId, LocalDateTime dateTime, int locationId, boolean publicDate) {
@@ -32,6 +36,12 @@ public class PlayDate {
         this.dateTime = dateTime;
         this.locationId = locationId;
         this.publicDate = publicDate;
+        this.attendingPets = new ArrayList<>();
+    }
+
+    public PlayDate(List<Pet> attendingPets, int playDateId, String title, String description, int hostId, LocalDateTime dateTime, int locationId, boolean publicDate) {
+        this (playDateId,  title, description, hostId,  dateTime, locationId, publicDate);
+        this.attendingPets = attendingPets;
     }
 
     public int getPlayDateId() {
@@ -74,6 +84,10 @@ public class PlayDate {
         return locationId;
     }
 
+    public List<Pet> getAttendingPets() {
+        return attendingPets;
+    }
+
     public void setLocationId(int locationId) {
         this.locationId = locationId;
     }
@@ -88,5 +102,9 @@ public class PlayDate {
 
     public void setPlayDateId(int playDateId) {
         this.playDateId = playDateId;
+    }
+
+    public void setAttendingPets(List<Pet> pets) {
+        this.attendingPets = pets;
     }
 }

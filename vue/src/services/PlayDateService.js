@@ -14,13 +14,8 @@ export default {
         return axios.get(`/playdates?host_id=${userId}`);
     },
 
-    addPetsToPlayDate(petPlayDateArray) {
-        return axios.post('/playdates/pets', petPlayDateArray);
+    addPetsToPlayDate(petMap) {
+        return axios.post('/playdates/pets', petMap);
     },
-
-    getPetPlayDates() {
-        return axios.get('/petplaydates');
-    }
-
 
 }

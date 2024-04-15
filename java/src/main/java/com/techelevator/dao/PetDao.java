@@ -15,6 +15,6 @@ public interface PetDao {
 
     Pet createPet(RegisterPetDto pet);
 
-
+    public List<Pet> getPlayDatePets(int playDateId);
 
 }
