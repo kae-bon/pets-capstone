@@ -38,7 +38,7 @@ VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
 ;
 
 INSERT INTO play_dates(title, description, host_id, date_time, location_id, ispublic)
-VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the local park.', 1, '2024-04-15 10:00:00', 1, true),
+VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the local park.', 1, '2024-04-17 10:00:00', 1, true),
 ('Canine Carnival', 'Join us for a carnival-themed event filled with games and treats for dogs!', 2, '2024-04-20 12:00:00', 2, true),
 ('Fetch Frenzy', 'A day dedicated to playing fetch with all the furry friends.', 2, '2024-04-25 14:00:00', 3, true),
 ('Doggy Dip Day', 'Cool off with your pups in a splash-worthy pool party!', 2, '2024-04-18 11:00:00', 4, true),

@@ -52,7 +52,6 @@
 import PetService from '../services/PetService';
 import PicUploaderButton from './PicUploaderButton.vue';
 
-
 export default {
     components: { PicUploaderButton },
     data() {

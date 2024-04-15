@@ -1,13 +1,13 @@
 <template>
     <div>
         <RegisterOwner v-if="showRegisterOwner" @ownerRegistered="toggleForms" />
-        <EditPetInfo v-if="showRegisterPet" />
+        <RegisterPet v-if="showRegisterPet" />
     </div>
 </template>
 
 <script>
 import RegisterOwner from '../components/RegisterOwner.vue';
-import EditPetInfo from '../components/EditPetInfo.vue';
+import RegisterPet from '../components/RegisterPet.vue';
 
 
 export default {
@@ -18,7 +18,7 @@ export default {
         }
     },
     components: {
-        RegisterOwner, EditPetInfo
+        RegisterOwner, RegisterPet
     },
     methods: {
         toggleForms() {

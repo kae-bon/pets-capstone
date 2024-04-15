@@ -15,10 +15,17 @@
         <p>{{ birthday }}</p>
       </div>
     </div>
+
     <!-- Button trigger modal -->
     <div>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfile">
         Edit User Information
+      </button>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-primary" @click="registerNewPet">
+        Register New Pet
       </button>
     </div>
 
@@ -27,15 +34,18 @@
       aria-labelledby="editOwnerProfile" aria-hidden="true">
       <editOwnerProfile />
     </div>
+
+
   </div>
 </template>
 
 <script>
 import OwnerService from '../services/OwnerService';
 import editOwnerProfile from '../components/EditOwnerProfile.vue'
+import RegisteredPets from '../components/RegisteredPets.vue';
 
 export default {
-  components: { editOwnerProfile },
+  components: { editOwnerProfile, RegisteredPets },
   name: "ProfileView.vue",
   created() {
     OwnerService.getOwner(this.$store.state.user.id)
@@ -57,8 +67,8 @@ export default {
     }
   },
   methods: {
-    editOwnerProfile() {
-
+    registerNewPet() {
+      this.$router.push({ name: 'register-pet' })
     }
   }
 }
