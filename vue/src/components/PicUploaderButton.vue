@@ -40,6 +40,9 @@ export default {
           // window.alert("Successful upload!");
           // At this point you can save the URL to an object:
           // result.info.url
+          // result.info.height = 250;
+          // result.info.width = 250;
+
           this.imgUrl = result.info.url;
           this.thumbnailUrl = result.info.thumbnail_url;
           console.log(this.imgUrl);

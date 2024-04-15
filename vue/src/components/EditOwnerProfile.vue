@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="modal-dialog">
+        <div class="modal-dialog" @show.bs.modal="alert('here')">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Profile</h1>
@@ -31,8 +31,8 @@
 
                         <PicUploaderButton class="mb-5 text-center" @imageUploaded="setImgToDisplay" />
                         <div class="d-flex justify-content-between">
-                            <button type="button" id="closeEditModal" class="btn btn-danger"
-                                data-bs-dismiss="modal">Close</button>
+                            <button type="button" id="closeEditModal" class="btn btn-danger" data-bs-dismiss="modal"
+                                @click="resetForm">Close</button>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                     </form>
@@ -48,16 +48,17 @@ import PicUploaderButton from '../components/PicUploaderButton.vue';
 import OwnerService from '../services/OwnerService';
 
 export default {
+    props: ['owner'],
     components: {
         PicUploaderButton
     },
     data() {
         return {
             updatedOwner: {
-                firstName: this.$store.state.owner.firstName,
-                lastName: this.$store.state.owner.lastName,
-                birthdate: this.$store.state.owner.birthdate,
-                profilePic: this.$store.state.owner.profilePic
+                firstName: this.owner.firstName,
+                lastName: this.owner.lastName,
+                birthdate: this.owner.birthdate,
+                profilePic: this.owner.profilePic
             },
             updatedUser: {
                 email: this.$store.state.user.username
@@ -93,6 +94,12 @@ export default {
             // this.$store.state.owner.profilePic = img;
             this.updatedOwner.profilePic = img;
         },
+        resetForm() {
+            this.updatedOwner.firstName = this.$store.state.owner.firstName;
+            this.updatedOwner.lastName = this.$store.state.owner.lastName;
+            this.updatedOwner.birthdate = this.$store.state.owner.birthdate;
+            this.updatedOwner.profilePic = this.$store.state.owner.profilePic;
+        }
     },
     computed: {
         minBirthday() {
@@ -107,6 +114,21 @@ export default {
                 return currentYear + "-0" + currentMonth + "-" + currentDay;
             } else return currentYear + "-" + currentMonth + "-" + currentDay;
         }
+    },
+    watch: {
+        // it looks like the prop is being updated after the component is created
+        owner: {
+            immediate: true,
+            handler(n, o) {
+                this.updatedOwner = this.owner;
+            }
+        }
+    },
+    created() {
+        // this.updatedOwner.firstName = this.$store.state.owner.firstName;
+        // this.updatedOwner.lastName = this.$store.state.owner.lastName;
+        // this.updatedOwner.birthdate = this.$store.state.owner.birthdate;
+        // this.updatedOwner.profilePic = this.$store.state.owner.profilePic;
     }
 }
 </script>

@@ -8,7 +8,7 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: currentUser || {},
-      owner: {},
+      owner: { firstName: "missing" },
       defaultOwnerPic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png',
       defaultPetPic: 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712928065/rnqxaeqmxt0cneix8egk.png',
       pets: [],
