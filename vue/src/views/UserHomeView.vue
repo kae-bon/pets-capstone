@@ -1,15 +1,25 @@
 <template>
-    <div class="d-flex">
+    <div class="container d-flex justify-content-between">
         <div class="alert alert-success alert-dismissible fade show w-50" role="alert" v-if="registrationSuccessful">
             <strong>Get Ready to Play!</strong> Your dog has been registered for the play date!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <CreatePlayDateButton />
-        <div class="d-flex flex-wrap flex-row justify-content-center ">
-            <PlayDateCards v-for="playdate in playDates" :key="playdate.id" :playdate="playdate"
-                @registration="registrationSuccessful = true" />
-        </div>
-        <div>
+        <section class="d-flex flex-column w-30 flex-grow-1 pe-5">
+            <h1 class="mb-5">Welcome, {{ $store.state.owner.firstName }}!</h1>
+            <div>
+                <div>
+                    <h2 class="mb-3">Your Play Dates</h2>
+                    <CreatePlayDateButton class="mb-3" />
+                    <div class="d-flex flex-wrap flex-row justify-content-center">
+                        <PlayDateCards class="w-100 playDateCards" v-for="playdate in playDates" :key="playdate.id"
+                            :playdate="playdate" @registration="registrationSuccessful = true" />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <div class="d-flex flex-column align-items-center">
+            <h2>Your Pets</h2>
             <RegisteredPets />
         </div>
     </div>
@@ -55,5 +65,16 @@ export default {
 <style scoped>
 i {
     font-size: 5rem;
+}
+
+.playDateCards {
+    /* max-width: 100%; */
+    flex-basis: 0;
+    max-width: 30%;
+    min-width: fit-content;
+}
+
+section {
+    max-width: 90%;
 }
 </style>

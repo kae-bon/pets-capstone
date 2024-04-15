@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card text-center" style="width: 12rem;">
+        <div class="card text-center" style="width: 15rem;">
             <img :src="petPic" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ pet.name }}</h5>

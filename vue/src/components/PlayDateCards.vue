@@ -1,5 +1,5 @@
 <template>
-    <article class="card text-center  col-sm-3 m-3">
+    <article class="card text-center col m-3">
         <p>{{ playdate.host_id }}</p>
         <div class="card-body d-flex flex-column justify-content-between">
             <h2 class="card-title">{{ playdate.title }}</h2>

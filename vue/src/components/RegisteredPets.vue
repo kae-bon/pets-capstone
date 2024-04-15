@@ -4,7 +4,7 @@
     </div>
 
     <div v-else>
-        <SimplePetCard v-for="pet in $store.state.pets" :key="pet.id" :pet="pet" />
+        <SimplePetCard class="mb-3" v-for="pet in $store.state.pets" :key="pet.id" :pet="pet" />
     </div>
 </template>
 

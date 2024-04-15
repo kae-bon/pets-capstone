@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="d-flex justify-content-center align-items-center flex-row pb-3">
+        <div class="d-flex align-items-center column-gap-3">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i class="fa-solid fa-dog" style="color: #2ab7ca;"></i>
             </button>
-            <p>Click the Dog to Register a new Play Date!</p>
+            <p class="m-0">Click the Dog to Register a new Play Date!</p>
         </div>
 
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -31,12 +31,8 @@ export default {
 </script>
 
 <style scoped>
-/* .btn {
-    font-size: 1rem;
-} */
-
 i {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .createPlayDate {

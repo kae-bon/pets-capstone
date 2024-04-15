@@ -28,9 +28,9 @@
       <i class="fa-solid fa-paw"></i><i class="fa-solid fa-paw"></i><i class="fa-solid fa-paw"></i>
     </div>
     <article>
-      <div class="text-center mb-4">
+      <div class="d-flex justify-content-start mb-4 column-gap-5 align-items-center">
         <h1 class="mb-3">My Pets</h1>
-        <button type="button" class="btn btn-primary mb-4" @click="registerNewPet">
+        <button type="button" class="btn btn-primary" @click="registerNewPet">
           Register New Pet
         </button>
       </div>
