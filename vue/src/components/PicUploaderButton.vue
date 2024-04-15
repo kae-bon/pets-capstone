@@ -1,6 +1,6 @@
 <template>
   <div class="cloud upload">
-    <button class="btn btn-primary" v-on:click.prevent="upload">Upload Image</button>
+    <button class="btn btn-secondary" v-on:click.prevent="upload">Upload Image</button>
   </div>
 </template>
 
@@ -70,4 +70,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+button {
+  color: #fcfcff;
+}
+</style>

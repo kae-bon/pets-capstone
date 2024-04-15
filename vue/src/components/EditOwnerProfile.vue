@@ -28,10 +28,13 @@
                                 placeholder="birthdate" autofocus :max="minBirthday" />
                             <label class="form-label" for="start">Birthdate</label>
                         </div>
-                        <PicUploaderButton @imageUploaded="setImgToDisplay" />
-                        <button type="button" id="closeEditModal" class="btn btn-secondary"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+
+                        <PicUploaderButton class="mb-5 text-center" @imageUploaded="setImgToDisplay" />
+                        <div class="d-flex justify-content-between">
+                            <button type="button" id="closeEditModal" class="btn btn-danger"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
                     </form>
                 </div>
 

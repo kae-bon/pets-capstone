@@ -5,12 +5,12 @@
 $dark: #003049;
 $light: #fcfcff;
 $primary: #fcbf49;
-$turquoise: #2ab7ca;
+$secondary: #2ab7ca;
 $orange: #f77f00;
 
 $focus-ring-width: .25rem;
 $focus-ring-opacity: .25;
-$focus-ring-color: rgba($turquoise, $focus-ring-opacity);
+$focus-ring-color: rgba($secondary, $focus-ring-opacity);
 $focus-ring-blur: 0;
 $focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color;
 
@@ -19,7 +19,7 @@ $form-check-input-checked-bg-color: $primary;
 $form-check-input-focus-border: $primary;
 $form-check-input-focus-box-shadow: $focus-ring-box-shadow;
 
-$input-focus-border-color: $turquoise;
+$input-focus-border-color: $secondary;
 
 // Required Stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -56,7 +56,7 @@ $input-focus-border-color: $turquoise;
 }
 
 a {
-    color: $turquoise;
+    color: $secondary;
     transition: color 500ms;
     text-decoration: none;
 }
@@ -97,7 +97,7 @@ h2 {
 }
 
 i {
-    color: $turquoise;
+    color: $secondary;
 }
 
 footer {
