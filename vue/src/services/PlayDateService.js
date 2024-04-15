@@ -18,4 +18,8 @@ export default {
         return axios.post('/playdates/pets', petMap);
     },
 
+    getPlayDateById(playDateId) {
+        return axios.get(`/playdates/${playDateId}`);
+    }
+
 }

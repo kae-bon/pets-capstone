@@ -28,7 +28,7 @@ CREATE TABLE pets(
     birthdate date NOT NULL,
     breed varchar(25) NOT NULL,
     size varchar(10) NOT NULL,
-    isFriendly boolean NOT NULL,
+    isfriendly boolean NOT NULL,
     profile_pic VARCHAR(200) NOT NULL,
     CONSTRAINT PK_pet PRIMARY KEY (pet_id),
 	CONSTRAINT FK_pet_owner FOREIGN KEY (owner_id) REFERENCES owners (user_id),
