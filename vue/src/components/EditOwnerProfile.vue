@@ -90,8 +90,7 @@ export default {
             modal.click();
         },
         setImgToDisplay(img) {
-            this.profileImg = img;
-            this.$store.state.owner.profilePic = img;
+            // this.$store.state.owner.profilePic = img;
             this.updatedOwner.profilePic = img;
         },
     },
