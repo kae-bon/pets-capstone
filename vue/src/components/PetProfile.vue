@@ -1,15 +1,15 @@
 <template>
     <div>
-        <div class="text-center">
-            <img :src="petPic" alt="pic of registered pet">
-            <h2>Name</h2>
-            <p class="mb-4">{{ pet.name }}</p>
-            <h2>Breed</h2>
-            <p class="mb-4">{{ pet.breed }}</p>
-            <h2>Size</h2>
-            <p class="mb-4">{{ pet.size }}</p>
-            <h2>Birthday</h2>
-            <p>{{ pet.birthdate }}</p>
+        <div class="card text-center" style="width: 12rem;">
+            <img :src="petPic" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ pet.name }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ pet.breed }}</li>
+                <li class="list-group-item">{{ pet.size }}</li>
+                <li class="list-group-item">{{ birthday }}</li>
+            </ul>
         </div>
     </div>
 </template>
@@ -19,19 +19,29 @@ export default {
     props: ['pet'],
     computed: {
         petPic() {
-            return this.pet.profilePic;
+            if (this.pet.profilePic == "") {
+                return this.$store.state.defaultPetPic;
+            } else return this.pet.profilePic;
+        },
+        birthday() {
+            let birthday = this.pet.birthdate;
+            let date = new Date(birthday);
+            return date.toLocaleDateString();
         }
     }
 }
 </script>
 
 <style scoped>
-h2 {
-    font-size: 1.2rem;
+h5 {
+    font-size: 1.1rem;
+}
+
+li {
+    font-size: .9rem;
 }
 
 img {
-    width: 200px;
-    height: auto;
+    max-width: 100%;
 }
 </style>

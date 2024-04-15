@@ -1,7 +1,7 @@
 
 <template>
-  <div class="d-flex justify-content-around">
-    <div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="container">
+    <article class="d-flex flex-column justify-content-center align-items-center mb-5">
       <h1 class="mb-5">{{ $store.state.owner.firstName }}'s Profile</h1>
       <div class="d-flex align-items-center justify-content-center mb-5 column-gap-5 w-100">
         <img class="img-thumbnail profilePic" :src="profilePic" alt="user's profile picture">
@@ -23,13 +23,23 @@
           Edit User Information
         </button>
       </div>
+    </article>
+    <div class="d-flex justify-content-center column-gap-5 mb-5">
+      <i class="fa-solid fa-paw"></i><i class="fa-solid fa-paw"></i><i class="fa-solid fa-paw"></i>
     </div>
-    <div>
+    <article>
+      <div class="text-center mb-4">
+        <h1 class="mb-3">My Pets</h1>
+        <button type="button" class="btn btn-primary mb-4" @click="registerNewPet">
+          Register New Pet
+        </button>
+      </div>
+
+
+
       <RegisteredPets />
-      <button type="button" class="btn btn-primary" @click="registerNewPet">
-        Register New Pet
-      </button>
-    </div>
+
+    </article>
   </div>
 
   <!-- Modal -->
@@ -50,7 +60,7 @@ export default {
   name: "ProfileView.vue",
   data() {
     return {
-      currentOwner: this.$store.state.owner
+      currentOwner: this.$store.state.owner,
     }
   },
   created() {
@@ -101,5 +111,9 @@ export default {
 
 h2 {
   font-size: 1.5rem;
+}
+
+i {
+  font-size: 2rem;
 }
 </style>

@@ -1,15 +1,22 @@
 <template>
-    <div v-for="pet in $store.state.pets" :key="pet.id">
-        <PetProfile :pet="pet" />
+    <div v-if="$route.name == 'profile'" class="d-flex column-gap-2 row-gap-3 flex-wrap justify-content-between">
+        <PetProfile v-for="pet in $store.state.pets" :key="pet.id" :pet="pet" />
+    </div>
+
+    <div v-else>
+        <SimplePetCard v-for="pet in $store.state.pets" :key="pet.id" :pet="pet" />
     </div>
 </template>
 
 <script>
 import PetProfile from './PetProfile.vue';
+import SimplePetCard from './SimplePetCard.vue';
+
 
 export default {
-    components: { PetProfile }
+    components: { PetProfile, SimplePetCard },
+
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
