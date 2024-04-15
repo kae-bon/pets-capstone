@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.RegisterOwnerDto;
 import com.techelevator.model.RegisterUserDto;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -87,6 +88,8 @@ public class JdbcUserDao implements UserDao {
         }
         return newUser;
     }
+
+
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();

@@ -58,14 +58,16 @@ public class JdbcOwnerDao implements OwnerDao {
     public Owner updateOwner(Owner owner) {
         Owner updatedOwner = null;
 
-        String sql = "UPDATE owners SET first_name = ?, last_name = ?, birthdate = ?, profile_pic = ?, email = ? WHERE user_id = ?;";
+        String sql = "UPDATE owners SET first_name = ?, last_name = ?, birthdate = ?, profile_pic = ?, email = ? WHERE user_id = ?; " +
+                "UPDATE users SET username = ? WHERE user_id = ?";
 
         try {
-            int numberOfRows = jdbcTemplate.update(sql, owner.getFirstName(), owner.getLastName(), owner.getBirthdate(), owner.getProfilePic(), owner.getEmail(), owner.getId());
+            int numberOfRows = jdbcTemplate.update(sql, owner.getFirstName(), owner.getLastName(), owner.getBirthdate(), owner.getProfilePic(), owner.getEmail(), owner.getId(), owner.getEmail(), owner.getId());
             if (numberOfRows == 0) {
                 throw new DaoException("No rows updated");
             } else {
                 updatedOwner = getOwnerById(owner.getId());
+
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
