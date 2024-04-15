@@ -5,10 +5,10 @@ VALUES
     ('stevemcqueeniscool@yahoo.com','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'), -- user_id:1
     ('kaeiscooler@gmail.com','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN'); -- user_id:2
 
-INSERT INTO owners (user_id, first_name, last_name, birthdate, profile_pic)
+INSERT INTO owners (user_id, first_name, last_name, birthdate, profile_pic, email)
 VALUES
-    (1, 'Steve', 'McQueen', '1930-03-24', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712951834/d5qnyhtprq1y40lszwxr.jpg'),
-    (2, 'Kae', 'Bonaguro', '1996-05-02', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712951916/wajywycfsz68kvknt1ci.jpg');
+    (1, 'Steve', 'McQueen', '1930-03-24', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712951834/d5qnyhtprq1y40lszwxr.jpg', 'stevemcqueeniscool@yahoo.com'),
+    (2, 'Kae', 'Bonaguro', '1996-05-02', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712951916/wajywycfsz68kvknt1ci.jpg', 'kaeiscooler@gmail.com');
 
 INSERT INTO pets (name, owner_id, birthdate, breed, size, isFriendly, profile_pic)
 VALUES
@@ -38,7 +38,7 @@ VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
 ;
 
 INSERT INTO play_dates(title, description, host_id, date_time, location_id, ispublic)
-VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the local park.', 1, '2024-04-15 10:00:00', 1, true),
+VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the local park.', 1, '2024-04-17 10:00:00', 1, true),
 ('Canine Carnival', 'Join us for a carnival-themed event filled with games and treats for dogs!', 2, '2024-04-20 12:00:00', 2, true),
 ('Fetch Frenzy', 'A day dedicated to playing fetch with all the furry friends.', 2, '2024-04-25 14:00:00', 3, true),
 ('Doggy Dip Day', 'Cool off with your pups in a splash-worthy pool party!', 2, '2024-04-18 11:00:00', 4, true),
