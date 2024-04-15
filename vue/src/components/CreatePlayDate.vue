@@ -95,7 +95,6 @@ export default {
     },
     methods: {
         submitForm() {
-
             playDateService.createPlayDate(this.newPlayDate)
                 .then(response => {
                     if (response.status == 201) {

@@ -29,7 +29,8 @@
                             <label class="form-label" for="start">Birthdate</label>
                         </div>
                         <PicUploaderButton @imageUploaded="setImgToDisplay" />
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="closeEditModal" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
                 </div>
@@ -76,10 +77,14 @@ export default {
             OwnerService.updateOwner(this.$store.state.user.id, this.updatedOwner)
                 .then(response => {
                     if (response.status === 200) {
-                        // this.$store.state.owner = response.data;
+                        this.closeModal();
                         this.$store.commit("SET_OWNER", this.updatedOwner);
                     }
                 })
+        },
+        closeModal() {
+            const modal = document.getElementById('closeEditModal');
+            modal.click();
         },
         setImgToDisplay(img) {
             this.profileImg = img;
