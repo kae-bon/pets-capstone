@@ -58,19 +58,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
         return playDate;
     }
 
-    // write tests for this once we have the pet model information - COME BACK TO THIS!!!!!!!!!
-    @Override
-    public void insertPetPlayDate(int petId, int playDateId) {
-        String sql = "INSERT INTO pet_play_dates(play_date_id, pet_id)\n" +
-                "VALUES (?, ?);";
-        try {
-            jdbc.update(sql, playDateId, petId);
-        } catch (CannotGetJdbcConnectionException e){
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e){
-            throw new DaoException("Data integrity violation", e);
-        }
-    }
+
 
     @Override
     public List<PlayDate> getUpcomingPlayDates() {
