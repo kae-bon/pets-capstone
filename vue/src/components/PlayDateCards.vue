@@ -7,10 +7,14 @@
             <p class="card-text">{{ playdate.description }}</p>
             <p class="time">{{ playDateTime }}</p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer d-flex justify-content-around">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="modalTarget">
                 RSVP
             </button>
+            <router-link class="btn btn-primary"
+                v-bind:to="{ name: 'play-date-details', params: { playDateId: this.playdate.playDateId } }">
+                More Info
+            </router-link>
         </div>
         <div class="modal fade" :id="modalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
