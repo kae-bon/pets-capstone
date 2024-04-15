@@ -10,7 +10,7 @@
                     <form @submit.prevent="update()">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" v-model="updatedOwner.firstName" id="firstname"
-                                placeholder="name@example.com">
+                                placeholder="firstname">
                             <label for="floatingInput">First Name</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -51,7 +51,7 @@ export default {
         return {
             updatedOwner: {
                 firstName: this.$store.state.owner.firstName,
-                lastName: this.$store.state.owner.lastname,
+                lastName: this.$store.state.owner.lastName,
                 birthdate: this.$store.state.owner.birthdate,
                 profilePic: this.$store.state.owner.profilePic
             },
@@ -67,9 +67,6 @@ export default {
             }
             if (this.updatedOwner.lastName == "" || this.updatedOwner.lastName == null) {
                 this.updatedOwner.lastName = this.$store.state.owner.lastName
-            }
-            if (this.updatedOwner.birthdate == "" || this.updatedOwner.birthdate == null) {
-                this.updatedOwner.birthdate = this.$store.state.owner.birthdate
             }
             if (this.updatedUser.email == "" || this.updatedUser.email == null) {
                 this.updatedUser.email = this.$store.state.user.username

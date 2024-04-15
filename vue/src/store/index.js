@@ -69,6 +69,7 @@ export function createStore(currentToken, currentUser) {
 
         state.token = '';
         state.user = {};
+        state.owner = {};
 
         axios.defaults.headers.common = {};
       },
