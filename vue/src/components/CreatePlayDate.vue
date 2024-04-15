@@ -38,7 +38,7 @@
                             </select>
                             <label for="floatingSelect">Select a Location</label>
                         </div>
-                        <div class="form-check">
+                        <!-- <div class="form-check">
                             <input class="form-check-input" type="radio" :value="true" name="flexRadioDefault"
                                 id="radiopublic" v-model="newPlayDate.isPublic" checked required>
                             <label class="form-check-label" for="radiopublic">
@@ -51,7 +51,8 @@
                             <label class="form-check-label" for="radioprivate">
                                 Private - you approve who comes!
                             </label>
-                        </div>
+                        </div> -->
+
                         <div class="modal-footer pt-3">
                             <button id="closeModal" type="button" class="btn btn-danger" data-bs-dismiss="modal"
                                 @click="submitFailed = false">Close</button>
@@ -91,6 +92,7 @@ export default {
             today = today.toISOString().substring(0, 16);
             return today;
         },
+
 
     },
     methods: {
