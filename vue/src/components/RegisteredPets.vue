@@ -6,6 +6,7 @@
 
 <script>
 import PetProfile from './PetProfile.vue';
+
 export default {
     components: { PetProfile }
 }

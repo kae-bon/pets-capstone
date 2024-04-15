@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div class="modal-dialog" @show.bs.modal="alert('here')">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Profile</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form @submit.prevent="update()">
+                    <form @submit.prevent="update">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" v-model="updatedOwner.firstName" id="firstname"
                                 placeholder="firstname">
@@ -68,13 +68,19 @@ export default {
     methods: {
         update() {
             if (this.updatedOwner.firstName == "" || this.updatedOwner.firstName == null) {
-                this.updatedOwner.firstName = this.$store.state.owner.firstName
+                this.updatedOwner.firstName = this.owner.firstName
             }
             if (this.updatedOwner.lastName == "" || this.updatedOwner.lastName == null) {
-                this.updatedOwner.lastName = this.$store.state.owner.lastName
+                this.updatedOwner.lastName = this.owner.lastName
             }
             if (this.updatedUser.email == "" || this.updatedUser.email == null) {
-                this.updatedUser.email = this.$store.state.user.username
+                this.updatedUser.email = this.owner.email
+            }
+            if (this.updatedOwner.birthdate == null) {
+                this.updatedOwner.birthdate = this.owner.birthdate
+            }
+            if (this.updatedOwner.profilePic == "") {
+                this.updatedOwner.profilePic = this.owner.profilePic;
             }
             this.updatedOwner.userid = this.$store.state.user.id
 
@@ -82,23 +88,25 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         this.closeModal();
-                        this.$store.commit("SET_OWNER", this.updatedOwner);
+                        this.$store.commit("SET_OWNER", response.data);
                     }
                 })
         },
         closeModal() {
             const modal = document.getElementById('closeEditModal');
             modal.click();
+            this.resetForm();
         },
         setImgToDisplay(img) {
             // this.$store.state.owner.profilePic = img;
             this.updatedOwner.profilePic = img;
         },
         resetForm() {
-            this.updatedOwner.firstName = this.$store.state.owner.firstName;
-            this.updatedOwner.lastName = this.$store.state.owner.lastName;
-            this.updatedOwner.birthdate = this.$store.state.owner.birthdate;
-            this.updatedOwner.profilePic = this.$store.state.owner.profilePic;
+            // this.updatedOwner.firstName = this.owner.firstName;
+            // this.updatedOwner.lastName = this.owner.lastName;
+            // this.updatedOwner.birthdate = this.owner.birthdate;
+            // this.updatedOwner.profilePic = this.owner.profilePic;
+            this.updatedOwner = this.owner;
         }
     },
     computed: {
@@ -116,19 +124,12 @@ export default {
         }
     },
     watch: {
-        // it looks like the prop is being updated after the component is created
         owner: {
             immediate: true,
             handler(n, o) {
                 this.updatedOwner = this.owner;
             }
         }
-    },
-    created() {
-        // this.updatedOwner.firstName = this.$store.state.owner.firstName;
-        // this.updatedOwner.lastName = this.$store.state.owner.lastName;
-        // this.updatedOwner.birthdate = this.$store.state.owner.birthdate;
-        // this.updatedOwner.profilePic = this.$store.state.owner.profilePic;
     }
 }
 </script>

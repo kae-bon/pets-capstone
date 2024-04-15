@@ -35,23 +35,33 @@
   <!-- Modal -->
   <div class="modal fade" id="editProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="editOwnerProfile" aria-hidden="true">
-    <editOwnerProfile :owner="$store.state.owner" />
+    <editOwnerProfile :owner="currentOwner" @updatedProfile="resetOwner" />
   </div>
 </template>
 
 <script>
 import OwnerService from '../services/OwnerService';
+import PetService from '../services/PetService';
 import editOwnerProfile from '../components/EditOwnerProfile.vue'
 import RegisteredPets from '../components/RegisteredPets.vue';
 
 export default {
   components: { editOwnerProfile, RegisteredPets },
   name: "ProfileView.vue",
+  data() {
+    return {
+      currentOwner: this.$store.state.owner
+    }
+  },
   created() {
     OwnerService.getOwner(this.$store.state.user.id)
       .then(response => {
         this.$store.commit("SET_OWNER", response.data);
       })
+    PetService.getUserPets(this.$store.state.user.id)
+      .then(response => {
+        this.$store.state.pets = response.data
+      });
   },
   computed: {
     profilePic() {
@@ -69,7 +79,14 @@ export default {
   methods: {
     registerNewPet() {
       this.$router.push({ name: 'register-pet' })
+    },
+    resetOwner() {
+      OwnerService.getOwner(this.$store.state.user.id)
+        .then(response => {
+          this.$store.commit("SET_OWNER", response.data);
+        })
     }
+
   }
 }
 </script>
