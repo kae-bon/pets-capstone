@@ -107,7 +107,7 @@ public class JdbcPetDao implements PetDao {
     @Override
     public List<Pet> getPlayDatePets(int playDateId) {
         List<Pet> playDatePetList = new ArrayList<>();
-        String sql ="SELECT pets.pet_id, name, owner_id, birthdate, breed, size, isfriendly\n" +
+        String sql ="SELECT pets.pet_id, name, owner_id, birthdate, breed, size, isfriendly, profile_pic\n" +
                 "FROM pets\n" +
                 "JOIN pet_play_dates ON pets.pet_id = pet_play_dates.pet_id\n" +
                 "WHERE play_date_id = ?;";
@@ -133,7 +133,7 @@ public class JdbcPetDao implements PetDao {
         pet.setBirthdate(results.getDate("birthdate").toLocalDate());
         pet.setBreed(results.getString("breed"));
         pet.setSize(results.getString("size"));
-        pet.setFriendly(results.getBoolean("isFriendly"));
+        pet.setFriendly(results.getBoolean("isfriendly"));
         pet.setProfilePic(results.getString("profile_pic"));
 
 
