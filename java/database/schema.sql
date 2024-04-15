@@ -61,11 +61,10 @@ CREATE TABLE play_dates (
 );
 
 CREATE TABLE pet_play_dates (
-	pet_date_id SERIAL,
 	play_date_id INTEGER NOT NULL,
 	pet_id INTEGER NOT NULL,
 	
-	CONSTRAINT PK_pet_date_id PRIMARY KEY (pet_date_id),
+	CONSTRAINT PK_pet_play_date PRIMARY KEY (play_date_id, pet_id),
 	CONSTRAINT FK_play_date_id FOREIGN KEY (play_date_id) REFERENCES play_dates (play_date_id),
 	CONSTRAINT FK_pet_id FOREIGN KEY (pet_id) REFERENCES pets (pet_id)
 );

@@ -8,13 +8,13 @@
             <p class="time">{{ playDateTime }}</p>
         </div>
         <div class="card-footer">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sign-up-play-date">
-                register
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="modalTarget">
+                RSVP
             </button>
         </div>
-        <div class="modal fade" id="sign-up-play-date" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" :id="modalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <SignUpForPlayDate />
+            <SignUpForPlayDate :playDateId="playdate.playDateId" :filteredPetIds="filteredPetIds" />
         </div>
     </article>
 </template>
@@ -44,8 +44,25 @@ export default {
                 time = date.toLocaleTimeString().substring(0, 4) + " PM";
             }
             return date.toDateString() + " at " + time;
+        },
+        modalId() {
+            return "sign-up-play-date-" + this.playdate.playDateId;
+        },
+        modalTarget() {
+            return "#sign-up-play-date-" + this.playdate.playDateId;
+        },
+        filteredPetIds() {
+            let petIds = [];
+            let attendingPetIds = this.playdate.attendingPets.map(pet => pet.id);
+
+            this.$store.state.pets.forEach((pet) => {
+                if (attendingPetIds.includes(pet.id)) {
+                    petIds.push(pet.id)
+                }
+            })
+            return petIds
         }
-    }
+    },
 }
 </script>
 
