@@ -16,6 +16,7 @@ CREATE TABLE users (
     last_name varchar(50) NOT NULL,
     birthdate date NOT NULL,
     profile_pic VARCHAR(200) NOT NULL,
+    email VARCHAR(50) NOT NULL,
 	CONSTRAINT PK_owner PRIMARY KEY (user_id),
 	CONSTRAINT FK_user_owner FOREIGN KEY (user_id) REFERENCES users (user_id),
     CONSTRAINT eighteen_or_older CHECK (CURRENT_DATE - birthdate >= (18 * 365) )
@@ -50,7 +51,8 @@ CREATE TABLE play_dates (
 	title VARCHAR(100) NOT NULL,
 	description VARCHAR(300) NOT NULL,
 	host_id INTEGER NOT NULL,
-	date_time TIMESTAMP NOT NULL, 
+	date_time TIMESTAMP NOT NULL,
+	end_date_time TIMESTAMP NOT NULL,
 	location_id INTEGER NOT NULL,
 	isPublic BOOLEAN NOT NULL DEFAULT TRUE,
 	

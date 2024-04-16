@@ -10,6 +10,16 @@ public class RegisterOwnerDto {
     private LocalDate birthdate;
     private String profilePic;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String email;
+
     public int getId() {
         return id;
     }

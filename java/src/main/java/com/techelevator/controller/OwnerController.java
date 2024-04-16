@@ -5,6 +5,7 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.exception.UnderEighteenException;
 import com.techelevator.model.Owner;
 import com.techelevator.model.RegisterOwnerDto;
+import com.techelevator.model.UpdateOwnerDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -49,13 +50,13 @@ public class OwnerController {
     @ResponseStatus(HttpStatus.OK)
     @PutMapping(path = "/{id}")
     public Owner updateOwner(@RequestBody @Valid Owner updatedOwner, @PathVariable int id) {
-        try {
-            updatedOwner.setId(id);
-            updatedOwner = ownerDao.updateOwner(updatedOwner);
-        } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Owner not found.");
-        }
-        return updatedOwner;
+       try {
+           updatedOwner.setId(id);
+           updatedOwner= ownerDao.updateOwner(updatedOwner);
+       } catch (DaoException e) {
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Owner not found.");
+       }
+       return updatedOwner;
 
         }
 

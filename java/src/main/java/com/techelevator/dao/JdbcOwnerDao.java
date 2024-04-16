@@ -4,12 +4,16 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.exception.UnderEighteenException;
 import com.techelevator.model.Owner;
 import com.techelevator.model.RegisterOwnerDto;
+import com.techelevator.model.UpdateOwnerDto;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.relational.core.sql.Update;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
+import java.security.Principal;
 
 @Component
 public class JdbcOwnerDao implements OwnerDao {
@@ -20,13 +24,13 @@ public class JdbcOwnerDao implements OwnerDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private final String SELECT_SQL = "SELECT user_id, first_name, last_name, birthdate, profile_pic FROM owners ";
+    private final String SELECT_SQL = "SELECT user_id, first_name, last_name, birthdate, profile_pic, email FROM owners ";
 
 
     @Override
     public Owner createOwner(RegisterOwnerDto owner) {
         Owner newOwner = null;
-        String sql = "INSERT INTO owners(user_id, first_name, last_name, birthdate, profile_pic) values(?,?, ?, ?, ?) RETURNING user_id;";
+        String sql = "INSERT INTO owners(user_id, first_name, last_name, birthdate, profile_pic, email) values(?,?, ?, ?, ?, ?) RETURNING user_id;";
         try {
             int newOwnerId = jdbcTemplate.queryForObject(
                     sql,
@@ -35,7 +39,8 @@ public class JdbcOwnerDao implements OwnerDao {
                     owner.getFirstName(),
                     owner.getLastName(),
                     owner.getBirthdate(),
-                    owner.getProfilePic()
+                    owner.getProfilePic(),
+                    owner.getEmail()
             );
             newOwner = getOwnerById(newOwnerId);
         }  catch (CannotGetJdbcConnectionException e) {
@@ -54,14 +59,16 @@ public class JdbcOwnerDao implements OwnerDao {
     public Owner updateOwner(Owner owner) {
         Owner updatedOwner = null;
 
-        String sql = "UPDATE owners SET first_name = ?, last_name = ?, birthdate = ?, profile_pic = ? WHERE user_id = ?;";
+        String sql = "UPDATE owners SET first_name = ?, last_name = ?, birthdate = ?, profile_pic = ?, email = ? WHERE user_id = ?; " +
+                "UPDATE users SET username = ? WHERE user_id = ?";
 
         try {
-            int numberOfRows = jdbcTemplate.update(sql, owner.getFirstName(), owner.getLastName(), owner.getBirthdate(), owner.getProfilePic(), owner.getId());
+            int numberOfRows = jdbcTemplate.update(sql, owner.getFirstName(), owner.getLastName(), owner.getBirthdate(), owner.getProfilePic(), owner.getEmail(), owner.getId(), owner.getEmail(), owner.getId());
             if (numberOfRows == 0) {
                 throw new DaoException("No rows updated");
             } else {
                 updatedOwner = getOwnerById(owner.getId());
+
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -100,6 +107,7 @@ private Owner mapRowToOwner(SqlRowSet rowSet) {
     owner.setLastName(rowSet.getString("last_name"));
     owner.setBirthdate(rowSet.getDate("birthdate").toLocalDate());
     owner.setProfilePic(rowSet.getString("profile_pic"));
+    owner.setEmail(rowSet.getString("email"));
 
     return owner;
 }

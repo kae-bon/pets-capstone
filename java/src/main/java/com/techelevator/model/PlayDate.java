@@ -23,12 +23,15 @@ public class PlayDate {
     private int locationId;
     @NotNull
     private boolean publicDate;
+    @NotNull
+    @Future
+    private LocalDateTime endDateTime;
 
     private List<Pet> attendingPets;
 
     public PlayDate() {}
 
-    public PlayDate(int playDateId, String title, String description, int hostId, LocalDateTime dateTime, int locationId, boolean publicDate) {
+    public PlayDate(int playDateId, String title, String description, int hostId, LocalDateTime dateTime, LocalDateTime endDateTime, int locationId, boolean publicDate) {
         this.playDateId = playDateId;
         this.title = title;
         this.description = description;
@@ -36,11 +39,12 @@ public class PlayDate {
         this.dateTime = dateTime;
         this.locationId = locationId;
         this.publicDate = publicDate;
+        this.endDateTime = endDateTime;
         this.attendingPets = new ArrayList<>();
     }
 
-    public PlayDate(List<Pet> attendingPets, int playDateId, String title, String description, int hostId, LocalDateTime dateTime, int locationId, boolean publicDate) {
-        this (playDateId,  title, description, hostId,  dateTime, locationId, publicDate);
+    public PlayDate(List<Pet> attendingPets, int playDateId, String title, String description, int hostId, LocalDateTime dateTime, LocalDateTime endDateTime, int locationId, boolean publicDate) {
+        this (playDateId,  title, description, hostId,  dateTime, endDateTime, locationId, publicDate);
         this.attendingPets = attendingPets;
     }
 
@@ -82,6 +86,14 @@ public class PlayDate {
 
     public int getLocationId() {
         return locationId;
+    }
+
+    public LocalDateTime getEndDateTime() {
+        return endDateTime;
+    }
+
+    public void setEndDateTime(LocalDateTime endDateTime) {
+        this.endDateTime = endDateTime;
     }
 
     public List<Pet> getAttendingPets() {
