@@ -5,25 +5,34 @@
                 Your pet is already signed up for this play date!
             </div>
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ready to Play?</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+                <form @submit="submitPets">
 
-                    <div class="form-check mb-3" v-for="pet in userPets" :key="pet.id">
-                        <input class="form-check-input" type="checkbox" :value="pet.id" name="flexCheckDefault" :id="pet.id"
-                            v-model="dogArray">
-                        <label class="form-check-label" :for="pet.id">
-                            {{ pet.name }}
-                        </label>
+
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ready to Play?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button :id="closeModalId" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        @click="closeModal">Close</button>
-                    <button type="button" class="btn btn-primary" @click="submitPets">Understood</button>
-                </div>
+                    <div class="modal-body">
+
+                        <div class="form-check mb-3" v-for="pet in userPets" :key="pet.id">
+                            <input class="form-check-input" type="checkbox" :value="pet.id" name="flexCheckDefault"
+                                :id="pet.id" v-model="dogArray">
+                            <label class="form-check-label" :for="pet.id">
+                                {{ pet.name }}
+                            </label>
+                        </div>
+                        <div>
+                            Your Attending Pets: <div class="badge bg-info" v-for="pet in attendingPets" :key="pet.id">
+                                {{ pet.name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button :id="closeModalId" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            @click="closeModal">Close</button>
+                        <button type="submit" class="btn btn-primary">Understood</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -37,10 +46,10 @@ export default {
             type: Number,
             required: true
         },
-        filteredPetIds: {
+
+        attendingPets: {
             type: Array,
-            required: true,
-            // default: () => []
+            required: true
         }
     },
     data() {
@@ -49,15 +58,15 @@ export default {
             addPetFailed: false,
         }
     },
-    watch: {
-        // it looks like the prop is being updated after the component is created
-        filteredPetIds: {
-            immediate: true,
-            handler(n, o) {
-                this.dogArray = this.filteredPetIds == null ? [] : [...this.filteredPetIds];
-            }
-        }
-    },
+    // watch: {
+    //     // it looks like the prop is being updated after the component is created
+    //     filteredPetIds: {
+    //         immediate: true,
+    //         handler(n, o) {
+    //             this.dogArray = this.filteredPetIds == null ? [] : [...this.filteredPetIds];
+    //         }
+    //     }
+    // },
     computed: {
 
         userPets() {
@@ -91,6 +100,7 @@ export default {
         closeModal() {
             this.addPetFailed = false;
             const modal = document.getElementById((this.closeModalId));
+            this.dogArray = [];
             modal.click();
         },
         confirmSuccess() {

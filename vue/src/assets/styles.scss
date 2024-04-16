@@ -6,7 +6,7 @@ $dark: #003049;
 $light: #fcfcff;
 $primary: #fcbf49;
 $secondary: #2ab7ca;
-$orange: #f77f00;
+$info: #f77f00;
 
 $focus-ring-width: .25rem;
 $focus-ring-opacity: .25;
@@ -110,7 +110,7 @@ label {
 }
 
 .router-link-exact-active {
-    color: $orange !important;
+    color: $info !important;
 }
 
 .card-body p {

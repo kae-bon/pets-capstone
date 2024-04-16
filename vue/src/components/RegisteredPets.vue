@@ -1,5 +1,5 @@
 <template>
-    <div v-if="$route.name == 'profile'" class="d-flex column-gap-2 row-gap-3 flex-wrap justify-content-between">
+    <div v-if="$route.name == 'profile'" class="d-flex column-gap-2 row-gap-3 flex-wrap justify-content-start">
         <PetProfile v-for="pet in $store.state.pets" :key="pet.id" :pet="pet" />
     </div>
 
