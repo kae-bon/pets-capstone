@@ -3,7 +3,9 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="posterName mb-0">{{ message.posterFirstName + " " + message.posterLastName }}</h5>
             <div>
-                <p class="card-text fst-italic dateTime">{{ messageDate + " || " + messageTime }}</p>
+                <p class="card-text fst-italic dateTime">{{ messageDate }}&nbsp;&nbsp; <i
+                        class="fa-solid fa-bone"></i>&nbsp;&nbsp; {{ messageTime
+                        }}</p>
             </div>
         </div>
         <div class="card-body p-4">
