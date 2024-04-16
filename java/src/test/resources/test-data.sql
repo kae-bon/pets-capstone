@@ -17,11 +17,15 @@ VALUES
 
 INSERT INTO play_dates(title, description, host_id, date_time, location_id, ispublic)
 VALUES ('Test', 'Testy Tests', 1, '2024-05-02 14:30:00', 1, true),
-('Luna', 'With Luna', 1, '2024-04-15 12:00:00', 1, false);
+('Luna', 'With Luna', 1, '2024-04-25 12:00:00', 1, false);
 
 INSERT INTO pets (name, owner_id, birthdate, breed, size, isFriendly, profile_pic)
 VALUES
     ('Bean', '1','1996-05-02','pug', 'S', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg'),
     ('Steve', '2', '2008-03-05', 'labrador', 'XL', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg');
+
+INSERT INTO messages(message_title, message_content, date_time, poster_id)
+VALUES ('Best Park', 'What is the best park for small dogs?', '2024-05-02 10:30:00', 1),
+('Join us for a birthday party', 'Throwing a birthday party for my dog Murphy - everyone is invited!', '2024-07-01 11:30:00', 2);
 
  COMMIT TRANSACTION;

@@ -25,8 +25,8 @@ public class JdbcLocationDaoTests extends BaseDaoTests {
         List<Location> locations = sut.getAllLocations();
 
         Assert.assertNotNull(locations);
-        assertLocationsMatch(PARK_ONE, locations.get(0));
-        assertLocationsMatch(PARK_TWO, locations.get(1));
+        assertLocationsMatch(PARK_ONE, locations.get(1));
+        assertLocationsMatch(PARK_TWO, locations.get(0));
     }
 
     private void assertLocationsMatch(Location actual, Location expected) {

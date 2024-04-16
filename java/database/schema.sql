@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, owners, locations, play_dates, pet_play_dates, pets;
+DROP TABLE IF EXISTS users, owners, messages, locations, play_dates, pet_play_dates, pets;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -67,6 +67,17 @@ CREATE TABLE pet_play_dates (
 	CONSTRAINT PK_pet_play_date PRIMARY KEY (play_date_id, pet_id),
 	CONSTRAINT FK_play_date_id FOREIGN KEY (play_date_id) REFERENCES play_dates (play_date_id),
 	CONSTRAINT FK_pet_id FOREIGN KEY (pet_id) REFERENCES pets (pet_id)
+);
+
+CREATE TABLE messages (
+	message_id SERIAL,
+	message_title VARCHAR(100) NOT NULL,
+	message_content VARCHAR(500) NOT NULL,
+	date_time TIMESTAMP NOT NULL,
+	poster_id INTEGER NOT NULL,
+
+	CONSTRAINT PK_message_id PRIMARY KEY (message_id),
+	CONSTRAINT FK_poster_id FOREIGN KEY (poster_id) REFERENCES owners (user_id)
 );
 
 COMMIT TRANSACTION;

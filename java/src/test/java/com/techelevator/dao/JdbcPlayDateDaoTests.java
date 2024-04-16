@@ -12,7 +12,7 @@ public class JdbcPlayDateDaoTests extends BaseDaoTests {
     private JdbcPlayDateDao sut;
     private final PlayDate PLAY_DATE_ONE = new PlayDate(1, "Test", "Testy Tests", 1, LocalDateTime.of(2024, 5, 2, 14, 30, 00),
             1, true);
-    private final PlayDate PLAY_DATE_TWO = new PlayDate(2, "Luna", "With Luna", 1, LocalDateTime.of(2024, 4, 15, 12, 00, 00),
+    private final PlayDate PLAY_DATE_TWO = new PlayDate(2, "Luna", "With Luna", 1, LocalDateTime.of(2024, 4, 25, 12, 00, 00),
             1, false);
 
     @Before
@@ -32,7 +32,7 @@ public class JdbcPlayDateDaoTests extends BaseDaoTests {
 
     @Test
     public void create_PlayDate_Creates_PlayDate() {
-        PlayDate newPlayDate = new PlayDate(0, "Marley", "With Marley", 1, LocalDateTime.of(2024, 4, 15, 12, 00, 00),
+        PlayDate newPlayDate = new PlayDate(0, "Marley", "With Marley", 1, LocalDateTime.of(2024, 7, 15, 12, 00, 00),
                 2, true);
 
         PlayDate createdPlayDate = sut.createPlayDate(newPlayDate);
