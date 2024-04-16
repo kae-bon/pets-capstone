@@ -7,9 +7,12 @@
         </div>
 
         <CreatePlayDateButton />
+      <div class="play-date-filter">
+        <input type="search" id="pd-filter" v-model="filter" placeholder="Title or description">
+      </div>
 
         <div class="d-flex flex-wrap flex-row justify-content-center">
-            <PlayDateCards class="w-100 playDateCards" v-for="playdate in playDates" :key="playdate.id"
+            <PlayDateCards class="w-100 playDateCards" v-for="playdate in filteredList" :key="playdate.id"
                 :playdate="playdate" />
         </div>
 
@@ -23,12 +26,16 @@ import LocationService from "../services/LocationService";
 import CreatePlayDateButton from "../components/CreatePlayDateButton.vue";
 import PetService from "../services/PetService";
 
+
 export default {
     data() {
         return {
             showModal: false,
             registrationSuccessful: false,
-            playDates: []
+            playDates: [],
+            times: [],
+          filter: "",
+
         }
     },
     components: {
@@ -47,10 +54,19 @@ export default {
                         this.playDates = response.data;
                     });
             })
-    }
-
-
-
+    },
+  computed: {
+      filteredList() {
+        let filteredPlayDates = this.playDates;
+        if (this.filter != "") {
+          filteredPlayDates = filteredPlayDates.filter((playDate) =>
+              playDate.title.toLowerCase().includes(this.filter.toLowerCase()) ||
+              playDate.description.toLowerCase().includes(this.filter.toLowerCase())
+          )
+        }
+          return filteredPlayDates;
+        }
+      }
 }
 </script>
 
