@@ -64,21 +64,23 @@ public class JdbcPlayDateDao implements PlayDateDao{
     @Override
     public List<PlayDate> getUpcomingPlayDates(String timeOfDay, String locationCity) {
         List<PlayDate> publicPlayDates = new ArrayList<>();
-        String startTime = "0";
-        String endTime = "24";
+        int startTime = 0;
+        int endTime = 24;
+        if (timeOfDay != null) {
         switch (timeOfDay.toLowerCase()) {
             case "morning":
-                startTime = "0";
-                endTime = "12";
+                startTime = 0;
+                endTime = 12;
                 break;
             case "afternoon":
-                startTime = "12";
-                endTime = "18";
+                startTime = 12;
+                endTime = 18;
                 break;
             case "evening":
-                startTime = "18";
-                endTime = "24";
+                startTime = 18;
+                endTime = 24;
                 break;
+        }
         }
 
         if (locationCity == null) locationCity = "l.city";
