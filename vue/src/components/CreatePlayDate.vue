@@ -25,8 +25,15 @@
                         <div class="form-floating mb-3">
                             <input type="datetime-local" class="form-control" id="date" placeholder="date"
                                 v-model="newPlayDate.dateTime" required :min="minimumDate">
-                            <label for="date">Date & Time</label>
+                            <label for="date">Date & Start Time</label>
                         </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="datetime-local" class="form-control" id="date" placeholder="date"
+                                v-model="newPlayDate.endDateTime" required :min="minimumDate">
+                            <label for="date">Date & End Time</label>
+                        </div>
+
                         <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
                                 v-model="newPlayDate.locationId" required>
@@ -38,20 +45,6 @@
                             </select>
                             <label for="floatingSelect">Select a Location</label>
                         </div>
-                        <!-- <div class="form-check">
-                            <input class="form-check-input" type="radio" :value="true" name="flexRadioDefault"
-                                id="radiopublic" v-model="newPlayDate.isPublic" checked required>
-                            <label class="form-check-label" for="radiopublic">
-                                Public - anyone can join!
-                            </label>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" :value="false" name="flexRadioDefault"
-                                id="radioprivate" v-model="newPlayDate.isPublic">
-                            <label class="form-check-label" for="radioprivate">
-                                Private - you approve who comes!
-                            </label>
-                        </div> -->
 
                         <div class="modal-footer pt-3">
                             <button id="closeModal" type="button" class="btn btn-danger" data-bs-dismiss="modal"
@@ -77,6 +70,7 @@ export default {
                 title: "",
                 description: "",
                 dateTime: "",
+                endDateTime: "",
                 locationId: 0,
                 publicDate: true
             },

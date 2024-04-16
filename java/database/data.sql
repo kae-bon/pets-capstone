@@ -37,15 +37,15 @@ VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
 ('McCullough Nature Preserve', '2726 Cypress Way', 'Cincinnati', 'OH')
 ;
 
-INSERT INTO play_dates(title, description, host_id, date_time, location_id, ispublic)
-VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the local park.', 1, '2024-04-21 10:00:00', 1, true),
-('Canine Carnival', 'Join us for a carnival-themed event filled with games and treats for dogs!', 2, '2024-04-20 12:00:00', 2, true),
-('Fetch Frenzy', 'A day dedicated to playing fetch with all the furry friends.', 2, '2024-04-25 14:00:00', 3, true),
-('Doggy Dip Day', 'Cool off with your pups in a splash-worthy pool party!', 2, '2024-04-23 11:00:00', 4, true),
-('Bark and Brews', 'An evening of mingling with other dog owners at a local brewery.',1, '2024-04-22 18:00:00', 5, true),
-('Doggie Dash', 'A fun run event for dogs and their humans.', 1, '2024-04-17 09:00:00', 6, true),
-('Puppy Picnic', 'A picnic in the park specially designed for young puppies.', 1, '2024-04-27 12:00:00', 7, true),
-('Woof Walk', 'Join us for a scenic walk with our furry companions.',1, '2024-04-23 10:00:00', 8, true),
-('Doggy Disco', 'Get ready to boogie with your pups at the dog-friendly disco!', 2, '2024-04-24 20:00:00', 9, true);
+INSERT INTO play_dates(title, description, host_id, date_time, end_date_time, location_id, ispublic)
+VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the local park.', 1, '2024-04-21 10:00:00', '2024-04-21 12:00:00', 1, true),
+('Canine Carnival', 'Join us for a carnival-themed event filled with games and treats for dogs!', 2, '2024-04-20 12:00:00','2024-04-20 14:00:00', 2, true),
+('Fetch Frenzy', 'A day dedicated to playing fetch with all the furry friends.', 2, '2024-04-25 14:00:00', '2024-04-25 16:00:00', 3, true),
+('Doggy Dip Day', 'Cool off with your pups in a splash-worthy pool party!', 2, '2024-04-23 11:00:00', '2024-04-23 13:00:00', 4, true),
+('Bark and Brews', 'An evening of mingling with other dog owners at a local brewery.',1, '2024-04-22 18:00:00', '2024-04-22 20:00:00', 5, true),
+('Doggie Dash', 'A fun run event for dogs and their humans.', 1, '2024-04-17 09:00:00', '2024-04-17 11:00:00', 6, true),
+('Puppy Picnic', 'A picnic in the park specially designed for young puppies.', 1, '2024-04-27 12:00:00', '2024-04-27 14:00:00', 7, true),
+('Woof Walk', 'Join us for a scenic walk with our furry companions.',1, '2024-04-23 10:00:00', '2024-04-23 12:00:00', 8, true),
+('Doggy Disco', 'Get ready to boogie with your pups at the dog-friendly disco!', 2, '2024-04-24 20:00:00', '2024-04-24 22:00:00', 9, true);
 
 COMMIT TRANSACTION;
