@@ -1,12 +1,12 @@
 <template>
     <div class="container">
-        <h1 class="text-center mb-4">Upcoming Play Dates</h1>
+        <h1 class="mb-4">Upcoming Play Dates</h1>
         <div class="alert alert-success alert-dismissible fade show w-50" role="alert" v-if="registrationSuccessful">
             <strong>Get Ready to Play!</strong> Your dog has been registered for the play date!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <CreatePlayDateButton />
+        <CreatePlayDateButton class="mb-4" />
 
         <div class="d-flex flex-wrap flex-row justify-content-center">
             <PlayDateCards class="w-100 playDateCards" v-for="playdate in playDates" :key="playdate.id"

@@ -1,10 +1,16 @@
 <template>
-    <div class="card">
-        <h5 class="card-header posterName">{{ message.posterFirstName + " " + message.posterLastName }}</h5>
-        <div class="card-body">
-            <h5 class="card-title">{{ message.messageTitle }}</h5>
+    <div class="card message-card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="posterName mb-0">{{ message.posterFirstName + " " + message.posterLastName }}</h5>
+            <div>
+                <p class="card-text fst-italic dateTime">{{ messageDate + " || " + messageTime }}</p>
+            </div>
+        </div>
+        <div class="card-body p-4">
+            <h5 class="card-title messageTitle">{{ message.messageTitle }}</h5>
             <p class="card-text">{{ message.messageContent }}</p>
-            <p class="card-text fst-italic">{{ messageTime }}</p>
+
+
         </div>
     </div>
 </template>
@@ -25,14 +31,19 @@ export default {
             } else if (date.getHours() < 22) {
                 time = date.toLocaleTimeString().substring(0, 4) + " PM";
             }
-            return date.toDateString() + " at " + time;
+            return time;
         },
+        messageDate() {
+            const date = new Date(this.message.dateTimePosted);
+            return date.toDateString();
+        }
     }
 }
 </script>
 
 <style scoped>
-.posterName {
+.posterName,
+.dateTime {
     font-size: .9rem;
 }
 </style>

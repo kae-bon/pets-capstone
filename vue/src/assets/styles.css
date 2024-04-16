@@ -9117,4 +9117,12 @@ label {
   color: #003049;
 }
 
+.messageTitle {
+  font-family: "Luckiest Guy", sans-serif;
+}
+
+.message-card {
+  color: #003049;
+}
+
 /*# sourceMappingURL=styles.css.map */
