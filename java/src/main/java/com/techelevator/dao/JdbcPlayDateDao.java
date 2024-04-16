@@ -21,7 +21,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     @Override
     public PlayDate getPlayDateById(int playDateId) {
         PlayDate playDate = null;
-        String sql = "SELECT play_date_id, title, description, host_id, date_time, location_id, ispublic\n" +
+        String sql = "SELECT play_date_id, title, description, host_id, date_time, end_date_time, location_id, ispublic\n" +
                 "\tFROM play_dates\n" +
                 "\tWHERE play_date_id = ?;";
         try {
@@ -39,14 +39,15 @@ public class JdbcPlayDateDao implements PlayDateDao{
     public PlayDate createPlayDate(PlayDate newPlayDate) {
         PlayDate playDate = null;
         String sql = "INSERT INTO play_dates(\n" +
-                "\ttitle, description, host_id, date_time, location_id, ispublic)\n" +
-                "\tVALUES (?, ?, ?, ?, ?, ?) RETURNING play_date_id;";
+                "\ttitle, description, host_id, date_time, end_date_time, location_id, ispublic)\n" +
+                "\tVALUES (?, ?, ?, ?, ?, ?, ?) RETURNING play_date_id;";
         try {
             int playDateId = jdbc.queryForObject(sql, int.class,
                     newPlayDate.getTitle(),
                     newPlayDate.getDescription(),
                     newPlayDate.getHostId(),
                     newPlayDate.getDateTime(),
+                    newPlayDate.getEndDateTime(),
                     newPlayDate.getLocationId(),
                     newPlayDate.isPublicDate());
             playDate = getPlayDateById(playDateId);
@@ -63,7 +64,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     @Override
     public List<PlayDate> getUpcomingPlayDates() {
         List<PlayDate> publicPlayDates = new ArrayList<>();
-        String sql = "SELECT play_date_id, title, description, host_id, date_time, location_id, ispublic\n" +
+        String sql = "SELECT play_date_id, title, description, host_id, date_time, end_date_time, location_id, ispublic\n" +
                 "FROM play_dates\n" +
                 "WHERE ispublic AND date_time > CURRENT_TIMESTAMP\n" +
                 "ORDER BY date_time ASC;";
@@ -85,7 +86,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     @Override
     public List<PlayDate> getUserPlayDates(int userId) {
         List<PlayDate> userPlayDates = new ArrayList<>();
-        String sql = "SELECT play_date_id, title, description, host_id, date_time, location_id, ispublic\n" +
+        String sql = "SELECT play_date_id, title, description, host_id, date_time, end_date_time, location_id, ispublic\n" +
                 "FROM play_dates\n" +
                 "WHERE host_id = ? AND date_time > CURRENT_TIMESTAMP\n" +
                 "ORDER BY date_time ASC;";
@@ -114,6 +115,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
         playDate.setTitle(results.getString("title"));
         playDate.setPublicDate(results.getBoolean("ispublic"));
         playDate.setDateTime(results.getTimestamp("date_time").toLocalDateTime());
+        playDate.setEndDateTime(results.getTimestamp("end_date_time").toLocalDateTime());
 
         return playDate;
     }

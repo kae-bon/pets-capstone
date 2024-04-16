@@ -50,7 +50,8 @@ CREATE TABLE play_dates (
 	title VARCHAR(100) NOT NULL,
 	description VARCHAR(300) NOT NULL,
 	host_id INTEGER NOT NULL,
-	date_time TIMESTAMP NOT NULL, 
+	date_time TIMESTAMP NOT NULL,
+	end_date_time TIMESTAMP NOT NULL,
 	location_id INTEGER NOT NULL,
 	isPublic BOOLEAN NOT NULL DEFAULT TRUE,
 	
