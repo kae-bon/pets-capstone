@@ -6,6 +6,9 @@
             <p class="card-subtitle mb-3">{{ playDateLocation }}</p>
             <p class="card-text">{{ playdate.description }}</p>
             <p class="time">{{ playDateTime }}</p>
+            <p> to </p>
+            <p class="time">{{ playDateEndTime }}</p>
+
         </div>
         <div class="card-footer d-flex justify-content-around">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="modalTarget">
@@ -37,6 +40,20 @@ export default {
         },
         playDateTime() {
             const date = new Date(this.playdate.dateTime);
+            let time = "";
+            if (date.getHours() < 10) {
+                time = date.toLocaleTimeString().substring(0, 4) + " AM";
+            } else if (date.getHours() < 12) {
+                time = date.toLocaleTimeString().substring(0, 5) + " AM";
+            } else if (date.getHours() === 12 || date.getHours() >= 22) {
+                time = date.toLocaleTimeString().substring(0, 5) + " PM";
+            } else if (date.getHours() < 22) {
+                time = date.toLocaleTimeString().substring(0, 4) + " PM";
+            }
+            return date.toDateString() + " at " + time;
+        },
+        playDateEndTime() {
+            const date = new Date(this.playdate.endDateTime);
             let time = "";
             if (date.getHours() < 10) {
                 time = date.toLocaleTimeString().substring(0, 4) + " AM";

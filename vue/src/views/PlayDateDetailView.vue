@@ -4,6 +4,8 @@
         <h3>{{ playDateLocation }}</h3>
         <p>{{ currentPlayDate.description }}</p>
         <h3>{{ playDateTime }}</h3>
+        <p> to </p>
+        <h3>{{ playDateEndTime }}</h3>
         <div>
             <p>Attendees: </p>
             <article v-for="pet in currentPlayDate.attendingPets" :key="pet.id">
@@ -50,6 +52,21 @@ export default {
 
         playDateTime() {
             const date = new Date(this.currentPlayDate.dateTime);
+            let time = "";
+            if (date.getHours() < 10) {
+                time = date.toLocaleTimeString().substring(0, 4) + " AM";
+            } else if (date.getHours() < 12) {
+                time = date.toLocaleTimeString().substring(0, 5) + " AM";
+            } else if (date.getHours() === 12 || date.getHours() >= 22) {
+                time = date.toLocaleTimeString().substring(0, 5) + " PM";
+            } else if (date.getHours() < 22) {
+                time = date.toLocaleTimeString().substring(0, 4) + " PM";
+            }
+            return date.toDateString() + " at " + time;
+        },
+
+        playDateEndTime() {
+            const date = new Date(this.currentPlayDate.endDateTime);
             let time = "";
             if (date.getHours() < 10) {
                 time = date.toLocaleTimeString().substring(0, 4) + " AM";
