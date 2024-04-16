@@ -30,7 +30,7 @@ public class JdbcOwnerDao implements OwnerDao {
     @Override
     public Owner createOwner(RegisterOwnerDto owner) {
         Owner newOwner = null;
-        String sql = "INSERT INTO owners(user_id, first_name, last_name, birthdate, profile_pic) values(?,?, ?, ?, ?) RETURNING user_id;";
+        String sql = "INSERT INTO owners(user_id, first_name, last_name, birthdate, profile_pic, email) values(?,?, ?, ?, ?, ?) RETURNING user_id;";
         try {
             int newOwnerId = jdbcTemplate.queryForObject(
                     sql,
@@ -39,7 +39,8 @@ public class JdbcOwnerDao implements OwnerDao {
                     owner.getFirstName(),
                     owner.getLastName(),
                     owner.getBirthdate(),
-                    owner.getProfilePic()
+                    owner.getProfilePic(),
+                    owner.getEmail()
             );
             newOwner = getOwnerById(newOwnerId);
         }  catch (CannotGetJdbcConnectionException e) {

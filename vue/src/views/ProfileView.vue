@@ -11,7 +11,7 @@
           <h2>Last Name</h2>
           <p class="mb-4">{{ this.$store.state.owner.lastName }}</p>
           <h2>Email</h2>
-          <p class="mb-4">{{ this.$store.state.user.username }}</p>
+          <p class="mb-4">{{ this.$store.state.owner.email }}</p>
           <h2>Birthday</h2>
           <p>{{ birthday }}</p>
         </div>

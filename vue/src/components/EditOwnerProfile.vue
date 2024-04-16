@@ -19,7 +19,7 @@
                             <label for="floatingPassword">Last Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" v-model="updatedUser.email" id="email"
+                            <input type="email" class="form-control" v-model="updatedOwner.email" id="email"
                                 placeholder="email">
                             <label for="floatingPassword">Email</label>
                         </div>
@@ -58,11 +58,12 @@ export default {
                 firstName: this.owner.firstName,
                 lastName: this.owner.lastName,
                 birthdate: this.owner.birthdate,
-                profilePic: this.owner.profilePic
+                profilePic: this.owner.profilePic,
+                email: this.owner.email
             },
-            updatedUser: {
-                email: this.$store.state.user.username
-            }
+            // updatedUser: {
+            //     email: this.$store.state.user.username
+            // }
         }
     },
     methods: {
@@ -73,8 +74,8 @@ export default {
             if (this.updatedOwner.lastName == "" || this.updatedOwner.lastName == null) {
                 this.updatedOwner.lastName = this.owner.lastName
             }
-            if (this.updatedUser.email == "" || this.updatedUser.email == null) {
-                this.updatedUser.email = this.owner.email
+            if (this.updatedOwner.email == "" || this.updatedOwner.email == null) {
+                this.updatedOwner.email = this.owner.email
             }
             if (this.updatedOwner.birthdate == null) {
                 this.updatedOwner.birthdate = this.owner.birthdate

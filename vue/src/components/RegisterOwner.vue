@@ -42,7 +42,7 @@ export default {
     data() {
         return {
             newOwner: {
-                firstName: "", lastName: "", birthdate: "", id: 0, profilePic: ""
+                firstName: "", lastName: "", birthdate: "", id: 0, profilePic: "", email: ""
             },
             profileImg: this.$store.state.defaultOwnerPic
 
@@ -71,6 +71,7 @@ export default {
     methods: {
         registerOwner() {
             this.newOwner.id = this.$store.state.user.id;
+            this.newOwner.email = this.$store.state.user.username;
             OwnerService.register(this.newOwner).then(response => {
                 if (response.status == 201) {
                     this.$store.commit("SET_OWNER", this.newOwner);
