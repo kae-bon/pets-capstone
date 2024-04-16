@@ -46,7 +46,7 @@ public class PlayDateController {
 
 
     @GetMapping("/playdates")
-    public List<PlayDate> getUpcomingPlayDates(@RequestParam(value = "host_id", required = false) Integer userId, Principal user) {
+    public List<PlayDate> getUpcomingPlayDates(@RequestParam(value = "host_id", required = false), Integer @RequestParam() Integer userId, Principal user ){
         List<PlayDate> playDates = new ArrayList<>();
         if (userId != null) {
             User host = userDao.getUserByUsername(user.getName());

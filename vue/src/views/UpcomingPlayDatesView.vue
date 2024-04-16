@@ -7,7 +7,6 @@
         </div>
 
         <CreatePlayDateButton class="mb-4" />
-        <CreatePlayDateButton />
       <div class="play-date-filter">
         <input type="search" id="pd-filter" v-model="filter" placeholder="Title or description">
       </div>
