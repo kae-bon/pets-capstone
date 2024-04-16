@@ -70,11 +70,11 @@ i {
 .playDateCards {
     /* max-width: 100%; */
     flex-basis: 0;
-    max-width: 30%;
-    min-width: fit-content;
+    max-width: 40%;
+    min-width: 35%;
 }
 
 section {
-    max-width: 90%;
+    max-width: 80%;
 }
 </style>

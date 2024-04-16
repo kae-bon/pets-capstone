@@ -1,15 +1,16 @@
 <template>
-    <div>
+    <div class="container">
         <h1 class="text-center mb-4">Upcoming Play Dates</h1>
         <div class="alert alert-success alert-dismissible fade show w-50" role="alert" v-if="registrationSuccessful">
             <strong>Get Ready to Play!</strong> Your dog has been registered for the play date!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <div>
-            <CreatePlayDateButton />
-        </div>
-        <div class="d-flex flex-wrap flex-row justify-content-center ">
-            <PlayDateCards v-for="playdate in playDates" :key="playdate.id" :playdate="playdate" />
+
+        <CreatePlayDateButton />
+
+        <div class="d-flex flex-wrap flex-row justify-content-center">
+            <PlayDateCards class="w-100 playDateCards" v-for="playdate in playDates" :key="playdate.id"
+                :playdate="playdate" />
         </div>
 
     </div>
@@ -56,5 +57,12 @@ export default {
 <style scoped>
 i {
     font-size: 5rem;
+}
+
+.playDateCards {
+    /* max-width: 100%; */
+    flex-basis: 0;
+    max-width: 30%;
+    min-width: 30%;
 }
 </style>
