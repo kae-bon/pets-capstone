@@ -6,7 +6,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <CreatePlayDateButton class="mb-4" />
+        <CreatePlayDateButton />
         <div class="play-date-filter">
             <input type="search" id="pd-filter" v-model="filter" placeholder="Title or description">
         </div>

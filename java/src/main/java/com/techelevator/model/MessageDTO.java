@@ -1,15 +1,21 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class MessageDTO {
+    @NotNull
     private int messageId;
+    @NotNull
     private String messageTitle;
+    @NotNull
     private String messageContent;
+    @NotNull
     private LocalDateTime dateTimePosted;
+    @NotNull
     private String posterFirstName;
+    @NotNull
     private String posterLastName;
-
 
     public MessageDTO() {}
 

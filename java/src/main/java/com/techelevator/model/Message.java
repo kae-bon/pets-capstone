@@ -1,14 +1,18 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class Message {
+    @NotNull
     private int messageId;
+    @NotNull
     private String messageTitle;
+    @NotNull
     private String messageContent;
-
-
+    @NotNull
     private LocalDateTime messageDateTime;
+    @NotNull
     private int posterId;
     public  Message() {}
     public Message(int messageId, String messageTitle, String messageContent, LocalDateTime messageDateTime, int posterId) {

@@ -1,17 +1,12 @@
 <template>
-    <div>
-        <h2>{{ currentPlayDate.title }}</h2>
+    <div class="container d-flex flex-column align-items-center h-100">
+        <h2 class="mb-4">{{ currentPlayDate.title }}</h2>
         <h3>{{ playDateLocation }}</h3>
         <p>{{ currentPlayDate.description }}</p>
-        <h3>{{ playDateTime }}</h3>
-        <p> to </p>
-        <h3>{{ playDateEndTime }}</h3>
-        <div>
-            <p>Attendees: </p>
-            <article v-for="pet in currentPlayDate.attendingPets" :key="pet.id">
-                {{ pet.name }}
-                <!-- we can add the owner name here later if Carly really wants it -->
-            </article>
+        <p class="fst-italic">{{ playDateTime }} to {{ playDateEndTime }}</p>
+        <h3 class="mt-4 mb-4">This Woofr Play Date Roster!</h3>
+        <div class="d-flex column-gap-2 flex-wrap petCardList">
+            <SimplePetCard v-for="pet in currentPlayDate.attendingPets" :key="pet.id" :pet="pet" />
         </div>
 
     </div>
@@ -21,7 +16,10 @@
 import PlayDateService from '../services/PlayDateService';
 import LocationService from '../services/LocationService';
 import OwnerService from '../services/OwnerService';
+import SimplePetCard from '../components/SimplePetCard.vue';
+
 export default {
+    components: { SimplePetCard },
     data() {
         return {
             currentPlayDate: {}
@@ -49,7 +47,6 @@ export default {
                 .find(location => location.id === this.currentPlayDate.locationId);
             return location?.name;
         },
-
         playDateTime() {
             const date = new Date(this.currentPlayDate.dateTime);
             let time = "";
@@ -62,9 +59,8 @@ export default {
             } else if (date.getHours() < 22) {
                 time = date.toLocaleTimeString().substring(0, 4) + " PM";
             }
-            return date.toDateString() + " at " + time;
+            return date.toDateString() + ", " + time;
         },
-
         playDateEndTime() {
             const date = new Date(this.currentPlayDate.endDateTime);
             let time = "";
@@ -77,7 +73,7 @@ export default {
             } else if (date.getHours() < 22) {
                 time = date.toLocaleTimeString().substring(0, 4) + " PM";
             }
-            return date.toDateString() + " at " + time;
+            return time;
         },
 
     }
@@ -86,4 +82,12 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+h2 {
+    font-size: 3rem;
+}
+
+.petCardList {
+    max-width: 80%;
+}
+</style>

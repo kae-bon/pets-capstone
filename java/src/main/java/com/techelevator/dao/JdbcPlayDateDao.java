@@ -86,13 +86,15 @@ public class JdbcPlayDateDao implements PlayDateDao{
     @Override
     public List<PlayDate> getUserPlayDates(int userId, String timeOfDay) {
         List<PlayDate> userPlayDates = new ArrayList<>();
-        String sql = "SELECT play_date_id, title, description, host_id, date_time, end_date_time, location_id, ispublic\n" +
+        String sql = "SELECT DISTINCT play_dates.play_date_id, title, description, host_id, date_time, end_date_time, location_id, ispublic\n" +
                 "FROM play_dates\n" +
-                "WHERE host_id = ? AND date_time > CURRENT_TIMESTAMP\n" +
+                "LEFT OUTER JOIN pet_play_dates ON pet_play_dates.play_date_id = play_dates.play_date_id\n" +
+                "LEFT OUTER JOIN pets ON pets.pet_id = pet_play_dates.pet_id\n" +
+                "WHERE (host_id = ? OR pets.owner_id = ?)\n" +
+                "AND date_time > CURRENT_TIMESTAMP \n" +
                 "ORDER BY date_time ASC;";
-
         try {
-            SqlRowSet results = this.jdbc.queryForRowSet(sql, userId);
+            SqlRowSet results = this.jdbc.queryForRowSet(sql, userId, userId);
             while (results.next()) {
                 PlayDate playDate = mapRowToPlayDate(results);
                 userPlayDates.add(playDate);

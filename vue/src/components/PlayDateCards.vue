@@ -1,5 +1,5 @@
 <template>
-    <article class="card text-center col m-3">
+    <article class="card text-center col m-2">
         <p>{{ playdate.host_id }}</p>
         <div class="card-body d-flex flex-column justify-content-between">
             <h2 class="card-title">{{ playdate.title }}</h2>
@@ -21,7 +21,8 @@
         </div>
         <div class="modal fade" :id="modalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <SignUpForPlayDate :playDateId="playdate.playDateId" :attendingPets="playdate.attendingPets" />
+            <SignUpForPlayDate :playDateId="playdate.playDateId"
+                :attendingPets="playdate.attendingPets.filter(pet => pet.ownerId === $store.state.user.id)" />
         </div>
     </article>
 </template>

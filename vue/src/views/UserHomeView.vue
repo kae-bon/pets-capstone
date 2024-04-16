@@ -15,7 +15,6 @@
                             :playdate="playdate" @registration="registrationSuccessful = true" />
                     </div>
                 </div>
-
             </div>
         </section>
         <div class="d-flex flex-column align-items-center">

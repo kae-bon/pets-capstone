@@ -5,7 +5,7 @@
                 Your pet is already signed up for this play date!
             </div>
             <div class="modal-content">
-                <form @submit="submitPets">
+                <form @submit.prevent="submitPets">
 
 
                     <div class="modal-header">
@@ -30,7 +30,7 @@
                     <div class="modal-footer">
                         <button :id="closeModalId" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             @click="closeModal">Close</button>
-                        <button type="submit" class="btn btn-primary">Understood</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                 </form>
             </div>

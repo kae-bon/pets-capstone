@@ -3,7 +3,9 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="posterName mb-0">{{ message.posterFirstName + " " + message.posterLastName }}</h5>
             <div>
-                <p class="card-text fst-italic dateTime">{{ messageDate + " || " + messageTime }}</p>
+                <p class="card-text fst-italic dateTime">{{ messageDate }}&nbsp;&nbsp; <i
+                        class="fa-solid fa-bone"></i>&nbsp;&nbsp; {{ messageTime
+                        }}</p>
             </div>
         </div>
         <div class="card-body p-4">
@@ -20,7 +22,8 @@ export default {
     props: ['message'],
     computed: {
         messageTime() {
-            const date = new Date(this.message.dateTimePosted);
+            let date = new Date(this.message.dateTimePosted);
+
             let time = "";
             if (date.getHours() < 10) {
                 time = date.toLocaleTimeString().substring(0, 4) + " AM";

@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex align-items-center column-gap-3">
+    <div class="d-flex align-items-center column-gap-3 mb-4">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#messageModal">
             <i class="fa-solid fa-message" style="color: #2ab7ca;"></i>
         </button>
