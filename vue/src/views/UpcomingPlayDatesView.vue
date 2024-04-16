@@ -6,7 +6,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <CreatePlayDateButton class="mb-4" />
+        <CreatePlayDateButton />
 
         <div class="d-flex flex-wrap flex-row justify-content-center">
             <PlayDateCards class="w-100 playDateCards" v-for="playdate in playDates" :key="playdate.id"

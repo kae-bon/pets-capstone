@@ -22,7 +22,8 @@ export default {
     props: ['message'],
     computed: {
         messageTime() {
-            const date = new Date(this.message.dateTimePosted);
+            let date = new Date(this.message.dateTimePosted);
+
             let time = "";
             if (date.getHours() < 10) {
                 time = date.toLocaleTimeString().substring(0, 4) + " AM";

@@ -3,8 +3,9 @@
         <h1 class="mb-1">Woofr Forum</h1>
         <p class="mb-3">See what everyone is barkin' about!</p>
         <CreateMessageButton />
-
-        <MessageCard class="mb-4" v-for="message in messages" :key="message.messageId" :message="message" />
+        <div id="messageCardDiv">
+            <MessageCard class="mb-4" v-for="message in messages" :key="message.messageId" :message="message" />
+        </div>
     </div>
 </template>
 

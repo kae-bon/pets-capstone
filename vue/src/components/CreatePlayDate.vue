@@ -84,8 +84,6 @@ export default {
             today = today.toISOString().substring(0, 16);
             return today;
         },
-
-
     },
     methods: {
         submitForm() {

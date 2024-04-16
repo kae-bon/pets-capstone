@@ -51,7 +51,11 @@ export default {
     },
     methods: {
         submitForm() {
-            this.newMessage.messageDateTime = new Date();
+            let today = new Date();
+            today.setDate(today.getDate());
+            today.setHours(today.getHours() - today.getTimezoneOffset() / 60);
+            this.newMessage.messageDateTime = today;
+
             MessageService.createMessage(this.newMessage)
                 .then(response => {
                     if (response.status == 201) {
