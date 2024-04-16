@@ -5,7 +5,7 @@
                 Your pet is already signed up for this play date!
             </div>
             <div class="modal-content">
-                <form @submit="submitPets">
+                <form @submit.prevent="submitPets">
 
 
                     <div class="modal-header">

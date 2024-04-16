@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Pet;
+import com.techelevator.model.PetDto;
 import com.techelevator.model.RegisterPetDto;
 
 import java.util.List;
@@ -15,6 +16,6 @@ public interface PetDao {
 
     Pet createPet(RegisterPetDto pet);
 
-    public List<Pet> getPlayDatePets(int playDateId);
+    public List<PetDto> getPlayDatePets(int playDateId);
 
 }

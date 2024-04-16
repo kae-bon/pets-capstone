@@ -3,12 +3,14 @@ package com.techelevator.dao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.exception.DuplicatePetException;
 import com.techelevator.model.Pet;
+import com.techelevator.model.PetDto;
 import com.techelevator.model.RegisterPetDto;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -105,16 +107,17 @@ public class JdbcPetDao implements PetDao {
     }
 
     @Override
-    public List<Pet> getPlayDatePets(int playDateId) {
-        List<Pet> playDatePetList = new ArrayList<>();
-        String sql ="SELECT pets.pet_id, name, owner_id, birthdate, breed, size, isfriendly, profile_pic\n" +
+    public List<PetDto> getPlayDatePets(int playDateId) {
+        List<PetDto> playDatePetList = new ArrayList<>();
+        String sql ="SELECT pets.pet_id, name, owner_id, pets.birthdate, breed, size, isfriendly, pets.profile_pic, first_name, last_name\n" +
                 "FROM pets\n" +
+                "JOIN owners ON pets.owner_id = owners.user_id\n" +
                 "JOIN pet_play_dates ON pets.pet_id = pet_play_dates.pet_id\n" +
                 "WHERE play_date_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, playDateId);
             while (results.next()) {
-                Pet pet  = mapRowToPet(results);
+                PetDto pet  = mapRowToPetDto(results);
                 playDatePetList.add(pet);
             }
         }catch (CannotGetJdbcConnectionException e) {
@@ -135,9 +138,22 @@ public class JdbcPetDao implements PetDao {
         pet.setSize(results.getString("size"));
         pet.setFriendly(results.getBoolean("isfriendly"));
         pet.setProfilePic(results.getString("profile_pic"));
-
-
         return pet;
+    }
+
+    private PetDto mapRowToPetDto(SqlRowSet results) {
+        PetDto petDto = new PetDto();
+        petDto.setId(results.getInt("pet_id"));
+        petDto.setName(results.getString("name"));
+        petDto.setOwnerId(results.getInt("owner_id"));
+        petDto.setBirthdate(results.getDate("birthdate").toLocalDate());
+        petDto.setBreed(results.getString("breed"));
+        petDto.setSize(results.getString("size"));
+        petDto.setFriendly(results.getBoolean("isfriendly"));
+        petDto.setProfilePic(results.getString("profile_pic"));
+        petDto.setOwnerFirstName((results.getString("first_name")));
+        petDto.setOwnerLastName((results.getString("last_name")));
+        return  petDto;
     }
 
 }
