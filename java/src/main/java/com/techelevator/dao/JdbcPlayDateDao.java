@@ -62,14 +62,37 @@ public class JdbcPlayDateDao implements PlayDateDao{
 
 
     @Override
-    public List<PlayDate> getUpcomingPlayDates() {
+    public List<PlayDate> getUpcomingPlayDates(String timeOfDay, String locationCity) {
         List<PlayDate> publicPlayDates = new ArrayList<>();
-        String sql = "SELECT play_date_id, title, description, host_id, date_time, end_date_time, location_id, ispublic\n" +
-                "FROM play_dates\n" +
-                "WHERE ispublic AND date_time > CURRENT_TIMESTAMP\n" +
+        String startTime = "0";
+        String endTime = "24";
+        switch (timeOfDay.toLowerCase()) {
+            case "morning":
+                startTime = "0";
+                endTime = "12";
+                break;
+            case "afternoon":
+                startTime = "12";
+                endTime = "18";
+                break;
+            case "evening":
+                startTime = "18";
+                endTime = "24";
+                break;
+        }
+
+        if (locationCity == null) locationCity = "l.city";
+
+        String sql = "SELECT play_date_id, title, description, host_id, date_time, end_date_time, play_dates.location_id, ispublic " +
+                "FROM play_dates " +
+                "LEFT JOIN public.locations l on l.location_id = play_dates.location_id " +
+                "WHERE date_part('hour', date_time) BETWEEN ? AND ?  " +
+                "AND l.city = ? " +
+                "AND ispublic " +
+                "AND date_time > CURRENT_TIMESTAMP " +
                 "ORDER BY date_time ASC;";
         try {
-            SqlRowSet results = this.jdbc.queryForRowSet(sql);
+            SqlRowSet results = this.jdbc.queryForRowSet(sql, startTime, endTime, locationCity);
             while (results.next()) {
                 PlayDate playDate = mapRowToPlayDate(results);
                 publicPlayDates.add(playDate);
@@ -84,7 +107,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     }
 
     @Override
-    public List<PlayDate> getUserPlayDates(int userId, String timeOfDay) {
+    public List<PlayDate> getUserPlayDates(int userId) {
         List<PlayDate> userPlayDates = new ArrayList<>();
         String sql = "SELECT DISTINCT play_dates.play_date_id, title, description, host_id, date_time, end_date_time, location_id, ispublic\n" +
                 "FROM play_dates\n" +

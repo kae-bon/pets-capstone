@@ -24,7 +24,7 @@ public interface PlayDateDao {
      * will need to be updated to return play dates specific to a petId once that is implemented
      * @return
      */
-    List<PlayDate> getUpcomingPlayDates();
+    List<PlayDate> getUpcomingPlayDates(String timeOfDay, String locationCity);
 
-    List<PlayDate> getUserPlayDates(int userId, String timeOfDay);
+    List<PlayDate> getUserPlayDates(int userId);
 }
