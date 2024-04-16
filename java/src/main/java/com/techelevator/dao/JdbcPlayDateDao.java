@@ -84,7 +84,7 @@ public class JdbcPlayDateDao implements PlayDateDao{
     }
 
     @Override
-    public List<PlayDate> getUserPlayDates(int userId) {
+    public List<PlayDate> getUserPlayDates(int userId, String timeOfDay) {
         List<PlayDate> userPlayDates = new ArrayList<>();
         String sql = "SELECT play_date_id, title, description, host_id, date_time, end_date_time, location_id, ispublic\n" +
                 "FROM play_dates\n" +

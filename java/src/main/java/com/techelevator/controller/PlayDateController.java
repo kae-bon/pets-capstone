@@ -46,12 +46,12 @@ public class PlayDateController {
 
 
     @GetMapping("/playdates")
-    public List<PlayDate> getUpcomingPlayDates(@RequestParam(value = "host_id", required = false), Integer @RequestParam() Integer userId, Principal user ){
+    public List<PlayDate> getUpcomingPlayDates(@RequestParam(value = "host_id", required = false) Integer userId, @RequestParam(value= "time", required = false) String timeOfDay, Principal user ){
         List<PlayDate> playDates = new ArrayList<>();
         if (userId != null) {
             User host = userDao.getUserByUsername(user.getName());
             int host_id = host.getId();
-            playDates = this.playDateDao.getUserPlayDates(host_id);
+            playDates = this.playDateDao.getUserPlayDates(host_id, timeOfDay);
             this.mapPetsToPlayDates(playDates);
             return playDates;
         }

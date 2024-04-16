@@ -26,5 +26,5 @@ public interface PlayDateDao {
      */
     List<PlayDate> getUpcomingPlayDates();
 
-    List<PlayDate> getUserPlayDates(int userId);
+    List<PlayDate> getUserPlayDates(int userId, String timeOfDay);
 }
