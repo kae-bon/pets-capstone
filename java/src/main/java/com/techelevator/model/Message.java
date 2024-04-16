@@ -6,68 +6,56 @@ public class Message {
     private int messageId;
     private String messageTitle;
     private String messageContent;
-    private LocalDateTime dateTimePosted;
-    private String posterFirstName;
-    private String posterLastName;
 
 
-    public Message() {}
-
-    public Message(int messageId, String messageTitle, String messageContent, LocalDateTime dateTimePosted, String posterFirstName, String posterLastName) {
+    private LocalDateTime messageDateTime;
+    private int posterId;
+    public  Message() {}
+    public Message(int messageId, String messageTitle, String messageContent, LocalDateTime messageDateTime, int posterId) {
         this.messageId = messageId;
         this.messageTitle = messageTitle;
         this.messageContent = messageContent;
-        this.dateTimePosted = dateTimePosted;
-        this.posterFirstName = posterFirstName;
-        this.posterLastName = posterLastName;
-
+        this.messageDateTime = messageDateTime;
+        this.posterId = posterId;
     }
 
     public int getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(int messageId) {
-        this.messageId = messageId;
-    }
-
     public String getMessageTitle() {
         return messageTitle;
-    }
-
-    public void setMessageTitle(String messageTitle) {
-        this.messageTitle = messageTitle;
     }
 
     public String getMessageContent() {
         return messageContent;
     }
 
+    public LocalDateTime getMessageDateTime() {
+        return messageDateTime;
+    }
+
+    public int getPosterId() {
+        return posterId;
+    }
+
+    public void setMessageId(int messageId) {
+        this.messageId = messageId;
+    }
+
+    public void setMessageTitle(String messageTitle) {
+        this.messageTitle = messageTitle;
+    }
+
     public void setMessageContent(String messageContent) {
         this.messageContent = messageContent;
     }
 
-    public LocalDateTime getDateTimePosted() {
-        return dateTimePosted;
+    public void setMessageDateTime(LocalDateTime messageDateTime) {
+        this.messageDateTime = messageDateTime;
     }
 
-    public void setDateTimePosted(LocalDateTime dateTimePosted) {
-        this.dateTimePosted = dateTimePosted;
-    }
-
-    public String getPosterFirstName() {
-        return posterFirstName;
-    }
-
-    public void setPosterFirstName(String posterFirstName) {
-        this.posterFirstName = posterFirstName;
-    }
-
-    public String getPosterLastName() {
-        return posterLastName;
-    }
-
-    public void setPosterLastName(String posterLastName) {
-        this.posterLastName = posterLastName;
+    public void setPosterId(int posterId) {
+        this.posterId = posterId;
     }
 }
