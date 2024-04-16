@@ -7,16 +7,20 @@ public class Message {
     private String messageTitle;
     private String messageContent;
     private LocalDateTime dateTimePosted;
-    private int posterId;
+    private String posterFirstName;
+    private String posterLastName;
+
 
     public Message() {}
 
-    public Message(int messageId, String messageTitle, String messageContent, LocalDateTime dateTimePosted, int posterId) {
+    public Message(int messageId, String messageTitle, String messageContent, LocalDateTime dateTimePosted, String posterFirstName, String posterLastName) {
         this.messageId = messageId;
         this.messageTitle = messageTitle;
         this.messageContent = messageContent;
         this.dateTimePosted = dateTimePosted;
-        this.posterId = posterId;
+        this.posterFirstName = posterFirstName;
+        this.posterLastName = posterLastName;
+
     }
 
     public int getMessageId() {
@@ -51,11 +55,19 @@ public class Message {
         this.dateTimePosted = dateTimePosted;
     }
 
-    public int getPosterId() {
-        return posterId;
+    public String getPosterFirstName() {
+        return posterFirstName;
     }
 
-    public void setPosterId(int posterId) {
-        this.posterId = posterId;
+    public void setPosterFirstName(String posterFirstName) {
+        this.posterFirstName = posterFirstName;
+    }
+
+    public String getPosterLastName() {
+        return posterLastName;
+    }
+
+    public void setPosterLastName(String posterLastName) {
+        this.posterLastName = posterLastName;
     }
 }

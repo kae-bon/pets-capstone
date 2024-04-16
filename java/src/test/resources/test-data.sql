@@ -25,7 +25,7 @@ VALUES
     ('Steve', '2', '2008-03-05', 'labrador', 'XL', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712878757/owner_id1.jpg');
 
 INSERT INTO messages(message_title, message_content, date_time, poster_id)
-VALUES ('Best Park', 'What is the best park for small dogs?', '2024-05-02 10:30:00', 1),
-('Join us for a birthday party', 'Throwing a birthday party for my dog Murphy - everyone is invited!', '2024-07-01 11:30:00', 2);
+VALUES ('Best Park', 'What is the best park for small dogs?', '2024-05-02 10:30:00', 2),
+('Join us for a birthday party', 'Throwing a birthday party for my dog Murphy - everyone is invited!', '2024-07-01 11:30:00', 1);
 
  COMMIT TRANSACTION;

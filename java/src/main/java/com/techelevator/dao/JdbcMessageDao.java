@@ -19,8 +19,10 @@ public class JdbcMessageDao implements MessageDao {
     @Override
     public List<Message> getMessages() {
         List<Message> messages = new ArrayList<>();
-        String sql = "SELECT message_id, message_title, message_content, date_time, poster_id\n" +
-                "FROM messages;";
+        String sql = "SELECT message_id, message_title, message_content, date_time, owners.first_name, owners.last_name\n" +
+                "FROM messages\n" +
+                "JOIN owners ON owners.user_id = messages.poster_id\n" +
+                "ORDER BY date_time DESC;";
         try {
             SqlRowSet results = this.jdbc.queryForRowSet(sql);
             while (results.next()) {
@@ -41,6 +43,7 @@ public class JdbcMessageDao implements MessageDao {
                             result.getString("message_title"),
                             result.getString("message_content"),
                             result.getTimestamp("date_time").toLocalDateTime(),
-                            result.getInt("poster_id"));
+                            result.getString("first_name"),
+                            result.getString("last_name"));
     }
 }

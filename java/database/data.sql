@@ -49,7 +49,7 @@ VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the loca
 ('Doggy Disco', 'Get ready to boogie with your pups at the dog-friendly disco!', 2, '2024-04-24 20:00:00', '2024-04-24 22:00:00', 9, true);
 
 INSERT INTO messages(message_title, message_content, date_time, poster_id)
-VALUES ('Looking for Play Date Locations', 'My Labrador loves to play fetch. Any recommendations for parks with wide open spaces?', '2024-04-16 14:30:00', 2)
+VALUES ('Looking for Play Date Locations', 'My Labrador loves to play fetch. Any recommendations for parks with wide open spaces? Any recommendations for parks with wide open spaces? Any recommendations for parks with wide open spaces? Any recommendations for parks with wide open spaces? Any recommendations for parks with wide open spaces? Any recommendations for parks with wide open spaces?', '2024-04-16 14:30:00', 2)
 ,('Summary of Last Play Date', 'Had a great time at Central Bark yesterday. Met some friendly dog owners and our pups had a blast!', '2024-04-15 18:45:00', 1)
 ,('Play Date at Sunset Park', 'Organizing a play date at Sunset Park this Saturday at 2 PM. All breeds welcome!', '2024-04-18 09:20:00', 1)
 ,('Dog Meetup Group', 'Join our dog meetup group for weekly play dates and socialization opportunities. All dogs welcome!', '2024-04-17 11:10:00', 2)
