@@ -48,4 +48,16 @@ VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the loca
 ('Woof Walk', 'Join us for a scenic walk with our furry companions.',1, '2024-04-23 10:00:00', '2024-04-23 12:00:00', 8, true),
 ('Doggy Disco', 'Get ready to boogie with your pups at the dog-friendly disco!', 2, '2024-04-24 20:00:00', '2024-04-24 22:00:00', 9, true);
 
+INSERT INTO messages(message_title, message_content, date_time, poster_id)
+VALUES ('Looking for Play Date Locations', 'My Labrador loves to play fetch. Any recommendations for parks with wide open spaces?', '2024-04-16 14:30:00', 2)
+,('Summary of Last Play Date', 'Had a great time at Central Bark yesterday. Met some friendly dog owners and our pups had a blast!', '2024-04-15 18:45:00', 1)
+,('Play Date at Sunset Park', 'Organizing a play date at Sunset Park this Saturday at 2 PM. All breeds welcome!', '2024-04-18 09:20:00', 1)
+,('Dog Meetup Group', 'Join our dog meetup group for weekly play dates and socialization opportunities. All dogs welcome!', '2024-04-17 11:10:00', 2)
+,('New Dog Park Opening', 'Exciting news! A new dog park is opening in our neighborhood next month. Cant wait to check it out!', '2024-04-19 16:55:00', 1)
+,('Doggie Play Date Tomorrow', 'Anyone up for a play date at Greenfield Park tomorrow morning? Let''s meet at 9 AM!', '2024-04-20 20:05:00', 1)
+,('Suggestions for Indoor Play Areas', 'With the rainy season approaching, I''m looking for indoor play areas where my dog can still have fun. Any recommendations?', '2024-04-16 12:40:00', 2)
+,('Dog Park Safety Tips', 'Remember to always keep an eye on your dog at the park, and pick up after them to keep our parks clean and safe for everyone!', '2024-04-22 10:30:00', 2)
+,('Favorite Dog-Friendly Cafes', 'After a fun play date, it''s nice to relax at a dog-friendly cafe. Share your favorite spots!', '2024-04-23 15:20:00', 1)
+,('Looking for a Walking Buddy', 'Anyone interested in joining us for daily walks at the park? My Golden Retriever loves company!', '2024-04-24 09:15:00', 2);
+
 COMMIT TRANSACTION;

@@ -12,6 +12,7 @@ import EditInfoView from '../views/EditInfoView.vue';
 import ProfileView from '../views/ProfileView.vue';
 import RegisterPetView from '../views/RegisterPetView.vue'
 import PlayDateDetailView from '../views/PlayDateDetailView.vue';
+import MessageBoardView from '../views/MessageBoardView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -98,6 +99,14 @@ const routes = [
     path: "/playdate/:playDateId",
     name: "play-date-details",
     component: PlayDateDetailView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/messageboard",
+    name: "message-board",
+    component: MessageBoardView,
     meta: {
       requiresAuth: true
     }

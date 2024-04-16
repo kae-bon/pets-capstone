@@ -28,7 +28,7 @@ public class LocationController {
         try {
             return locationDao.getAllLocations();
         } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Playdate registration failed.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Cannot connect to database - try again later!");
         }
     }
 }
