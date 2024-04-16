@@ -30,7 +30,7 @@
                     <div class="modal-footer">
                         <button :id="closeModalId" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             @click="closeModal">Close</button>
-                        <button type="submit" class="btn btn-primary">Understood</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                 </form>
             </div>

@@ -13,9 +13,9 @@ VALUES
 INSERT INTO pets (name, owner_id, birthdate, breed, size, isFriendly, profile_pic)
 VALUES
     ('Bean', '1','1996-05-02','pug', 'S', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952092/qqshrlf1dadckxhheyi9.jpg'),
-    ('Steve', '2', '2008-03-05', 'labrador', 'XL', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952027/u6lfywbn5sjx93qne6fu.jpg');
-
-
+    ('Luna', '2', '2008-03-05', 'labrador', 'XL', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952027/u6lfywbn5sjx93qne6fu.jpg'),
+    ('Olive', '2', '2008-04-05', 'cat', 's', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952027/u6lfywbn5sjx93qne6fu.jpg'),
+    ('Marley', '1', '2008-07-05', 'hound', 'm', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952027/u6lfywbn5sjx93qne6fu.jpg');
 
 INSERT INTO locations(location_name, street_address, city, state_abbr)
 VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
@@ -47,6 +47,12 @@ VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the loca
 ('Puppy Picnic', 'A picnic in the park specially designed for young puppies.', 1, '2024-04-27 12:00:00', '2024-04-27 14:00:00', 7, true),
 ('Woof Walk', 'Join us for a scenic walk with our furry companions.',1, '2024-04-23 10:00:00', '2024-04-23 12:00:00', 8, true),
 ('Doggy Disco', 'Get ready to boogie with your pups at the dog-friendly disco!', 2, '2024-04-24 20:00:00', '2024-04-24 22:00:00', 9, true);
+
+INSERT INTO pet_play_dates(play_date_id, pet_id)
+VALUES (2, 1),
+(1, 2),
+(9, 2),
+(1, 1);
 
 INSERT INTO messages(message_title, message_content, date_time, poster_id)
 VALUES ('Looking for Play Date Locations', 'My Labrador loves to play fetch. Any recommendations for parks with wide open spaces?', '2024-04-16 14:30:00', 2)

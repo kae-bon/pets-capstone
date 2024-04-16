@@ -21,7 +21,8 @@
         </div>
         <div class="modal fade" :id="modalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <SignUpForPlayDate :playDateId="playdate.playDateId" :attendingPets="playdate.attendingPets" />
+            <SignUpForPlayDate :playDateId="playdate.playDateId"
+                :attendingPets="playdate.attendingPets.filter(pet => pet.ownerId === $store.state.user.id)" />
         </div>
     </article>
 </template>
