@@ -27,7 +27,7 @@ public class PlayDate {
     @Future
     private LocalDateTime endDateTime;
 
-    private List<Pet> attendingPets;
+    private List<PetDto> attendingPets;
 
     public PlayDate() {}
 
@@ -43,7 +43,7 @@ public class PlayDate {
         this.attendingPets = new ArrayList<>();
     }
 
-    public PlayDate(List<Pet> attendingPets, int playDateId, String title, String description, int hostId, LocalDateTime dateTime, LocalDateTime endDateTime, int locationId, boolean publicDate) {
+    public PlayDate(List<PetDto> attendingPets, int playDateId, String title, String description, int hostId, LocalDateTime dateTime, LocalDateTime endDateTime, int locationId, boolean publicDate) {
         this (playDateId,  title, description, hostId,  dateTime, endDateTime, locationId, publicDate);
         this.attendingPets = attendingPets;
     }
@@ -96,7 +96,7 @@ public class PlayDate {
         this.endDateTime = endDateTime;
     }
 
-    public List<Pet> getAttendingPets() {
+    public List<PetDto> getAttendingPets() {
         return attendingPets;
     }
 
@@ -116,7 +116,7 @@ public class PlayDate {
         this.playDateId = playDateId;
     }
 
-    public void setAttendingPets(List<Pet> pets) {
+    public void setAttendingPets(List<PetDto> pets) {
         this.attendingPets = pets;
     }
 }

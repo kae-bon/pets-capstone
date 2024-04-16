@@ -5,6 +5,7 @@ import com.techelevator.dao.PlayDateDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Pet;
+import com.techelevator.model.PetDto;
 import com.techelevator.model.PlayDate;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
@@ -63,14 +64,14 @@ public class PlayDateController {
     @GetMapping("/playdates/{playDateId}")
     public PlayDate getPlayDateById(@PathVariable("playDateId") Integer playDateId) {
         PlayDate playDate = this.playDateDao.getPlayDateById(playDateId);
-        List<Pet> playDatePets = this.petDao.getPlayDatePets(playDateId);
+        List<PetDto> playDatePets = this.petDao.getPlayDatePets(playDateId);
         playDate.setAttendingPets(playDatePets);
         return playDate;
     }
 
     public void mapPetsToPlayDates(List<PlayDate> playDates) {
         for( PlayDate playDate : playDates) {
-            List<Pet> playdatePets = petDao.getPlayDatePets(playDate.getPlayDateId());
+            List<PetDto> playdatePets = petDao.getPlayDatePets(playDate.getPlayDateId());
             playDate.setAttendingPets(playdatePets);
         }
     }
