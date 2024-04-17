@@ -11,7 +11,7 @@ export default {
     },
 
     updateOwner(id, owner) {
-        console.log("hello")
+        // console.log("hello")
         return axios.put(`/owners/${id}`, owner);
     }
 

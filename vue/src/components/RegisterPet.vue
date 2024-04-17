@@ -75,13 +75,13 @@ export default {
             const currentMonth = new Date().getMonth() + 1;
             const currentDay = new Date().getDate();
             if (currentDay < 10 && currentMonth < 10) {
-                console.log(currentYear + "-0" + currentMonth + "-0" + currentDay);
+                // console.log(currentYear + "-0" + currentMonth + "-0" + currentDay);
                 return currentYear + "-0" + currentMonth + "-0" + currentDay;
             } else if (currentDay < 10) {
-                console.log(currentYear + "-" + currentMonth + "-0" + currentDay);
+                // console.log(currentYear + "-" + currentMonth + "-0" + currentDay);
                 return currentYear + "-" + currentMonth + "-0" + currentDay;
             } else if (currentMonth < 10) {
-                console.log(currentYear + "-0" + currentMonth + "-" + currentDay);
+                // console.log(currentYear + "-0" + currentMonth + "-" + currentDay);
                 return currentYear + "-0" + currentMonth + "-" + currentDay;
             } else return currentYear + "-" + currentMonth + "-" + currentDay;
         }

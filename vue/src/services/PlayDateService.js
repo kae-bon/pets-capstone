@@ -6,8 +6,16 @@ export default {
         return axios.post('/playdates', playDate);
     },
 
-    getUpcomingPlayDates() {
+    getAllUpcomingPlayDates() {
         return axios.get('/playdates');
+    },
+
+    getTimeFilteredUpcomingPlayDates(timeOfDay) {
+        return axios.get(`/playdates?time_of_day=${timeOfDay}`);
+    },
+
+    getLocationFilteredUpcomingPlayDates(locationCity) {
+        return axios.get(`/playdates?location_city=${locationCity}`);
     },
 
     getFilteredUpcomingPlayDates(timeOfDay, locationCity) {

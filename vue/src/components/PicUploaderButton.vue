@@ -45,8 +45,8 @@ export default {
 
           this.imgUrl = result.info.url;
           this.thumbnailUrl = result.info.thumbnail_url;
-          console.log(this.imgUrl);
-          console.log(typeof (this.imgUrl));
+          // console.log(this.imgUrl);
+          // console.log(typeof (this.imgUrl));
           this.uploadImage();
 
           // There are other properties that might be useful, including:
