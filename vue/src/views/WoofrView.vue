@@ -2,7 +2,7 @@
   <div class="home">
     <HomeAbout />
     <CustomerTestimonials />
-    <FeatureList />
+    <FeatureList class="feature" />
     <ReadyToPlay />
   </div>
 </template>
@@ -24,3 +24,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.feature {
+  margin-bottom: 4rem;
+}
+</style>
