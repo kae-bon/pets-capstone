@@ -1,8 +1,7 @@
 <template>
-  <div id="capstone-app" class="d-flex flex-column justify-content-between">
+  <div id="capstone-app" class="d-flex flex-column">
     <WoofrHeader />
-
-    <router-view />
+    <router-view id="routerView" />
     <footer class="d-flex align-items-center justify-content-center p-2 mt-5">
       <p>&copy; Luna & Marley Co.</p>
     </footer>
@@ -36,5 +35,9 @@ export default {
 <style scoped>
 #capstone-app {
   height: 100vh;
+}
+
+#routerView {
+  flex-grow: 1;
 }
 </style>
