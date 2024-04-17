@@ -13,6 +13,7 @@ import ProfileView from '../views/ProfileView.vue';
 import RegisterPetView from '../views/RegisterPetView.vue'
 import PlayDateDetailView from '../views/PlayDateDetailView.vue';
 import MessageBoardView from '../views/MessageBoardView.vue';
+import NotFoundView from '../views/NotFoundView.vue'
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -110,7 +111,8 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  }
+  },
+  { path: '/:notfound(.*)*', name: 'not-found', component: NotFoundView },
 ];
 
 // Create the router
