@@ -38,7 +38,7 @@
         <div class="d-flex flex-wrap flex-row justify-content-center">
             <PlayDateCards class="w-100 playDateCards" v-for="playdate in filteredList" :key="playdate.id"
                 :playdate="playdate" />
-            <div v-if="playDates.length === 0">Sorry, No Play Dates found</div>
+            <div v-if="playDates.length === 0">Sorry, no Play Dates found</div>
         </div>
 
     </div>
