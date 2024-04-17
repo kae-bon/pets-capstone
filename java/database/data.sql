@@ -91,14 +91,14 @@ VALUES (2, 1),
 
 INSERT INTO messages(message_title, message_content, date_time, poster_id)
 VALUES ('Spontaneous Meetup', 'I''m heading to Washington Park with my Husky today at 3:30pm, anyone is welcome to join me!', '2024-04-16 14:30:00', 3)
-,('Summary of Last Play Date', 'Had a great time at Central Bark yesterday. Met some friendly dog owners and our pups had a blast!', '2024-04-15 18:45:00', 1)
-,('Play Date at Sunset Park', 'Organizing a play date at Sunset Park this Saturday at 2 PM. All breeds welcome!', '2024-04-10 09:20:00', 1)
-,('Dog Meetup Group', 'Join our dog meetup group for weekly play dates and socialization opportunities. All dogs welcome!', '2024-04-02 11:10:00', 2)
-,('New Dog Park Opening', 'Exciting news! A new dog park is opening in our neighborhood next month. Cant wait to check it out!', '2024-04-01 16:55:00', 1)
-,('Doggie Play Date Tomorrow', 'Anyone up for a play date at Greenfield Park tomorrow morning? Let''s meet at 9 AM!', '2024-04-02 20:05:00', 1)
-,('Suggestions for Indoor Play Areas', 'With the rainy season approaching, I''m looking for indoor play areas where my dog can still have fun. Any recommendations?', '2024-03-01 12:40:00', 2)
-,('Dog Park Safety Tips', 'Remember to always keep an eye on your dog at the park, and pick up after them to keep our parks clean and safe for everyone!', '2024-03-22 10:30:00', 2)
-,('Favorite Dog-Friendly Cafes', 'After a fun play date, it''s nice to relax at a dog-friendly cafe. Share your favorite spots!', '2024-02-23 15:20:00', 1)
-,('Looking for a Walking Buddy', 'Anyone interested in joining us for daily walks at the park? My Golden Retriever loves company!', '2024-03-24 09:15:00', 2);
+,('Important notice: ', 'Some dogs have shown signs of aggression during recent playdates. Remember to supervise your pups closely and promote positive interactions. Safety first!', '2024-04-15 18:45:00', 4)
+,('Spontaneous pawty alert!', 'Swing by the park for an impromptu playdate. Let your pups make new friends and burn off some energy. See you there in a wag! ', '2024-04-10 09:20:00', 1)
+,('Weather Update', 'Attention, fur-parents! Due to bad weather, today''s playdate is canceled. Keep your pups cozy indoors and we''ll fetch some sunshine next time! Stay dry!', '2024-04-02 07:10:00', 3)
+,('Exciting news!', 'A new dog park is opening in our neighborhood next month. Cant wait to check it out!', '2024-04-01 16:55:00', 2)
+,('The weathermen got it wrong!', 'The sun is shining, and the park beckons. Gather your pups and join us for a pop-up playdate. Let''s make the most of this beautiful day!', '2024-04-02 14:05:00', 5)
+,('Behavior alert!', 'Rough play has resulted in minor injuries during past gatherings. Let''s keep an eye on our pups and discourage overly rough behavior. Safety is our top priority!', '2024-03-01 12:40:00', 1)
+,('Dog Park Safety Tips!', 'Remember to always keep an eye on your dog at the park, and pick up after them to keep our parks clean and safe for everyone!', '2024-03-22 10:30:00', 2)
+,('Reminder!', 'While impromptu gatherings are fun, please remember to monitor your pup''s behavior closely. Let''s ensure all furry friends feel comfortable and safe during our spontaneous playdates.', '2024-02-23 15:20:00', 5)
+,('Heads up!', 'A new dog-friendly café just opened up downtown. Let''s organize a meetup to sniff out the best treats and enjoy some pupperchinos together! ', '2024-03-24 09:15:00', 4);
 
 COMMIT TRANSACTION;
