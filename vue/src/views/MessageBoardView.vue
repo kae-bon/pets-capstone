@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1 class="mb-1">Woofr Forum</h1>
+        <h1 class="mb-1">Announcements</h1>
         <p class="mb-3">See what everyone is barkin' about!</p>
         <CreateMessageButton />
         <div id="messageCardDiv">

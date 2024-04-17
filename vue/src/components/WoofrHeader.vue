@@ -13,7 +13,7 @@
                     <router-link class="nav-link border-start border-light" :to="{ name: 'upcoming' }"
                         v-if="!$store.state.token == ''">Upcoming</router-link>
                     <router-link class="nav-link border-start border-light" :to="{ name: 'message-board' }"
-                        v-if="!$store.state.token == ''">Message Board</router-link>
+                        v-if="!$store.state.token == ''">Announcements</router-link>
                     <router-link class="nav-link border-start border-light" :to="{ name: 'register' }"
                         v-if="$store.state.token == ''">Register</router-link>
 
