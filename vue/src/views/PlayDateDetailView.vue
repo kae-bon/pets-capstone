@@ -2,6 +2,7 @@
     <div class="container d-flex flex-column align-items-center h-100">
         <h2 class="mb-4">{{ currentPlayDate.title }}</h2>
         <h3>{{ playDateLocation }}</h3>
+        <h4>{{ playDateAddress }}</h4>
         <p>{{ currentPlayDate.description }}</p>
         <p class="fst-italic">{{ playDateTime }} to {{ playDateEndTime }}</p>
         <h3 class="mt-4 mb-4">This Woofr Play Date Roster!</h3>
@@ -46,6 +47,11 @@ export default {
             const location = this.$store.state.locations
                 .find(location => location.id === this.currentPlayDate.locationId);
             return location?.name;
+        },
+        playDateAddress() {
+            const locationAddress = this.$store.state.locations
+                .find(location => location.id === this.currentPlayDate.locationId)
+            return locationAddress?.streetAddress + ", " + locationAddress?.city + ", " + locationAddress?.stateAbbreviation;
         },
         playDateTime() {
             const date = new Date(this.currentPlayDate.dateTime);
