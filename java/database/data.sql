@@ -43,7 +43,7 @@ VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the loca
 ('Fetch Frenzy', 'A day dedicated to playing fetch with all the furry friends.', 2, '2024-04-25 14:00:00', '2024-04-25 16:00:00', 3, true),
 ('Doggy Dip Day', 'Cool off with your pups in a splash-worthy pool party!', 2, '2024-04-23 11:00:00', '2024-04-23 13:00:00', 4, true),
 ('Bark and Brews', 'An evening of mingling with other dog owners at a local brewery.',1, '2024-04-22 18:00:00', '2024-04-22 20:00:00', 5, true),
-('Doggie Dash', 'A fun run event for dogs and their humans.', 1, '2024-04-17 09:00:00', '2024-04-17 11:00:00', 6, true),
+('Doggie Dash', 'A fun run event for dogs and their humans.', 1, '2024-04-22 09:00:00', '2024-04-22 11:00:00', 6, true),
 ('Puppy Picnic', 'A picnic in the park specially designed for young puppies.', 1, '2024-04-27 12:00:00', '2024-04-27 14:00:00', 7, true),
 ('Woof Walk', 'Join us for a scenic walk with our furry companions.',1, '2024-04-23 10:00:00', '2024-04-23 12:00:00', 8, true),
 ('Doggy Disco', 'Get ready to boogie with your pups at the dog-friendly disco!', 2, '2024-04-24 20:00:00', '2024-04-24 22:00:00', 9, true);

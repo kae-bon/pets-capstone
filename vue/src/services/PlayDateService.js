@@ -10,6 +10,10 @@ export default {
         return axios.get('/playdates');
     },
 
+    getFilteredUpcomingPlayDates(timeOfDay, locationCity) {
+        return axios.get(`/playdates?time_of_day=${timeOfDay}&location_city=${locationCity}`);
+    },
+
     getUserPlayDates(userId) {
         return axios.get(`/playdates?host_id=${userId}`);
     },
