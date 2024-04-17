@@ -1,6 +1,6 @@
 <template>
-    <article class="card text-center col m-2">
-        <p>{{ playdate.host_id }}</p>
+    <article class="card text-center col m-2 pt-2">
+
         <div class="card-body d-flex flex-column justify-content-between">
             <h2 class="card-title">{{ playdate.title }}</h2>
             <p class="card-subtitle mb-3">{{ playDateLocation }}</p>
