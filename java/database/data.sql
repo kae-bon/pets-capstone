@@ -23,7 +23,8 @@ VALUES
     ('Olive', '2', '2008-04-05', 'chihuahua', 's', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/r28vjwgdcnyz1vvgohae.jpg'),
     ('Marley', '1', '2008-07-05', 'hound', 'm', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/ua4zodfz5bdhmtb2eaju.jpg'),
     ('Cane', '4', '2017-09-02', 'doberman', 'l', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,g_auto,h_500,w_500/ikjca8eelkwcstogc2ye.jpg'),
-    ('Volo', '5', '2019-03-15', 'collie', 's', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/bm4ub4xmiclsbwiujoy0.jpg');
+    ('Volo', '5', '2019-03-15', 'collie', 's', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/bm4ub4xmiclsbwiujoy0.jpg'),
+    ('Steve', '1', '2003-05-06', 'black lab', 'l', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/l87xlyfn4vgy56qm2eru.jpg');
 
 INSERT INTO locations(location_name, street_address, city, state_abbr)
 VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
