@@ -67,7 +67,7 @@ VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the loca
 ('Puppy Picnic', 'A picnic in the park specially designed for young puppies.', 1, '2024-04-27 12:00:00', '2024-04-27 14:00:00', 7, true),
 ('Woof Walk', 'Join us for a scenic walk with our furry companions.',1, '2024-04-23 10:00:00', '2024-04-23 12:00:00', 8, true),
 ('Doggy Disco', 'Get ready to boogie with your pups at the dog-friendly disco!', 2, '2024-04-24 20:00:00', '2024-04-24 22:00:00', 9, true),
-('Graduation Day', 'We should all be super proud of ourselves - I know our pups are!', 2, '2024-04-22 09:00:00', '2024-04-24 17:00:00', 1, true);
+('Graduation Day', 'We should all be super proud of ourselves - I know our pups are!', 2, '2024-04-20 09:00:00', '2024-04-24 17:00:00', 4, true);
 
 INSERT INTO pet_play_dates(play_date_id, pet_id)
 VALUES (2, 1),
