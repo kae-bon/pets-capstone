@@ -4,7 +4,7 @@
         <h3>{{ playDateLocation }}</h3>
         <p>{{ currentPlayDate.description }}</p>
         <p class="fst-italic">{{ playDateTime }} to {{ playDateEndTime }}</p>
-        <h3 class="mt-4 mb-4">This Woofr Play Date Roster!</h3>
+        <h3 class="mt-4 mb-4">Play Date Roster!</h3>
         <div class="d-flex column-gap-2 flex-wrap petCardList">
             <SimplePetCard v-for="pet in currentPlayDate.attendingPets" :key="pet.id" :pet="pet" />
         </div>
