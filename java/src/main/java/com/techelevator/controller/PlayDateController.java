@@ -47,8 +47,8 @@ public class PlayDateController {
 
 
     @GetMapping("/playdates")
-    public List<PlayDate> getUpcomingPlayDates(@RequestParam(value = "host_id", required = false) Integer userId, Principal user) {
-        List<PlayDate> playDates = new ArrayList<>();
+    public List<PlayDate> getUpcomingPlayDates(@RequestParam(value = "host_id", required = false) Integer userId, @RequestParam(value= "time_of_day", required = false) String timeOfDay, @RequestParam(value = "location_city", required = false) String locationCity, Principal user ){
+        List<PlayDate> playDates;
         if (userId != null) {
             User host = userDao.getUserByUsername(user.getName());
             int host_id = host.getId();
@@ -56,7 +56,7 @@ public class PlayDateController {
             this.mapPetsToPlayDates(playDates);
             return playDates;
         }
-        playDates = this.playDateDao.getUpcomingPlayDates();
+        playDates = this.playDateDao.getUpcomingPlayDates(timeOfDay, locationCity);
         mapPetsToPlayDates(playDates);
         return playDates;
     }

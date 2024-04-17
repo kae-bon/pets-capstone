@@ -7,9 +7,38 @@
         </div>
 
         <CreatePlayDateButton />
+        <div class="play-date-filter">
+            <input type="search" id="pd-filter" v-model="filter" placeholder="Title or description">
+        </div>
+
+        <div class="play-date-filter">
+            choose a playdate time:
+            <select>
+                <option value="All"> All </option>
+                <option value="Morning"> Morning </option>
+                <option value="Afternoon"> Afternoon </option>
+                <option value="Evening"> Evening </option>
+            </select>
+        </div>
+
+        <div class="play-date-filter">
+            choose a playdate city:
+            <select>
+                <option value="All"> All </option>
+                <option v-for="location in locations" v-bind:key="location"> {{ location }} </option>
+                <!-- <option value="Blue Ash"> Blue Ash </option>
+                <option value="Cincinnati"> Cincinnati </option>
+                <option value="Fairfield"> Fairfield </option>
+                <option value="Florence"> Florence </option>
+                <option value="Fort-Thomas"> Fort Thomas </option>
+                <option value="Hamilton"> Hamilton </option>
+                <option value="Loveland"> Loveland </option>
+                <option value="Newport"> Newport </option> -->
+            </select>
+        </div>
 
         <div class="d-flex flex-wrap flex-row justify-content-center">
-            <PlayDateCards class="w-100 playDateCards" v-for="playdate in playDates" :key="playdate.id"
+            <PlayDateCards class="w-100 playDateCards" v-for="playdate in filteredList" :key="playdate.id"
                 :playdate="playdate" />
         </div>
 
@@ -22,13 +51,18 @@ import PlayDateCards from "../components/PlayDateCards.vue";
 import LocationService from "../services/LocationService";
 import CreatePlayDateButton from "../components/CreatePlayDateButton.vue";
 import PetService from "../services/PetService";
+import _default from "vuex";
+
 
 export default {
     data() {
         return {
             showModal: false,
             registrationSuccessful: false,
-            playDates: []
+            playDates: [],
+            times: [],
+            filter: "",
+
         }
     },
     components: {
@@ -47,10 +81,37 @@ export default {
                         this.playDates = response.data;
                     });
             })
+    },
+    computed: {
+        filteredList() {
+            let filteredPlayDates = this.playDates;
+            if (this.filter != "") {
+                filteredPlayDates = filteredPlayDates.filter((playDate) =>
+                    playDate.title.toLowerCase().includes(this.filter.toLowerCase()) ||
+                    playDate.description.toLowerCase().includes(this.filter.toLowerCase())
+                )
+            }
+            return filteredPlayDates;
+        },
+        locations() {
+            let playDateCity = this.$store.state.locations;
+            let counter = -1;
+            let output = [];
+            playDateCity.forEach((city) => {
+                if (!output.includes(city.city)) {
+                    output.push(city.city)
+                    console.log(output)
+                }
+            })
+            // playDateCity = playDateCity.filter((city) => {
+            //     console.log(counter)
+            //     return playDateCity.indexOf(city) == counter;
+            // });
+
+            return output.sort();
+        }
+
     }
-
-
-
 }
 </script>
 
