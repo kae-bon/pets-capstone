@@ -83,7 +83,7 @@ export default {
     birthday() {
       let birthday = this.$store.state.owner.birthdate;
       let date = new Date(birthday);
-      return date.toLocaleDateString();
+      return date.toLocaleDateString('en-US', { timeZone: 'UTC' });
     }
   },
   methods: {
