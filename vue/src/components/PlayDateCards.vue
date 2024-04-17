@@ -5,9 +5,8 @@
             <h2 class="card-title">{{ playdate.title }}</h2>
             <p class="card-subtitle mb-3">{{ playDateLocation }}</p>
             <p class="card-text">{{ playdate.description }}</p>
-            <p class="time">{{ playDateTime }}</p>
-            <p> to </p>
-            <p class="time">{{ playDateEndTime }}</p>
+            <p class="time fst-italic">{{ playDateTime }} to {{ playDateEndTime }}</p>
+
 
         </div>
         <div class="card-footer d-flex justify-content-around">
@@ -51,7 +50,7 @@ export default {
             } else if (date.getHours() < 22) {
                 time = date.toLocaleTimeString().substring(0, 4) + " PM";
             }
-            return date.toDateString() + " at " + time;
+            return date.toDateString() + ", " + time;
         },
         playDateEndTime() {
             const date = new Date(this.playdate.endDateTime);
@@ -65,7 +64,7 @@ export default {
             } else if (date.getHours() < 22) {
                 time = date.toLocaleTimeString().substring(0, 4) + " PM";
             }
-            return date.toDateString() + " at " + time;
+            return time;
         },
         modalId() {
             return "sign-up-play-date-" + this.playdate.playDateId;
@@ -97,9 +96,5 @@ export default {
 .card-subtitle {
     font-size: 1rem;
     font-style: italic;
-}
-
-.time {
-    font-weight: bold;
 }
 </style>

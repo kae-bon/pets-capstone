@@ -1,5 +1,5 @@
 <template>
-    <article class="testimonial card text-center">
+    <article class="testimonial card text-center mb-3">
         <img v-bind:src="image" alt="" class="card-img-top testimonial-img">
         <p class="card-body">{{ testimonial.text }}</p>
         <p class="testimonial-author">{{ testimonial.author }}</p>

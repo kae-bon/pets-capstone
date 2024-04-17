@@ -3,19 +3,28 @@ BEGIN TRANSACTION;
 INSERT INTO users (username,password_hash,role)
 VALUES
     ('stevemcqueeniscool@yahoo.com','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'), -- user_id:1
-    ('kaeiscooler@gmail.com','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN'); -- user_id:2
+    ('kaeiscooler@gmail.com','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN'), -- user_id:2
+    ('omg.grethel@gmail.com','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'), -- user_id:3
+    ('dthig@gmail.com','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'), --user_id:4
+    ('malikwritescode@gmail.com','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --user_id:5
 
 INSERT INTO owners (user_id, first_name, last_name, birthdate, profile_pic, email)
 VALUES
     (1, 'Steve', 'McQueen', '1930-03-24', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/d5qnyhtprq1y40lszwxr.jpg', 'stevemcqueeniscool@yahoo.com'),
-    (2, 'Kae', 'Bonaguro', '1996-05-02', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712951916/wajywycfsz68kvknt1ci.jpg', 'kaeiscooler@gmail.com');
+    (2, 'Kae', 'Bonaguro', '1996-05-02', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,g_auto,h_500,w_500/ufrz0mzbfp317gtyoi3j.jpg', 'kaeiscooler@gmail.com'),
+    (3, 'Grethel', 'Huerta', '1993-05-12', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/gu4ciuhd6kxehtaqzzaj.jpg', 'omg.grethel@gmail.com'),
+    (4, 'Darren', 'Thigpen', '2003-03-03', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/n2zihz1ku7zbhy78ctvm.jpg', 'dthig@gmail.com'),
+    (5, 'Malik', 'Smith', '1997-10-17', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/tt0ifxexmwhf0azjh6ir.jpg', 'malikwritescode@gmail.com');
 
 INSERT INTO pets (name, owner_id, birthdate, breed, size, isFriendly, profile_pic)
 VALUES
-    ('Bean', '1','1996-05-02','pug', 'S', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952092/qqshrlf1dadckxhheyi9.jpg'),
-    ('Luna', '2', '2008-03-05', 'labrador', 'XL', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952027/u6lfywbn5sjx93qne6fu.jpg'),
-    ('Olive', '2', '2008-04-05', 'cat', 's', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952027/u6lfywbn5sjx93qne6fu.jpg'),
-    ('Marley', '1', '2008-07-05', 'hound', 'm', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/v1712952027/u6lfywbn5sjx93qne6fu.jpg');
+    ('Bean', '3','1996-05-02','pug', 'S', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,g_auto,h_500,w_500/cfmubttguwhtxedjjhjc.jpg'),
+    ('Luna', '3', '2008-03-05', 'husky', 'XL', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/fjsipuxsuatxojh9fh10.jpg'),
+    ('Olive', '2', '2008-04-05', 'chihuahua', 's', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/r28vjwgdcnyz1vvgohae.jpg'),
+    ('Marley', '1', '2008-07-05', 'hound', 'm', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/ua4zodfz5bdhmtb2eaju.jpg'),
+    ('Cane', '4', '2017-09-02', 'doberman', 'l', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,g_auto,h_500,w_500/ikjca8eelkwcstogc2ye.jpg'),
+    ('Volo', '5', '2019-03-15', 'collie', 's', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/bm4ub4xmiclsbwiujoy0.jpg'),
+    ('Steve', '1', '2003-05-06', 'black lab', 'l', 'true', 'https://res.cloudinary.com/dccsx3iht/image/upload/c_fill,h_500,w_500/l87xlyfn4vgy56qm2eru.jpg');
 
 INSERT INTO locations(location_name, street_address, city, state_abbr)
 VALUES ('Otto Armleder Dog Park', '5057 Wooster Pike', 'Cincinnati', 'OH'),
@@ -43,7 +52,7 @@ VALUES ('Paws in the Park', 'A fun day out for dogs and their owners at the loca
 ('Fetch Frenzy', 'A day dedicated to playing fetch with all the furry friends.', 2, '2024-04-25 14:00:00', '2024-04-25 16:00:00', 3, true),
 ('Doggy Dip Day', 'Cool off with your pups in a splash-worthy pool party!', 2, '2024-04-23 11:00:00', '2024-04-23 13:00:00', 4, true),
 ('Bark and Brews', 'An evening of mingling with other dog owners at a local brewery.',1, '2024-04-22 18:00:00', '2024-04-22 20:00:00', 5, true),
-('Doggie Dash', 'A fun run event for dogs and their humans.', 1, '2024-04-22 09:00:00', '2024-04-22 11:00:00', 6, true),
+('Doggie Dash', 'A fun run event for dogs and their humans.', 1, '2024-05-09 09:00:00', '2024-05-09 11:00:00', 6, true),
 ('Puppy Picnic', 'A picnic in the park specially designed for young puppies.', 1, '2024-04-27 12:00:00', '2024-04-27 14:00:00', 7, true),
 ('Woof Walk', 'Join us for a scenic walk with our furry companions.',1, '2024-04-23 10:00:00', '2024-04-23 12:00:00', 8, true),
 ('Doggy Disco', 'Get ready to boogie with your pups at the dog-friendly disco!', 2, '2024-04-24 20:00:00', '2024-04-24 22:00:00', 9, true);

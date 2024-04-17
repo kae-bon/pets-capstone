@@ -9,8 +9,8 @@
             <div>
                 <div>
                     <h2 class="mb-3">Your Play Dates</h2>
-                    <CreatePlayDateButton class="mb-3" />
-                    <div class="d-flex flex-wrap flex-row justify-content-center">
+                    <CreatePlayDateButton />
+                    <div class="d-flex flex-wrap flex-row justify-content-center mt-3">
                         <PlayDateCards class="w-100 playDateCards" v-for="playdate in playDates" :key="playdate.id"
                             :playdate="playdate" @registration="registrationSuccessful = true" />
                     </div>

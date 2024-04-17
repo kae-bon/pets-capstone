@@ -6,27 +6,31 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <CreatePlayDateButton />
-        <div class="play-date-filter">
-            <input type="search" id="pd-filter" v-model="filter" placeholder="Title or description">
-        </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <CreatePlayDateButton />
 
-        <div class="play-date-filter">
-            choose a playdate time:
-            <select>
-                <option value="All"> All </option>
-                <option value="Morning"> Morning </option>
-                <option value="Afternoon"> Afternoon </option>
-                <option value="Evening"> Evening </option>
-            </select>
-        </div>
+            <div class="d-flex column-gap-5 align-items-end">
+                <div class="play-date-filter">
+                    <label for="pd-filter">search by title or description</label>
+                    <input class="form-control" type="search" id="pd-filter" v-model="filter">
+                </div>
 
-        <div class="play-date-filter">
-            choose a playdate city:
-            <select>
-                <option value="All"> All </option>
-                <option v-for="location in locations" v-bind:key="location"> {{ location }} </option>
-                <!-- <option value="Blue Ash"> Blue Ash </option>
+                <div class="play-date-filter">
+                    <label for="time">filter by time</label>
+                    <select class="form-select" id="time">
+                        <option value="All"> All </option>
+                        <option value="Morning"> Morning </option>
+                        <option value="Afternoon"> Afternoon </option>
+                        <option value="Evening"> Evening </option>
+                    </select>
+                </div>
+
+                <div class="play-date-filter">
+                    <label for="city">filter by city</label>
+                    <select id="city" class="form-select">
+                        <option value="All"> All </option>
+                        <option v-for="location in locations" v-bind:key="location"> {{ location }} </option>
+                        <!-- <option value="Blue Ash"> Blue Ash </option>
                 <option value="Cincinnati"> Cincinnati </option>
                 <option value="Fairfield"> Fairfield </option>
                 <option value="Florence"> Florence </option>
@@ -34,7 +38,9 @@
                 <option value="Hamilton"> Hamilton </option>
                 <option value="Loveland"> Loveland </option>
                 <option value="Newport"> Newport </option> -->
-            </select>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="d-flex flex-wrap flex-row justify-content-center">

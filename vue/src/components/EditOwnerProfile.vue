@@ -99,14 +99,9 @@ export default {
             this.resetForm();
         },
         setImgToDisplay(img) {
-            // this.$store.state.owner.profilePic = img;
             this.updatedOwner.profilePic = img;
         },
         resetForm() {
-            // this.updatedOwner.firstName = this.owner.firstName;
-            // this.updatedOwner.lastName = this.owner.lastName;
-            // this.updatedOwner.birthdate = this.owner.birthdate;
-            // this.updatedOwner.profilePic = this.owner.profilePic;
             this.updatedOwner = this.owner;
         }
     },

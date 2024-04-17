@@ -6,12 +6,6 @@
                 <span class="fa-li">
                     <i class="fa-solid fa-bone"></i>
                 </span>
-                Play Date Ratings
-            </li>
-            <li>
-                <span class="fa-li">
-                    <i class="fa-solid fa-bone"></i>
-                </span>
                 Message Board
             </li>
             <li>
@@ -30,7 +24,7 @@
                 <span class="fa-li">
                     <i class="fa-solid fa-bone"></i>
                 </span>
-                Supports Public or Private Play Dates
+                Connect with Dogs in your Area!
             </li>
         </ul>
     </div>
