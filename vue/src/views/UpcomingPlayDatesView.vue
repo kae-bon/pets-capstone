@@ -38,7 +38,11 @@
         <div class="d-flex flex-wrap flex-row justify-content-center">
             <PlayDateCards class="w-100 playDateCards" v-for="playdate in filteredList" :key="playdate.id"
                 :playdate="playdate" />
-            <div v-if="playDates.length === 0">Sorry, No Play Dates found</div>
+            <div v-if="playDates.length === 0 || filteredList.length === 0"
+                class="d-flex flex-column align-items-center mt-5">
+                <h3>Sorry, no Play Dates Found!</h3>
+                <img src="../assets/no-play-date-dog.png" alt="sad pug">
+            </div>
         </div>
 
     </div>
@@ -152,5 +156,10 @@ i {
     flex-basis: 0;
     max-width: 30%;
     min-width: 30%;
+}
+
+img {
+    width: 50%;
+    height: auto;
 }
 </style>

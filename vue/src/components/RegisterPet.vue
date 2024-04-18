@@ -94,7 +94,12 @@ export default {
             this.newPet.ownerId = this.$store.state.user.id;
             PetService.registerPet(this.newPet).then(response => {
                 if (response.status === 201) {
-                    this.$router.push({ name: 'user-home' });
+                    if (this.$store.state.pets.length > 1) {
+                        this.$router.push({ name: 'profile' });
+                    } else {
+                        this.$router.push({ name: 'user-home' });
+                    }
+
                 }
             })
         },
