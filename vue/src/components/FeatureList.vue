@@ -6,7 +6,7 @@
                 <span class="fa-li">
                     <i class="fa-solid fa-bone"></i>
                 </span>
-                Message Board
+                Announcements
             </li>
             <li>
                 <span class="fa-li">
