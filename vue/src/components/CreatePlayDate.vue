@@ -26,16 +26,17 @@
                             v-model="newPlayDate.dateTime" required :min="minimumDate">
                         <label for="date">Date & Start Time</label>
                     </div>
-                  <div class = "form-floating mb-3">
-                    <label for="durationRange" class="form-label">Play Date Duration: {{duration}} hours</label>
-                    <input type="range" class="form-range" min="0.5" max="2" step="0.5" id="durationRange" v-model="duration" @change="calculateEndDate" >
-                  </div>
+                    <div class="form-floating mb-3">
+                        <label for="durationRange" class="form-label">Play Date Duration: {{ duration }} hours</label>
+                        <input type="range" class="form-range" min="0.5" max="4" step="0.5" id="durationRange"
+                            v-model="duration">
+                    </div>
 
-<!--                    <div class="form-floating mb-3">-->
-<!--                        <input type="datetime-local" class="form-control" id="date" placeholder="date"-->
-<!--                            v-model="newPlayDate.endDateTime" required :min="minimumDate">-->
-<!--                        <label for="date">Date & End Time</label>-->
-<!--                    </div>-->
+                    <!--                    <div class="form-floating mb-3">-->
+                    <!--                        <input type="datetime-local" class="form-control" id="date" placeholder="date"-->
+                    <!--                            v-model="newPlayDate.endDateTime" required :min="minimumDate">-->
+                    <!--                        <label for="date">Date & End Time</label>-->
+                    <!--                    </div>-->
 
                     <div class="form-floating mb-3">
                         <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
@@ -95,6 +96,7 @@ export default {
     },
     methods: {
         submitForm() {
+            this.calculateEndDate();
             playDateService.createPlayDate(this.newPlayDate)
                 .then(response => {
                     if (response.status == 201) {
@@ -115,17 +117,14 @@ export default {
         confirmSuccess() {
             this.$emit('registration', 'success');
         },
-      calculateEndDate() {
-        let endTime = new Date();
-        if (this.newPlayDate.dateTime == null) endTime ? Date.now() : this.newPlayDate.dateTime;
-        console.log(endTime)
-
-        endTime.setTime(endTime.getTime() + (this.duration*60*60*1000));
-        console.log(endTime)
-        this.newPlayDate.endDateTime = endTime;
-        endTime = endTime.toISOString().substring(0, 16);
-        console.log(endTime)
-      }
+        calculateEndDate() {
+            let endTime = new Date(this.newPlayDate.dateTime);
+            if (this.newPlayDate.dateTime == null) endTime ? Date.now() : this.newPlayDate.dateTime;
+            endTime.setTime(endTime.getTime() + (this.duration * 60 * 60 * 1000));
+            endTime.setHours(endTime.getHours() - endTime.getTimezoneOffset() / 60);
+            this.newPlayDate.endDateTime = endTime.toISOString().substring(0, 16);
+            console.log(this.newPlayDate.endDateTime)
+        }
 
     },
     created() {
@@ -139,6 +138,10 @@ export default {
 </script>
 
 <style scoped>
+.form-label {
+    height: auto;
+}
+
 .modal-footer {
     justify-content: space-between;
 }
